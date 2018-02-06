@@ -25,3 +25,4 @@ Post-MVP Goals:
   i. Other users would get a push notification of these posts and would be able to directly contact the user who posted.
 4. An open chat room where people can post anything they want to.
   i. ideally, this would only be implemented for an "area", and users would have to subscribe to an "area", which would be the city they live in. That way I could filter the messages they see, based on which area they are in.
+5. Possibly enable Reachability, to indicate to users, whether other users are currently online.
