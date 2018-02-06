@@ -3,5 +3,8 @@ const app = require('angular').module("JAMMRApp");
 
 // Add factories below
 // ALL FACTORIES MUST BE REQUIRED HERE
-app.factory('HomeFactory', require('./HomeFactory'));
+app.factory('AuthFactory', require('./AuthFactory'));
+app.factory('SearchFactory', require('./SearchFactory'));
+app.factory('MessageFactory', require('./MessageFactory'));
+
  

@@ -1,6 +1,7 @@
 "use strict";
 
-const angular = require('angular'); // it knows where it is, from node modules
+// it knows where it is, from node modules
+const angular = require('angular'); 
 const ngRoute = require('angular-route');
 const firebase = require('firebase');
 // Other dependencies below
@@ -8,7 +9,8 @@ const firebase = require('firebase');
 const app = angular.module('JAMMRApp', [ngRoute]); // name of app
 
 
-// this is requiring the controllers and factories folders for you
+// this is requiring the controllers and factories folders for you,
+// because of the index.js files in those folders
 require('./factories');
 require('./controllers');
 
@@ -35,4 +37,4 @@ app.config($routeProvider => {
 
 
 
-module.exports = app;
+module.exports = app; // this is necessary for some reason
