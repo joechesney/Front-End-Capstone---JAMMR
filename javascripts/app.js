@@ -9,6 +9,8 @@ const app = angular.module('JAMMRApp', [ngRoute]); // name of app. app definitio
 // because of the index.js files in those folders
 require('./factories');
 require('./controllers');
+require('./directives');
+
 // Put routes here
 
 app.config($routeProvider => {
@@ -43,7 +45,7 @@ app.config($routeProvider => {
   })
   .when("/", {
     templateUrl: "partials/homePage.html",
-    controller: "HomeCtrl"
+    controller: "HomePageCtrl"
   });
   
   

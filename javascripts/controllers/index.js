@@ -10,4 +10,6 @@ app.controller('ConversationCtrl', require('./ConversationCtrl'));
 app.controller('MessagesCtrl', require('./MessagesCtrl'));
 app.controller('ProfilePageCtrl', require('./ProfilePageCtrl'));
 app.controller('SearchCtrl', require('./SearchCtrl'));
+app.controller('NavBarCtrl', require('./NavBarCtrl'));
+
 
