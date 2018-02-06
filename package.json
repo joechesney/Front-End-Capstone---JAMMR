@@ -1,0 +1,31 @@
+{
+  "name": "Front-End-Capstone---JAMMR",
+  "version": "1.0.0",
+  "description": "This is my Front End Capstone Project at Nashville Software School",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joechesney/Front-End-Capstone---JAMMR.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joechesney/Front-End-Capstone---JAMMR/issues"
+  },
+  "homepage": "https://github.com/joechesney/Front-End-Capstone---JAMMR#readme",
+  "dependencies": {
+    "angular": "^1.6.8",
+    "angular-route": "^1.6.8",
+    "firebase": "^4.9.0",
+    "grunt": "^1.0.1",
+    "grunt-browserify": "^5.2.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "matchdep": "^2.0.0"
+  }
+}
