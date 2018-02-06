@@ -1,6 +1,10 @@
 'use strict';
-const app = require('angular').module("testApp");
+const app = require('angular').module("JAMMRApp");
 
 // Add factories below
-app.factory('HomeFactory', require('./HomeFactory'));
+// ALL FACTORIES MUST BE REQUIRED HERE
+app.factory('AuthFactory', require('./AuthFactory'));
+app.factory('SearchFactory', require('./SearchFactory'));
+app.factory('MessageFactory', require('./MessageFactory'));
+
  

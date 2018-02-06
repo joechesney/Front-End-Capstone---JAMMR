@@ -1,7 +1,13 @@
 "use strict";
 
-const app = require('angular').module("testApp");
+const app = require('angular').module("JAMMRApp");
 
 // Add controls below
-app.controller('HomeCtrl', require('./HomeCtrl'));
+// ALL CONTROLLERS MUST BE REQUIRED HERE
+app.controller('HomePageCtrl', require('./HomePageCtrl'));
+app.controller('AuthCtrl', require('./AuthCtrl'));
+app.controller('ConversationCtrl', require('./ConversationCtrl'));
+app.controller('MessagesCtrl', require('./MessagesCtrl'));
+app.controller('ProfilePageCtrl', require('./ProfilePageCtrl'));
+app.controller('SearchPageCtrl', require('./SearchPageCtrl'));
 
