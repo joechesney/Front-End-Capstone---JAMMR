@@ -7,7 +7,7 @@ module.exports = function(grunt){
       jshint: {
           files: ['javascripts/**/*.js'],
           options: {
-              predef: ["document", "console", "Skype", "Application"],//Ignore these even though we haven't defined them
+              predef: ["document", "console"],//Ignore these even though we haven't defined them
               esnext: true, //Telling to use latest version of javascript
               globalstrict: true,
               globals: {},
