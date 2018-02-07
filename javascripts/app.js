@@ -39,7 +39,7 @@ app.config($routeProvider => {
     templateUrl: "partials/searchResults.html",
     controller: "SearchCtrl"
   })
-  .when("/search", {
+  .when("/searchPage", {
     templateUrl: "partials/searchPage.html",
     controller: "SearchCtrl"
   })

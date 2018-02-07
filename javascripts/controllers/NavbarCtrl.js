@@ -14,5 +14,5 @@ module.exports = function($scope, $window, $location, AuthFactory){
     AuthFactory.logout()
     .then(() => $window.location.href = "#!/login");
 
-  $scope.test = "superchcuppspss";
+  $scope.title = "JAMMR";
 };
