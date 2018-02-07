@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function(){
+module.exports = function($q, $http){
   // Ability to search for other users based on profile properties
 
 

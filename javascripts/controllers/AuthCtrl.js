@@ -4,7 +4,13 @@
 // AUTH CTRL
 module.exports = function($scope, AuthFactory){
 
-  
+  $scope.registerCTRL = () => {
+    console.log('fired register ctlr');
+    AuthFactory.registerNewUser($scope.account)
+    .then((data)=>{
+      console.log('data in ctrler ',data);
+    });
+  };
   // const login = (account)=>{
   //   // call authfactory function
   //   AuthFactory.login(account)
