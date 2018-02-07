@@ -43,10 +43,11 @@ app.config($routeProvider => {
     templateUrl: "partials/searchPage.html",
     controller: "SearchCtrl"
   })
-  .when("/", {
+  .when("/homePage", {
     templateUrl: "partials/homePage.html",
     controller: "HomePageCtrl"
-  });
+  })
+  .otherwise("/registerLogin" );
   
   
 });
