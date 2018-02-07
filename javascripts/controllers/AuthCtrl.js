@@ -2,22 +2,26 @@
 
 
 // AUTH CTRL
-module.exports = function($scope, AuthFactory){
+module.exports = function($scope, AuthFactory, $location, $window){
 
-  $scope.registerCTRL = () => {
+  $scope.registerCTRLR = () => {
     console.log('fired register ctlr');
     AuthFactory.registerNewUser($scope.account)
     .then((data)=>{
       console.log('data in ctrler ',data);
+      // TODO: save the user to a user profile in FB that I can use, 
+      // with uid, empty convos array, various profile stuff
     });
   };
-  // const login = (account)=>{
-  //   // call authfactory function
-  //   AuthFactory.login(account)
-  //   .then(({data})=>{
-  //     console.log('data',data);
-  //   });
-  // };
+
+  $scope.loginCTRLR = ()=>{
+    AuthFactory.loginWithEmailPassword($scope.account)
+    .then(({data})=>{
+      console.log('data',data);
+      console.log('successful login!!!');
+      $window.location.href = "#!/";
+    });
+  };
 
   // register new user
   
