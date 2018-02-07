@@ -4,6 +4,7 @@
 // AUTH CTRL
 module.exports = function($scope, AuthFactory){
 
+  
   // const login = (account)=>{
   //   // call authfactory function
   //   AuthFactory.login(account)
