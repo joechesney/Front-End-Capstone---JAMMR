@@ -59,7 +59,7 @@ app
     templateUrl: "partials/homePage.html",
     controller: "HomePageCtrl"
   })
-  .otherwise("/registerLogin" );
+  .otherwise("/registerLogin");
   
   
 })

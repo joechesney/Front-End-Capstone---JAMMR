@@ -4,7 +4,10 @@
 // PROFILE PAGE CTRL
 module.exports = function($scope){
   $scope.test = "Profile here";
+  // AuthFactory.getUser()
+  // .then
 
+  
   // replace sendMessage/editProfile button based on whether it is YOUR profile or someone elses
 
 

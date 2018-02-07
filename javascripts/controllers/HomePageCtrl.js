@@ -9,6 +9,9 @@ module.exports = function ($scope) {
   // on home page, remove back button from the page
 
 
+  // AuthFactory.getUser()
+  // .then
+
 };
 
 

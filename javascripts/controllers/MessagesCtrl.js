@@ -4,7 +4,10 @@
 // MESSAGES CTRL
 module.exports = function($scope){
   $scope.test = "Messages List here";
+  // AuthFactory.getUser()
+  // .then
 
+  
   // Get messages from server
   // display any conversation that this user is involved in 
 

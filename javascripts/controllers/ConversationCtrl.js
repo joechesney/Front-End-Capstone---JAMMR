@@ -5,6 +5,9 @@
 module.exports = function($scope){
   $scope.test = "Conversation here";
 
+  // AuthFactory.getUser()
+  // .then
+
   // input box at the bottom to send a new message
   // when the message sends, it will save it to firebase,
   // and update the screen to show that new message,

@@ -23,12 +23,25 @@ module.exports = function($q, $http){
       .then((data)=>{
         console.log('data in factory affter lgoin',data);
         resolve(data);
+      })
+      .catch((error)=>{
+        console.log('error! ',error);
       });
     });
   };
   
   // authorization to check if a user is logged in
-
+  const getUser = () => {
+    return $q((resolve, reject) => {
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          resolve(user);
+        } else {
+          reject("No user");
+        }
+      });
+    });
+  };
   // checks the uid of the user, and matches it to any convos/ profiles
-  return {registerNewUser, loginWithEmailPassword};
+  return {registerNewUser, loginWithEmailPassword, getUser};
 };

@@ -16,8 +16,8 @@ module.exports = function($scope, AuthFactory, $location, $window){
 
   $scope.loginCTRLR = ()=>{
     AuthFactory.loginWithEmailPassword($scope.account)
-    .then(({data})=>{
-      console.log('data',data);
+    .then((data)=>{
+      console.log('data after login in controller',data);
       console.log('successful login!!!');
       $window.location.href = "#!/";
     });
@@ -28,7 +28,10 @@ module.exports = function($scope, AuthFactory, $location, $window){
   // login user
 
   // checks auth of user
-
+  AuthFactory.getUser()
+  .then(user => {
+    $location.path("/");
+  }).catch(err => console.log('error',err));
   // retrieves uid of user, to test against convo id and profile id
 
 

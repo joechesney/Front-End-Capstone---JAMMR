@@ -3,7 +3,10 @@
 // SEARCH PAGE CTRL
 module.exports = function($scope){
   $scope.test = "Search stuff here";
+  // AuthFactory.getUser()
+  // .then
 
+  
   // save filters to scope variable
 
   // require at least one filter to search users
