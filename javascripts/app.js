@@ -55,7 +55,7 @@ app
     templateUrl: "partials/searchPage.html",
     controller: "SearchCtrl"
   })
-  .when("/", {
+  .when("/homePage", {
     templateUrl: "partials/homePage.html",
     controller: "HomePageCtrl"
   })

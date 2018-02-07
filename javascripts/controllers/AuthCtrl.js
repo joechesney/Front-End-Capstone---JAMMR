@@ -19,18 +19,24 @@ module.exports = function($scope, AuthFactory, $location, $window){
     .then((data)=>{
       console.log('data after login in controller',data);
       console.log('successful login!!!');
-      $window.location.href = "#!/";
+      $window.location.href = "#!/homePage";
+    })
+    .catch((error)=>{
+      console.log('OHNOOO!');
     });
   };
 
-  // register new user
-  
-  // login user
+  $scope.logout = ()=>{
+    AuthFactory.logout()
+    .then((data)=>{
+      console.log('data from logging out',data);
+    });
+  };
 
   // checks auth of user
   AuthFactory.getUser()
   .then(user => {
-    $location.path("/");
+    $location.path("/homePage");
   }).catch(err => console.log('error',err));
   // retrieves uid of user, to test against convo id and profile id
 

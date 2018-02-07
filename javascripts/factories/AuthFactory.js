@@ -42,6 +42,13 @@ module.exports = function($q, $http){
       });
     });
   };
+
+  let logout = () => {
+    return firebase.auth().signOut();
+  };
+
+
+
   // checks the uid of the user, and matches it to any convos/ profiles
-  return {registerNewUser, loginWithEmailPassword, getUser};
+  return {registerNewUser, loginWithEmailPassword, getUser, logout};
 };
