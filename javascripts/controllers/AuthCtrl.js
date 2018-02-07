@@ -12,4 +12,13 @@ module.exports = function($scope, AuthFactory){
   //   });
   // };
 
+  // register new user
+  
+  // login user
+
+  // checks auth of user
+
+  // retrieves uid of user, to test against convo id and profile id
+
+
 };
