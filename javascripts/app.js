@@ -3,16 +3,8 @@
 const angular = require('angular'); 
 const ngRoute = require('angular-route');
 const firebase = require('firebase');
-const skype = require('./secrets/skypeConfig');
-console.log('skype',skype);
-Skype.initialize({ apiKey: skype.config.apiKey }, function (api) {
-  Application = api.application; // this is the Application constructor
-}, function (err) {
-  console.log("cannot load the sdk package", err);
-});
 
-signInApp = new Application;
-console.log('singinAPp',signInApp);
+
 
 
 // Other dependencies below
