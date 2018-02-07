@@ -13,6 +13,5 @@ module.exports = function($scope, $window, $location, AuthFactory){
   $scope.clickLogout = () =>
     AuthFactory.logout()
     .then(() => $window.location.href = "#!/login");
-
   $scope.title = "JAMMR";
 };
