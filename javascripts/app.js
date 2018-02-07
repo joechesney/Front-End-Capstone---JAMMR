@@ -3,6 +3,10 @@
 const angular = require('angular'); 
 const ngRoute = require('angular-route');
 const firebase = require('firebase');
+
+
+
+
 // Other dependencies below
 const app = angular.module('JAMMRApp', [ngRoute]); // name of app. app definition
 // this is requiring the controllers and factories folders for you,
