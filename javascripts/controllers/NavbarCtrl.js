@@ -6,6 +6,13 @@ module.exports = function
 ($scope, $window, $location, AuthFactory){
 
   $scope.title = "JAMMR";
+  if($window.location.href === "#!/registerLogin" ||
+    $window.location.href === "#!/homePage"){
+    $scope.isHomeorLoginPage = false;
+  }else{
+    $scope.isHomeorLoginPage = true;
+  } // TODO: this isnt working lol
+  
   $scope.isActive = function (path) {
     let currentPath = $location.path().split('/')[1];
     if (currentPath.indexOf('?') !== -1)
