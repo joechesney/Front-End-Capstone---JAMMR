@@ -12,6 +12,7 @@ module.exports = function
     console.log('welcome home bruh', user);
     $scope.displayUserName = user.displayName;
     $scope.userEmail = user.email;
+    $scope.uid = user.uid;
   }).catch(err => {
     console.log('error',err);
     $location.path("/registerLogin");
