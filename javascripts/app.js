@@ -5,8 +5,6 @@ const ngRoute = require('angular-route');
 const firebase = require('firebase');
 
 
-
-
 // Other dependencies below
 const app = angular.module('JAMMRApp', [ngRoute]); // name of app. app definition
 // this is requiring the controllers and factories folders for you,
@@ -14,15 +12,21 @@ const app = angular.module('JAMMRApp', [ngRoute]); // name of app. app definitio
 require('./factories');
 require('./controllers');
 require('./directives');
+require('./secrets');
 
 // Put routes here
 
-app.config($routeProvider => {
+app
+.constant("listenToDatabase", () => {
+  let JAMMRDatabase = firebase.database().ref();
+  JAMMRDatabase.on('value', (snapshot) => {
+      console.log('snapshot',snapshot.val());
+  });
+})
+.config($routeProvider => {
   $routeProvider
 
   // routes and configs go here, chained onto the module definition
-  
-  
   .when("/registerLogin", {
       templateUrl: "partials/registerLogin.html",
       controller: "AuthCtrl"
@@ -51,14 +55,12 @@ app.config($routeProvider => {
     templateUrl: "partials/homePage.html",
     controller: "HomePageCtrl"
   })
-  .otherwise("/registerLogin" );
-  
-  
+  .otherwise("/registerLogin");
+})
+.run((fbConfig, listenToDatabase) => {
+  firebase.initializeApp(fbConfig);
+  listenToDatabase();
 });
-
-// .run((FBCreds, PinFactory) => {
-// firebase.initializeApp(FBCreds);
-// });
 
 
 

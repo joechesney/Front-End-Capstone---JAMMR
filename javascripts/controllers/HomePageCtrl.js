@@ -2,12 +2,21 @@
 
 
 // HOME PAGE CTRL
-module.exports = function ($scope) {
+module.exports = function 
+($scope, AuthFactory, $location, $window) {
 
-  // needs to check authorization and maybe display username on home page?
-  // not much else going on on the home page
-  // on home page, remove back button from the page
+ // TODO: remove back button from the home page
 
+  AuthFactory.getUser()
+  .then(user => {
+    console.log('welcome home bruh', user);
+    $scope.displayUserName = user.displayName;
+    $scope.userEmail = user.email;
+  }).catch(err => {
+    console.log('error',err);
+    $location.path("/registerLogin");
+  });
+  
 
 };
 
