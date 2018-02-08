@@ -30,7 +30,7 @@ module.exports = function($q, $http, fbConfig){
   const postUserProfile = user => {
     return $q((resolve, reject) => {
       $http.patch(`${fbConfig.databaseURL}/users/${user.uid}.json`,
-      JSON.stringify({"uid": user.uid}))
+      JSON.stringify({"uid": user.uid, "convos": [""]}))
         .then(response => resolve(response))
         .catch(err => reject(err));
     });
@@ -45,6 +45,8 @@ module.exports = function($q, $http, fbConfig){
       });
     });
   };
+
+  
 
   let logout = () => {
     return firebase.auth().signOut();

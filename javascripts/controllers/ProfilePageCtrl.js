@@ -3,30 +3,43 @@
 
 // PROFILE PAGE CTRL
 module.exports = function
-($scope, $location, AuthFactory, SearchFactory, ProfileFactory){
+($scope, AuthFactory, SearchFactory, ProfileFactory, $window, $location){
   
   AuthFactory.getUser()
   .then(user => {
     // declare scope variables for user properties here
     $scope.uid = user.uid;
-    ProfileFactory.getUserProfileData($scope.uid)
-    .then((user)=>{
-      console.log('user in profileData',user);
-      $scope.name = user.name;
-      $scope.age = user.age;
-      $scope.uid = user.uid;
-      $scope.instruments = user.instruments;
-      $scope.interests = user.interests;
-      $scope.experience = user.experience;
-    });
-
+    $scope.getUserProfileDataCTRLR($scope.uid);
   }).catch(err => {
     console.log('error',err);
     $location.path("/registerLogin");
   });
 
+  $scope.getUserProfileDataCTRLR = (uid) =>{
+    ProfileFactory.getUserProfileData($scope.uid)
+    .then((user)=>{
+      console.log('user in profileData',user);
+      $scope.picToDisplay = user.profilePicture;
+      $scope.newProfileObj = {
+        name : user.name,
+        age : user.age,
+        uid : user.uid,
+        instruments : user.instruments,
+        interests : user.interests,
+        experience : user.experience,
+        convos: user.convos,
+        profilePicture: user.profilePicture
+      };
+    });
+  };
 
-  $scope.saveProfile = () =>{
+  $scope.saveProfile = (newProfileObj) =>{
+    ProfileFactory.saveProfileWithChanges(newProfileObj)
+    .then(({data})=>{
+      console.log('data after its sent, back in ctlr',data);
+      $scope.editing = false;
+      $scope.getUserProfileDataCTRLR(data.uid);
+    });
     // calls a factory function to save the updated information
     // THEN calls a factory function to GET the profile again
   };
