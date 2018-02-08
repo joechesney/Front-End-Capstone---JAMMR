@@ -7,14 +7,12 @@ module.exports = function
   
   AuthFactory.getUser()
   .then(user => {
-    console.log('profile, my dude', user);
     // declare scope variables for user properties here
     $scope.uid = user.uid;
     ProfileFactory.getUserProfileData($scope.uid)
     .then((user)=>{
       console.log('user in profileData',user);
       $scope.name = user.name;
-      console.log('scope name',$scope.name);
       $scope.age = user.age;
       $scope.uid = user.uid;
       $scope.instruments = user.instruments;
