@@ -1,3 +1,32 @@
-{{test}}
-
-<a ng-href="#!/searchResults"><button>Search</button></a>
+<br>
+Instruments:
+<select ng-model="instrumentSearch">
+  <option ng-repeat="instrument in instruments" value="{{instrument}}">{{instrument}}</option>
+</select>
+<br>
+Interests:
+<select ng-model="interestSearch">
+  <option ng-repeat="interest in interests" value="{{interest}}">{{interest}}</option>
+</select>
+<br>
+Years of Experience:
+<select ng-model="experienceSearch">
+  <option ng-repeat="experience in experiences" value="{{experience}}">{{experience}}</option>
+</select>
+<br>
+Age:
+<select ng-model="ageSearch">
+  <option ng-repeat="age in ages" value="{{age}}">{{age}}</option>
+</select>
+<br>
+<br>
+<div ng-show="showAlert">Please select at least on filter!</div>
+{{instrumentSearch}}
+<br>
+{{interestSearch}}
+<br>
+{{experienceSearch}}
+<br>
+{{ageSearch}}
+<br><br>
+  <button ng-click="searchForUsers()">Search</button>

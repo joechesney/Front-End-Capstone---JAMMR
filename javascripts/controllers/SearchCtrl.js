@@ -4,8 +4,12 @@
 module.exports = function
 ($scope, $location, AuthFactory, SearchFactory){
 
-  $scope.test = "Search for dem bruhs here";
-  $scope.test2 = "Search results as hell right here";
+  // ALL DATA:
+  $scope.instruments = ["guitar", "bass","violin"];
+  $scope.interests = ["band", "jam","chat"];
+  $scope.experiences = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+  $scope.ages = [18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39];
+  $scope.filterArray = [$scope.instrumentSearch, $scope.interestSearch, $scope.experienceSearch, $scope.ageSearch];
 
   AuthFactory.getUser()
   .then(user => {
@@ -15,12 +19,23 @@ module.exports = function
     $location.path("/registerLogin");
   });
 
-  
+
+
+  $scope.searchForUsers = () =>{
+    let counter = 0;
+    $scope.filterArray.forEach(filter=>{
+      if(filter === undefined){
+        counter++;
+      }
+    });
+    if(counter === $scope.filterArray.length){
+      $scope.showAlert = true;
+    }
+    console.log('filtersObj',$scope.filterArray);
+  };
   // save filters to scope variable
 
   // require at least one filter to search users
-
-  // need submit button to send search
 
   // receives back a list of other users, saves them to a scope variable,
   //  and redirects to searchResults page, which displays the list
