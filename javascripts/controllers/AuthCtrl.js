@@ -2,17 +2,22 @@
 
 
 // AUTH CTRL
-module.exports = function($scope, AuthFactory, $location, $window){
+module.exports = function($scope, AuthFactory, $location, $window, $q){
 
   $scope.registerCTRLR = () => {
     console.log('fired register ctlr');
     AuthFactory.registerNewUser($scope.account)
     .then((data)=>{
       console.log('successful registration ctrlr ',data);
-      $scope.loginCTRLR();
-      $window.location.href = "#!/homePage";
-      }).catch(err => console.log(err));
-      // TODO: log the user in after registering
+      $scope.loginCTRLR()
+      .then((newdata)=>{
+        AuthFactory.postUserProfile(data)
+        .then(response => {
+          console.log('successful profile post',response);
+          $window.location.href = "#!/profilePage";
+        }).catch(err => console.log(err));
+        }).catch(err => console.log(err));
+      });
 
       // TODO: after registering, the user is taken to 
       // their profile page, where it can be edited
@@ -23,18 +28,14 @@ module.exports = function($scope, AuthFactory, $location, $window){
   };
 
   $scope.loginCTRLR = ()=>{
-    AuthFactory.loginWithEmailPassword($scope.account)
-    .then((data)=>{
-      console.log('successful login ctrlr!!!', data);
-      let user = { "uid": data.uid };
-      AuthFactory.postUserProfile(user)
-      .then(response => {
-        console.log('successful profile post',response);
-        // $window.location.href = "#!/homePage";
-      })
-      .catch(err => console.log(err));
-      // $window.location.href = "#!/homePage";
-    }).catch((error)=>console.log('OHNOOO!', error));
+    return $q((resolve, reject)=>{
+      AuthFactory.loginWithEmailPassword($scope.account)
+      .then((data)=>{
+        console.log('successful login ctrlr!!!', data);
+        $window.location.href = "#!/homePage";
+        resolve(data);
+      }).catch((error)=>console.log('OHNOOO!', error));
+    });
   };
 
   $scope.logout = ()=>{
