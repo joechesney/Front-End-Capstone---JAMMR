@@ -10,9 +10,7 @@ module.exports = function($q, $http){
       .then((data)=>{
         console.log('succesfsul register in facotry',data);
         resolve(data);
-      }).catch((error)=>{
-        reject(error);
-      });
+      }).catch((error)=>reject(error));
     });
   };
 
@@ -24,9 +22,7 @@ module.exports = function($q, $http){
       .then((data)=>{
         console.log('successful login in facotry',data);
         resolve(data);
-      }).catch((error)=>{
-        reject(error);
-      });
+      }).catch((error)=>reject(error));
     });
   };
   
