@@ -4,18 +4,34 @@
 // PROFILE PAGE CTRL
 module.exports = function
 ($scope, $location, AuthFactory, SearchFactory, ProfileFactory){
-
-  $scope.test = "Profile here";
   
   AuthFactory.getUser()
   .then(user => {
     console.log('profile, my dude', user);
+    // declare scope variables for user properties here
+    $scope.uid = user.uid;
+    ProfileFactory.getUserProfileData($scope.uid)
+    .then((user)=>{
+      console.log('user in profileData',user);
+      $scope.name = user.name;
+      console.log('scope name',$scope.name);
+      $scope.age = user.age;
+      $scope.uid = user.uid;
+      $scope.instruments = user.instruments;
+      $scope.interests = user.interests;
+      $scope.experience = user.experience;
+    });
+
   }).catch(err => {
     console.log('error',err);
     $location.path("/registerLogin");
   });
 
-  
+
+  $scope.saveProfile = () =>{
+    // calls a factory function to save the updated information
+    // THEN calls a factory function to GET the profile again
+  };
   // replace sendMessage/editProfile button based on whether it is YOUR profile or someone elses
 
 

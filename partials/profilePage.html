@@ -1,8 +1,12 @@
 <img src="../images/VV.jpg" class="profilePicture">
-<div>NAME</div>
-<div>AGE</div>
-<div>Instruments</div>
-<div>Exerience</div>
-<div>Genres</div>
-<div>Goals</div>
+<button ng-click="editing=true">EDIT PROFILE</button>
+<div ng-show="!editing">{{uid}}</div>
+<!-- <input ng-show="editing" ng-model="name" placeholder="{{name}}"> -->
+<div>Name: {{name}}</div>
+<div>Age: {{age}} years old</div>
+<div>Instruments: {{instruments}}</div>
+<div>Interests: {{interests}}</div>
+<div>Experience: {{experience}}</div>
+
+<button ng-show="editing" ng-click="saveProfile()">SAVE PROFILE</button>
 {{test}}
