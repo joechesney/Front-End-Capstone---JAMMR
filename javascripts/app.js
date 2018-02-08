@@ -60,8 +60,6 @@ app
     controller: "HomePageCtrl"
   })
   .otherwise("/registerLogin");
-  
-  
 })
 .run((fbConfig, listenToDatabase) => {
   console.log('fbConfig',fbConfig);

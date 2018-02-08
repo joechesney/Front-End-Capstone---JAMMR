@@ -2,10 +2,18 @@
 
 
 // PROFILE PAGE CTRL
-module.exports = function($scope){
+module.exports = function
+($scope, $location, AuthFactory, SearchFactory){
+
   $scope.test = "Profile here";
-  // AuthFactory.getUser()
-  // .then
+  
+  AuthFactory.getUser()
+  .then(user => {
+    console.log('profile, my dude', user);
+  }).catch(err => {
+    console.log('error',err);
+    $location.path("/registerLogin");
+  });
 
   
   // replace sendMessage/editProfile button based on whether it is YOUR profile or someone elses

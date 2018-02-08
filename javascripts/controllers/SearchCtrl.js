@@ -1,10 +1,19 @@
 "use strict";
 
 // SEARCH PAGE CTRL
-module.exports = function($scope){
-  $scope.test = "Search stuff here";
-  // AuthFactory.getUser()
-  // .then
+module.exports = function
+($scope, $location, AuthFactory, SearchFactory){
+
+  $scope.test = "Search for dem bruhs here";
+  $scope.test2 = "Search results as hell right here";
+
+  AuthFactory.getUser()
+  .then(user => {
+    console.log('search for dudes/dudettes bruh', user);
+  }).catch(err => {
+    console.log('error',err);
+    $location.path("/registerLogin");
+  });
 
   
   // save filters to scope variable

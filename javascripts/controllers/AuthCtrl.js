@@ -8,7 +8,9 @@ module.exports = function($scope, AuthFactory, $location, $window){
     console.log('fired register ctlr');
     AuthFactory.registerNewUser($scope.account)
     .then((data)=>{
-      console.log('data in ctrler ',data);
+      console.log('successful registration ctrlr ',data);
+      // TODO: log the user in after registering
+
       // TODO: save the user to a user profile in FB that I can use, 
       // with uid, empty convos array, various profile stuff
     });
@@ -17,11 +19,9 @@ module.exports = function($scope, AuthFactory, $location, $window){
   $scope.loginCTRLR = ()=>{
     AuthFactory.loginWithEmailPassword($scope.account)
     .then((data)=>{
-      console.log('data after login in controller',data);
-      console.log('successful login!!!');
+      console.log('successful login ctrlr!!!', data);
       $window.location.href = "#!/homePage";
-    })
-    .catch((error)=>{
+    }).catch((error)=>{
       console.log('OHNOOO!');
     });
   };
@@ -29,11 +29,10 @@ module.exports = function($scope, AuthFactory, $location, $window){
   $scope.logout = ()=>{
     AuthFactory.logout()
     .then((data)=>{
-      console.log('data from logging out',data);
+      console.log('logged out! ctrlr',data);
     });
   };
 
-  // checks auth of user
   AuthFactory.getUser()
   .then(user => {
     $location.path("/homePage");

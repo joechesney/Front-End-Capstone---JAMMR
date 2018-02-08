@@ -2,11 +2,18 @@
 
 
 // CONVERSATION CTRL
-module.exports = function($scope){
+module.exports = function
+($scope, AuthFactory, $location, MessageFactory){
+
   $scope.test = "Conversation here";
 
-  // AuthFactory.getUser()
-  // .then
+  AuthFactory.getUser()
+  .then(user => {
+    console.log('convos bruh', user);
+  }).catch(err => {
+    console.log('error',err);
+    $location.path("/registerLogin");
+  });
 
   // input box at the bottom to send a new message
   // when the message sends, it will save it to firebase,
