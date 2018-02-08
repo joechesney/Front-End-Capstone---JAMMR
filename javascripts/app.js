@@ -3,8 +3,6 @@
 const angular = require('angular'); 
 const ngRoute = require('angular-route');
 const firebase = require('firebase');
-// const fbConfig = require("./secrets/fbConfig");
-// console.log('fbconfig',fbConfig);
 
 
 // Other dependencies below
@@ -16,13 +14,11 @@ require('./controllers');
 require('./directives');
 require('./secrets');
 
-
 // Put routes here
 
 app
 .constant("listenToDatabase", () => {
   let JAMMRDatabase = firebase.database().ref();
-  console.log('JAMMRDatabase',JAMMRDatabase);
   JAMMRDatabase.on('value', (snapshot) => {
       console.log('snapshot',snapshot.val());
   });
@@ -62,7 +58,6 @@ app
   .otherwise("/registerLogin");
 })
 .run((fbConfig, listenToDatabase) => {
-  console.log('fbConfig',fbConfig);
   firebase.initializeApp(fbConfig);
   listenToDatabase();
 });
