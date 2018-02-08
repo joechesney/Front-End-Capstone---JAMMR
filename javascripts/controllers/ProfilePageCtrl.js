@@ -40,8 +40,6 @@ module.exports = function
       $scope.editing = false;
       $scope.getUserProfileDataCTRLR(data.uid);
     });
-    // calls a factory function to save the updated information
-    // THEN calls a factory function to GET the profile again
   };
   // replace sendMessage/editProfile button based on whether it is YOUR profile or someone elses
 
