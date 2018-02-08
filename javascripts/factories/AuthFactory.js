@@ -2,11 +2,12 @@
 
 const firebase = require('firebase');
 
-module.exports = function($q, $http){
+module.exports = function($q, $http, fbConfig){
  
   const registerNewUser = (account)=>{
     return $q((resolve, reject)=>{
-      firebase.auth().createUserWithEmailAndPassword(account.email,account.password)
+      firebase.auth()
+      .createUserWithEmailAndPassword(account.email,account.password)
       .then((data)=>{
         console.log('succesfsul register in facotry',data);
         resolve(data);
@@ -26,6 +27,15 @@ module.exports = function($q, $http){
     });
   };
   
+  const postUserProfile = user => {
+    return $q((resolve, reject) => {
+      $http.patch(`${fbConfig.databaseURL}/users/${user.uid}.json`,
+      JSON.stringify({"uid": user.uid}))
+        .then(response => resolve(response))
+        .catch(err => reject(err));
+    });
+  };
+
   // authorization to check if a user is logged in
   const getUser = () => {
     return $q((resolve, reject) => {
@@ -43,5 +53,5 @@ module.exports = function($q, $http){
 
 
   // checks the uid of the user, and matches it to any convos/ profiles
-  return {registerNewUser, loginWithEmailPassword, getUser, logout};
+  return {registerNewUser, loginWithEmailPassword, getUser, logout, postUserProfile};
 };

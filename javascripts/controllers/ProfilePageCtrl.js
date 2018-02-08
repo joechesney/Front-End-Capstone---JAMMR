@@ -3,7 +3,7 @@
 
 // PROFILE PAGE CTRL
 module.exports = function
-($scope, $location, AuthFactory, SearchFactory){
+($scope, $location, AuthFactory, SearchFactory, ProfileFactory){
 
   $scope.test = "Profile here";
   

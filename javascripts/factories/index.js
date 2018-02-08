@@ -6,5 +6,6 @@ const app = require('angular').module("JAMMRApp");
 app.factory('AuthFactory', require('./AuthFactory'));
 app.factory('SearchFactory', require('./SearchFactory'));
 app.factory('MessageFactory', require('./MessageFactory'));
+app.factory('ProfileFactory', require('./ProfileFactory'));
 
  
