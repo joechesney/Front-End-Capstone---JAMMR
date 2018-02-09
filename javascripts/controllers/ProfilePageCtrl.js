@@ -41,6 +41,9 @@ module.exports = function
       $scope.getUserProfileDataCTRLR(data.uid);
     });
   };
+
+  //TODO: make "interests" section a list of checkboxes in 'edit' mode
+
   // TODO: replace sendMessage/editProfile button based on whether it is YOUR profile or someone elses
 
 

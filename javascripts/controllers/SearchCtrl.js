@@ -2,37 +2,65 @@
 
 // SEARCH PAGE CTRL
 module.exports = function
-($scope, $location, AuthFactory, SearchFactory){
+($scope, $location, AuthFactory, SearchFactory, $window){
 
   // ALL DATA:
   $scope.instruments = ["guitar", "bass","violin"];
   $scope.interests = ["band", "jam","chat"];
-  // $scope.experiences = {filter: "age", ages: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]};
-  // $scope.ages = [18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39];
+  
 
 
   AuthFactory.getUser()
   .then(user => {
-    console.log('search for dudes/dudettes bruh', user);
+    // console.log('search for dudes/dudettes bruh', user);
   }).catch(err => {
     console.log('error',err);
     $location.path("/registerLogin");
   });
   
-  
+  let userData=[];
   $scope.searchForUsers = () =>{
     $scope.filterArray = [$scope.instrumentSearch, $scope.interestSearch, $scope.experienceSearch, $scope.ageSearch];
 
     let counter = 0;
-    $scope.filterArray.forEach(filter=>{
-      if(filter === undefined){counter++;}else{/* run filter function here */}
-    });
+    $scope.filterArray.forEach(filter=>{if(filter === undefined){counter++;}
+      else{
+        switch(counter) {
+          case 0:
+            console.log('instrument search');
+            SearchFactory.searchByInstrument($scope.filterArray[counter])
+            .then((users)=>{
+              console.log('users',users);
+              $window.location.href = "#!/searchResults";
+            });
+            break;
+          case 1:
+            SearchFactory.searchByInterest($scope.filterArray[counter])
+            .then((users)=>{
+              console.log('users',users);
+            });
+            break;
+          case 2:
+            SearchFactory.searchByExperience($scope.filterArray[counter])
+            .then((users)=>{
+              console.log('users',users);
+            });
+            break;
+          case 3:
+            SearchFactory.searchByAge($scope.filterArray[counter])
+            .then((users)=>{
+              console.log('users',users);
+            });
+            break;
+          default:
+            console.log('no filters selected!!!');
+      }
+      }});
+      if(counter === $scope.filterArray.length){$scope.showAlert = true;}
 
-    if(counter === $scope.filterArray.length){
-      $scope.showAlert = true;
-    }
-    console.log('filtersObj',$scope.filterArray);
-  };
+      console.log('filtersObj',$scope.filterArray);
+      
+    };
   // save filters to scope variable
 
   // require at least one filter to search users
