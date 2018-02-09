@@ -1,26 +1,29 @@
 <br>
 Instruments:
-<select ng-model="instrumentSearch">
-  <option ng-repeat="instrument in instruments" value="{{instrument}}">{{instrument}}</option>
+<select ng-model="instrumentSearch" ng-options="instrument as instrument for instrument in instruments">
 </select>
+
 <br>
 Interests:
-<select ng-model="interestSearch">
-  <option ng-repeat="interest in interests" value="{{interest}}">{{interest}}</option>
+<select ng-model="interestSearch" ng-options="interest for interest in interests">
 </select>
+
 <br>
 Years of Experience:
-<select ng-model="experienceSearch">
-  <option ng-repeat="experience in experiences" value="{{experience}}">{{experience}}</option>
-</select>
+<!-- <select ng-model="experienceSearch" ng-options="experience as experience for experience in experiences.ages"> -->
+  <input type="number" ng-model="experienceSearch"/>
+<!-- </select> -->
 <br>
 Age:
-<select ng-model="ageSearch">
-  <option ng-repeat="age in ages" value="{{age}}">{{age}}</option>
-</select>
+<!-- <select ng-model="ageSearch" ng-options="age as age for age in ages"> -->
+<!-- </select> -->
+<input type="number" ng-model="ageSearch"/>
+
 <br>
 <br>
-<div ng-show="showAlert">Please select at least on filter!</div>
+<div ng-show="showAlert"><span style="color: red;">Please select at least on filter!</span></div>
+<br>
+Curent Filters:<br>
 {{instrumentSearch}}
 <br>
 {{interestSearch}}
