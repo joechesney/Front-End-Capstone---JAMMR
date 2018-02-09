@@ -1,31 +1,29 @@
-<br>
-Instruments:
-<select ng-model="instrumentSearch" ng-options="instrument as instrument for instrument in instruments">
-</select>
-
-<br>
-Interests:
-<select ng-model="interestSearch" ng-options="interest for interest in interests">
-</select>
-
-<br>
-Years of Experience:
-  <input type="number" ng-model="experienceSearch"/>
-<br>
-Age:
-<input type="number" ng-model="ageSearch"/>
-
-<br>
-<br>
-<div ng-show="showAlert"><span style="color: red;">Please select at least on filter!</span></div>
-<br>
-Curent Filters:<br>
-{{instrumentSearch}}
-<br>
-{{interestSearch}}
-<br>
-{{experienceSearch}}
-<br>
-{{ageSearch}}
-<br><br>
+<div ng-show="!userArray" id="filterSelect">
+  <br>
+  Instruments:
+  <select ng-model="instrumentSearch" ng-options="instrument as instrument for instrument in instruments">
+  </select><br>
+  Interests:
+  <select ng-model="interestSearch" ng-options="interest for interest in interests">
+  </select><br>
+  Years of Experience: <input type="number" ng-model="experienceSearch"/>
+  <br>Age:<input type="number" ng-model="ageSearch"/><br><br>
+  <div ng-show="showAlert"><span style="color: red;">Please select at least on filter!</span></div><br>
+  Curent Filters:<br>
+  {{instrumentSearch}}<br>
+  {{interestSearch}}<br>
+  {{experienceSearch}}<br>
+  {{ageSearch}}<br><br>
   <button ng-click="searchForUsers()">Search</button>
+</div>
+
+<div ng-show="userArray">
+    <div ng-repeat="user in userArray">
+      <div class="userBlock">
+        <div>Age: {{user.age}}</div>
+        <div>Instrument: {{user.instruments}}</div>
+        <div>Experience: {{user.experience}} years</div>
+        <div>Interests: {{user.interests}}</div>
+      </div>
+    </div>
+</div>

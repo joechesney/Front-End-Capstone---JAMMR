@@ -2,9 +2,8 @@
 
 module.exports = function($q, $http, fbConfig){
   // Ability to search for other users based on profile properties
-  // if the filter is a number, filter for values within +/- 3
+  // TODO: if the filter is a number, filter for values within +/- 3
   const searchByInstrument = (instrument) =>{
-
     return $q((resolve, reject)=>{
       $http.get(`${fbConfig.databaseURL}/users.json?orderBy="instruments"&equalTo="${instrument}"`)
       .then(({data})=>{
@@ -14,32 +13,34 @@ module.exports = function($q, $http, fbConfig){
     });
   };
 
-  const searchByInterests = (filter) =>{
-
+  const searchByInterest = (interest) =>{
     return $q((resolve, reject)=>{
-      $http.get(`${fbConfig}/users.json?`)
-      .then((users)=>{
-        resolve(users);
+      $http.get(`${fbConfig.databaseURL}/users.json?orderBy="interests"&equalTo="${interest}"`)
+      .then(({data})=>{
+        data = Object.values(data);
+        resolve(data);
       });
     });
   };
 
-  const searchByAge = (filter) =>{
-
+  const searchByAge = (age) =>{
+    let ageHigh = age + 3;
+    let ageLow = age - 3;
     return $q((resolve, reject)=>{
-      $http.get(`${fbConfig}/users.json?`)
-      .then((users)=>{
-        resolve(users);
+      $http.get(`${fbConfig.databaseURL}/users.json?orderBy="age"&startAt=${ageLow}&endAt=${ageHigh}`)
+      .then(({data})=>{
+        data = Object.values(data);
+        resolve(data);
       });
     });
   };
 
-  const searchByExperience = (filter) =>{
-
+  const searchByExperience = (experience) =>{
     return $q((resolve, reject)=>{
-      $http.get(`${fbConfig}/users.json?`)
-      .then((users)=>{
-        resolve(users);
+      $http.get(`${fbConfig.databaseURL}/users.json?orderBy="experience"&equalTo="${experience}"`)
+      .then(({data})=>{
+        data = Object.values(data);
+        resolve(data);
       });
     });
   };
@@ -47,6 +48,6 @@ module.exports = function($q, $http, fbConfig){
   // ability to get those user profiles and display them
   
   
-  return { searchByInstrument, searchByInterests, searchByAge, searchByExperience };
+  return { searchByInstrument, searchByInterest, searchByAge, searchByExperience };
 };
 

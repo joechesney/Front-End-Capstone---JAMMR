@@ -22,11 +22,11 @@ module.exports = function
       $scope.picToDisplay = user.profilePicture;
       $scope.newProfileObj = {
         name : user.name,
-        age : user.age,
+        age : +user.age,
         uid : user.uid,
         instruments : user.instruments,
         interests : user.interests,
-        experience : user.experience,
+        experience : +user.experience,
         convos: user.convos,
         profilePicture: user.profilePicture
       };
