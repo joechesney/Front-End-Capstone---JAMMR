@@ -25,33 +25,33 @@ module.exports = function
 
     $scope.userArray = [];
     let counter = 0;
-    $scope.filterArray.forEach(filter=>{if(filter === undefined){counter++;}
+    $scope.filterArray.forEach((filter, index)=>{if(filter === undefined){counter++;}
       else{
-        switch(counter) {
+        switch(index) {
           case 0:
             console.log('instrument search');
-            SearchFactory.searchByInstrument($scope.filterArray[counter])
+            SearchFactory.searchByInstrument($scope.filterArray[index])
             .then((users)=>{
               console.log('users instrument',users);
               users.forEach(user=>{$scope.userArray.push(user);});
             });
             break;
           case 1:
-            SearchFactory.searchByInterest($scope.filterArray[counter])
+            SearchFactory.searchByInterest($scope.filterArray[index])
             .then((users)=>{
               console.log('users interest',users);
               users.forEach(user=>{$scope.userArray.push(user);});
             });
             break;
           case 2:
-            SearchFactory.searchByExperience($scope.filterArray[counter])
+            SearchFactory.searchByExperience($scope.filterArray[index])
             .then((users)=>{
               console.log('users experience',users);
               users.forEach(user=>{$scope.userArray.push(user);});
             });
             break;
           case 3:
-            SearchFactory.searchByAge($scope.filterArray[counter])
+            SearchFactory.searchByAge($scope.filterArray[index])
             .then((users)=>{
               console.log('users age',users);
               users.forEach(user=>{$scope.userArray.push(user);});
@@ -63,8 +63,15 @@ module.exports = function
       }});
       if(counter === $scope.filterArray.length){$scope.showAlert = true;}
 
-      console.log('filtersObj',$scope.filterArray);
+      console.log('filtersArray',$scope.filterArray);
       console.log('userArray',$scope.userArray);
+      let THEuserArray = $scope.userArray;
+          $scope.finalUserArray = THEuserArray.filter(function(item, pos) {
+            console.log('item:', item);
+            console.log('pos:', pos);
+            return $scope.userArray.indexOf(item) == pos;
+          });
+      console.log('finalUserArray',$scope.finalUserArray);
 
     };
 
