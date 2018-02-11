@@ -31,9 +31,7 @@ module.exports = function($q, $http, fbConfig){
       $http.get(`${fbConfig.databaseURL}/users.json?orderBy="age"&startAt=${ageLow}&endAt=${ageHigh}`)
       .then(({data})=>{
         data = Object.values(data);
-        console.log('data',data);
         angular.toJson(data);
-        console.log('data2',data);
         resolve(data);
       });
     });

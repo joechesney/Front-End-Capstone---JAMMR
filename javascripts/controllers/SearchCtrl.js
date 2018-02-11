@@ -63,8 +63,8 @@ module.exports = function
       }});
       if(counter === $scope.filterArray.length){$scope.showAlert = true;}
 
-      console.log('filtersArray',$scope.filterArray);
-      console.log('userArray',$scope.userArray);
+      // console.log('filtersArray',$scope.filterArray);
+      // console.log('userArray',$scope.userArray);
       setTimeout(function(){
         let THEuserArray = $scope.userArray;
         // $scope.finalUserArray = THEuserArray.filter(function(item, pos) {
@@ -77,10 +77,10 @@ module.exports = function
           
         $scope.finalUserArray = THEuserArray.filter(function(elem, index, self) {
           elem.$$hashKey = "";
-          console.log('elem',elem);
-          console.log('index',index);
-          console.log('self',self);
-          console.log('self.indexOf(elem)',self.indexOf(elem));
+          // console.log('elem',elem);
+          // console.log('index',index);
+          // console.log('self',self);
+          // console.log('self.indexOf(elem)',self.indexOf(elem));
           return index == self.indexOf(elem);
         });
 
