@@ -18,14 +18,16 @@
 </div>
 
 <div ng-show="userArray">
-    <div ng-repeat="user in userArray">
-      <div class="userBlock">
-        <div>Name: {{user.name}}</div>
-        <div>Age: {{user.age}}</div>
-        <div>Instrument: {{user.instruments}}</div>
-        <div>Experience: {{user.experience}} years</div>
-        <div>Interests: {{user.interests}}</div>
-        <hr>
-      </div>
+    <div ng-repeat="otherUser in userArray">
+      <a ng-href="#!/profilePage/{{otherUser.uid}}">
+        <div class="userBlock">
+          <div>Name: {{otherUser.name}}</div>
+          <div>Age: {{otherUser.age}}</div>
+          <div>Instrument: {{otherUser.instruments}}</div>
+          <div>Experience: {{otherUser.experience}} years</div>
+          <div>Interests: {{otherUser.interests}}</div>
+          <hr>
+        </div>
+      </a>
     </div>
 </div>

@@ -31,7 +31,7 @@ app
       templateUrl: "partials/registerLogin.html",
       controller: "AuthCtrl"
   })
-  .when("/profilePage", {
+  .when("/profilePage/:pid", {
     templateUrl: "partials/profilePage.html",
     controller: "ProfilePageCtrl"
   })

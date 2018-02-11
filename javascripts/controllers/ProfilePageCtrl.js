@@ -3,12 +3,12 @@
 
 // PROFILE PAGE CTRL
 module.exports = function
-($scope, AuthFactory, SearchFactory, ProfileFactory, $window, $location){
+($scope, AuthFactory, SearchFactory, ProfileFactory, $window, $location, $routeParams){
   
   AuthFactory.getUser()
   .then(user => {
     // declare scope variables for user properties here
-    $scope.uid = user.uid;
+    $scope.uid = $routeParams.pid;
     $scope.getUserProfileDataCTRLR($scope.uid);
   }).catch(err => {
     console.log('error',err);
