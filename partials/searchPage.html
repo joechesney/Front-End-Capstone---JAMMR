@@ -8,7 +8,9 @@
   </select><br>
   Years of Experience: <input type="number" ng-model="experienceSearch"/>
   <br>Age:<input type="number" ng-model="ageSearch"/><br><br>
-  <div ng-show="showAlert"><span style="color: red;">Please select at least on filter!</span></div><br>
+  <div ng-show="showAlert">
+    <span style="color: red;">Please select at least on filter!</span>
+  </div><br>
   Current Filters:<br>
   {{instrumentSearch}}<br>
   {{interestSearch}}<br>
@@ -21,6 +23,7 @@
     <div ng-repeat="otherUser in userArray">
       <a ng-href="#!/profilePage/{{otherUser.uid}}">
         <div class="userBlock">
+          <img class="searchResultsPic" ng-src="{{otherUser.profilePicture}}"/>
           <div>Name: {{otherUser.name}}</div>
           <div>Age: {{otherUser.age}}</div>
           <div>Instrument: {{otherUser.instruments}}</div>
@@ -31,3 +34,6 @@
       </a>
     </div>
 </div>
+
+<!--  -->
+<!-- TODO: make a default picture appear is the user does not have a profile picture -->

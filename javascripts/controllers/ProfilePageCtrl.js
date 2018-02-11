@@ -9,13 +9,13 @@ module.exports = function
   .then(user => {
     // declare scope variables for user properties here
     $scope.uid = $routeParams.pid;
-    $scope.getUserProfileDataCTRLR($scope.uid);
+    $scope.getUserProfileDataCTRLR();
   }).catch(err => {
     console.log('error',err);
     $location.path("/registerLogin");
   });
 
-  $scope.getUserProfileDataCTRLR = (uid) =>{
+  $scope.getUserProfileDataCTRLR = () =>{
     ProfileFactory.getUserProfileData($scope.uid)
     .then((user)=>{
       console.log('user in profileData',user);
