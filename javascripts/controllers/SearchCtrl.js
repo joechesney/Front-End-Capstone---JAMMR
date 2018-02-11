@@ -65,15 +65,41 @@ module.exports = function
 
       console.log('filtersArray',$scope.filterArray);
       console.log('userArray',$scope.userArray);
-      let THEuserArray = $scope.userArray;
-          $scope.finalUserArray = THEuserArray.filter(function(item, pos) {
-            console.log('item:', item);
-            console.log('pos:', pos);
-            return $scope.userArray.indexOf(item) == pos;
-          });
-      console.log('finalUserArray',$scope.finalUserArray);
+      setTimeout(function(){
+        let THEuserArray = $scope.userArray;
+        // $scope.finalUserArray = THEuserArray.filter(function(item, pos) {
+        //   item.$$hashKey = "";
+        //   console.log('item:', item);
+        //   console.log('pos:', pos);
+        //   console.log('indexOf',$scope.userArray.indexOf(item));
+        //   // console.log('sdfgsdfhsd',$scope.userArray.indexOf(item.name));
+        //   return $scope.userArray.indexOf(item, 0) === pos;
+          
+        $scope.finalUserArray = THEuserArray.filter(function(elem, index, self) {
+          elem.$$hashKey = "";
+          console.log('elem',elem);
+          console.log('index',index);
+          console.log('self',self);
+          console.log('self.indexOf(elem)',self.indexOf(elem));
+          return index == self.indexOf(elem);
+        });
+
+
+        // });
+        console.log('finalUserArray',$scope.finalUserArray);
+      }, 2500);
 
     };
+
+
+
+    function removeDuplicateUsingFilter(arr){
+      let unique_array = arr.filter(function(elem, index, self) {
+          return index == self.indexOf(elem);
+      });
+      return unique_array;
+    }
+
 
     // TODO: make it so that the user that is making 
     // the search does not show up IN the search results

@@ -1,4 +1,5 @@
 "use strict";
+const angular = require('angular'); 
 
 module.exports = function($q, $http, fbConfig){
   // Ability to search for other users based on profile properties
@@ -30,6 +31,9 @@ module.exports = function($q, $http, fbConfig){
       $http.get(`${fbConfig.databaseURL}/users.json?orderBy="age"&startAt=${ageLow}&endAt=${ageHigh}`)
       .then(({data})=>{
         data = Object.values(data);
+        console.log('data',data);
+        angular.toJson(data);
+        console.log('data2',data);
         resolve(data);
       });
     });
