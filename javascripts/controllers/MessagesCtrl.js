@@ -3,18 +3,32 @@
 
 // MESSAGES CTRL
 module.exports = function
-($scope, $location, AuthFactory, MessageFactory){
+($scope, $location, AuthFactory, MessageFactory, $routeParams){
 
   $scope.test = "Messages List here";
   AuthFactory.getUser()
   .then(user => {
     console.log('messages bruh', user);
+    $scope.currentUserID = user.uid;
+    // $scope.otherUserID = $;
   }).catch(err => {
     console.log('error',err);
     $location.path("/registerLogin");
   });
 
   
+
+
+
+
+  // TODO: 
+  // function on profile page needs to redirect to convo page,
+  // check to see if there is a convo with the 2 users already,
+  // if there isnt, then it will create one. Message objects will need
+  // the uid of the user who sent the message, a timestamp (do last),
+  // and the message text
+
+
   // Get messages from server
   // display any conversation that this user is involved in 
 

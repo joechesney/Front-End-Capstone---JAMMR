@@ -8,7 +8,10 @@ module.exports = function
   AuthFactory.getUser()
   .then(user => {
     // declare scope variables for user properties here
-    $scope.uid = $routeParams.pid;
+    $scope.uid = user.uid;
+    if($scope.uid === $routeParams.pid){
+      $scope.myProfile = true;
+    }else{$scope.myProfile = false;}
     $scope.getUserProfileDataCTRLR();
   }).catch(err => {
     console.log('error',err);
@@ -16,7 +19,7 @@ module.exports = function
   });
 
   $scope.getUserProfileDataCTRLR = () =>{
-    ProfileFactory.getUserProfileData($scope.uid)
+    ProfileFactory.getUserProfileData($routeParams.pid)
     .then((user)=>{
       console.log('user in profileData',user);
       $scope.picToDisplay = user.profilePicture;
@@ -58,5 +61,17 @@ module.exports = function
   // even if they have not responded yet. That way, they will be involved in the conversation,
   // even if they havent added a message to the conversation
 
-  
+  // TODO: 
+  // // ngclick on the message button on profile will call a function:
+  // that function will first check if there is a convo between 
+  // those 2 users by grabbing the current uid of the logged-in user
+   // and the routeparams uid of the profile being viewed. if that 
+   // convo does not already exist, it will create it, place that convo id
+   // into both of those users profiles, THEN redirect to the convo page
+   // which will be #!/convo/:cid
+   // then the convo ctrllr can use routeparams to grab that cid and 
+   // get the messages for it
+   // sending the convo id as a parameter, then the Convo ctrllr 
+   // will take that convo id and call a factory function to GET the messages
+    // contained in that convo
 };
