@@ -65,18 +65,20 @@ module.exports = function
     ConversationFactory.getUserConvoIds($scope.uid)
     .then((arrayOfConvoIds)=>{
       console.log('arrayOfConvoIds in controler',arrayOfConvoIds);
-      // arrayOfConvoIds.forEach(convo =>{
-      //   // $routeParams.pid
-
-      //   // needs to take the convoids of the current user, and check them
-      //   // for the userid of the profile as a user in any of their convos. 
-      // });
+      
       arrayOfConvoIds.forEach(convoId =>{
         ConversationFactory.checkForConvo(convoId)
         .then((somethin)=>{
           console.log('somethin',somethin);
           if(somethin.user1 === $routeParams.pid || somethin.user2 === $routeParams.pid){
             console.log('YUP',somethin.messages);
+            // here it will redirect to the conversation page,, and then in the conversation 
+            // controller it will run  a GET funciton to get the convo and print it to the screen
+          }else{
+            // this else will only be true if these 2 users have never messaged before. 
+            // if they have never message, then this will create a new convo object, 
+            // add it to the conversation folder in the database, AND add the new conversation ID to 
+            // both users conversation list array
           }
         });
       });
