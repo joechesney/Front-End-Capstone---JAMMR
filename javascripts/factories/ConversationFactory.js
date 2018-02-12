@@ -6,20 +6,16 @@ module.exports = function($q, $http, fbConfig){
   const getUserConvoIds = (uid) =>{
     return $q((resolve, reject)=>{
       $http.get(`${fbConfig.databaseURL}/users/${uid}/convos.json`)
-      .then(({data})=>{
-        console.log('data in getUserConvoIds',data);
-        
+      .then(({data})=>{        
         resolve(data);
       });
     });
   };
 
-  const checkForConvo = (convoId)=>{
+  const checkForConvoBetweenTheseTwoUsers = (convoId)=>{
     return $q((resolve, reject)=>{
       $http.get(`${fbConfig.databaseURL}/convos/${convoId}.json`)
-      .then(({data})=>{
-        console.log('data in checkForConvo',data);
-        
+      .then(({data})=>{        
         resolve(data);
       });
     });
@@ -29,5 +25,5 @@ module.exports = function($q, $http, fbConfig){
 
   
 
-  return { getUserConvoIds, checkForConvo };
+  return { getUserConvoIds, checkForConvoBetweenTheseTwoUsers };
 };

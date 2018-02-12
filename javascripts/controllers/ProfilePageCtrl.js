@@ -67,14 +67,16 @@ module.exports = function
       console.log('arrayOfConvoIds in controler',arrayOfConvoIds);
       
       arrayOfConvoIds.forEach(convoId =>{
-        ConversationFactory.checkForConvo(convoId)
+        ConversationFactory.checkForConvoBetweenTheseTwoUsers(convoId)
         .then((somethin)=>{
           console.log('somethin',somethin);
           if(somethin.user1 === $routeParams.pid || somethin.user2 === $routeParams.pid){
             console.log('YUP',somethin.messages);
+
             // here it will redirect to the conversation page,, and then in the conversation 
             // controller it will run  a GET funciton to get the convo and print it to the screen
           }else{
+            console.log('these users havea not mesaged yet, my dude');
             // this else will only be true if these 2 users have never messaged before. 
             // if they have never message, then this will create a new convo object, 
             // add it to the conversation folder in the database, AND add the new conversation ID to 
