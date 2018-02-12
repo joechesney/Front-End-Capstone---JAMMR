@@ -27,20 +27,9 @@ module.exports = function($q, $http, fbConfig){
     });
   };
 
-  const checkForConvo = (uid, pid) =>{
-    return $q((resolve, reject)=>{
-      $http.get(`${fbConfig.databaseURL}/convos.json`)
-      .then(({data})=>{
-        console.log('data',data);
-        let keys = Object.keys(data);
-        keys.forEach(key => data[key].convoid = key);
-        data = Object.values(data);
-        resolve(data);
-      });
-    });
-  };
+  
 
-  return{ checkForConvo, getUserProfileData, saveProfileWithChanges };
+  return{ getUserProfileData, saveProfileWithChanges };
 };
 
 

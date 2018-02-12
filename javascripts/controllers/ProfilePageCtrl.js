@@ -3,7 +3,7 @@
 
 // PROFILE PAGE CTRL
 module.exports = function
-($scope, AuthFactory, SearchFactory, ProfileFactory, $window, $location, $routeParams){
+($scope, AuthFactory, SearchFactory, ProfileFactory, $window, $location, $routeParams, ConversationFactory){
   
   AuthFactory.getUser()
   .then(user => {
@@ -62,9 +62,24 @@ module.exports = function
   // even if they havent added a message to the conversation
 
   $scope.beginConvo = () =>{
-    ProfileFactory.checkForConvo($scope.uid, $routeParams.pid)
-    .then((data)=>{
-      console.log('data in controler',data);
+    ConversationFactory.getUserConvoIds($scope.uid)
+    .then((arrayOfConvoIds)=>{
+      console.log('arrayOfConvoIds in controler',arrayOfConvoIds);
+      // arrayOfConvoIds.forEach(convo =>{
+      //   // $routeParams.pid
+
+      //   // needs to take the convoids of the current user, and check them
+      //   // for the userid of the profile as a user in any of their convos. 
+      // });
+      arrayOfConvoIds.forEach(convoId =>{
+        ConversationFactory.checkForConvo(convoId)
+        .then((somethin)=>{
+          console.log('somethin',somethin);
+          if(somethin.user1 === $routeParams.pid || somethin.user2 === $routeParams.pid){
+            console.log('YUP',somethin.messages);
+          }
+        });
+      });
     });
   };
 
