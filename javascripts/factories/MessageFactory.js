@@ -1,15 +1,21 @@
 "use strict";
 
 
-module.exports = function($q, $http){
+module.exports = function($q, $http, fbConfig){
     
-  // get messages using uid, retrieve all conversations that user is involved in
-
-
-
-  // display them in chronological order
-
   
+  const getConvoInfo = (convoId)=>{
+    return $q((resolve, reject)=>{
+      $http.get(`${fbConfig.databaseURL}/convos/${convoId}.json`)
+      .then(({data})=>{
+        resolve(data);
+      });
+    });
+  };
 
-  return {};
+
+
+  // TODO: display them in chronological order
+
+  return { getConvoInfo };
 };

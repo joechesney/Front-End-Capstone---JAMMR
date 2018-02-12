@@ -3,21 +3,30 @@
 
 // MESSAGES CTRL
 module.exports = function
-($scope, $location, AuthFactory, MessageFactory, $routeParams){
-
+($scope, $location, AuthFactory, MessageFactory, $routeParams, ConversationFactory){
+  $scope.tempMessageList = [];
   $scope.test = "Messages List here";
   AuthFactory.getUser()
   .then(user => {
     console.log('messages bruh', user);
     $scope.currentUserID = user.uid;
     // $scope.otherUserID = $;
+    ConversationFactory.getUserConvoIds($scope.currentUserID)
+    .then((arrayOfConvoIds)=>{
+      console.log('convos:',arrayOfConvoIds);
+      arrayOfConvoIds.forEach(convoId=>{
+        MessageFactory.getConvoInfo(convoId)
+        .then((convoInfo)=>{
+          console.log('convoInfo',convoInfo);
+        });
+      });
+    });
   }).catch(err => {
     console.log('error',err);
     $location.path("/registerLogin");
   });
 
   
-
 
 
 

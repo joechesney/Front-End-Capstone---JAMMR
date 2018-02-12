@@ -35,6 +35,6 @@ module.exports = function
 
   // TODO: display name of the other user in the convo at the top of the page
 
-  
+  // TODO: get username of each user, using their userid attached to the message
 
 };

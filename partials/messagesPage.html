@@ -1,2 +1,10 @@
 {{test}}
-<a ng-href="#!/conversation">click here to go to conversation</a>
+<div ng-repeat="convo in conversationList">
+  <a ng-href=`#!/conversation/${convo.convoId}`>
+    <div>
+      {{convo.convoId}}
+      {{convo.user1}}
+      {{convo.user2}}
+    </div>
+  </a>
+</div>
