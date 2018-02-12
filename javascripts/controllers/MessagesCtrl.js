@@ -26,8 +26,6 @@ module.exports = function
   });
 
   
-
-
   // TODO: 
   // function on profile page needs to redirect to convo page,
   // check to see if there is a convo with the 2 users already,

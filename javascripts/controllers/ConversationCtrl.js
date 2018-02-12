@@ -10,6 +10,7 @@ module.exports = function
   AuthFactory.getUser()
   .then(user => {
     console.log('convos bruh', user);
+    $scope.uid = user.uid;
   }).catch(err => {
     console.log('error',err);
     $location.path("/registerLogin");
@@ -22,6 +23,17 @@ module.exports = function
     console.log('messages in controller',messages);
     $scope.thisConvosMessages = messages;
   });
+
+  $scope.sendNewMessage = ()=>{
+    $scope.newMessage.user = $scope.uid;
+    // TODO: also save userName to message
+    // save message as object inside an object, instead of an array
+    ConversationFactory.saveNewMessage($scope.newMessage, $routeParams.convoid)
+    .then((messageData)=>{
+      console.log('after sending a new message',messageData);
+    });
+  };
+
 
   // TODO: input box at the bottom to send a new message
   // when the message sends, it will save it to firebase,
