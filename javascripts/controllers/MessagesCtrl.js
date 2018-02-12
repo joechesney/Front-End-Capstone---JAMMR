@@ -5,12 +5,9 @@
 module.exports = function
 ($scope, $location, AuthFactory, MessageFactory, $routeParams, ConversationFactory){
   $scope.tempMessageList = [];
-  $scope.test = "Messages List here";
   AuthFactory.getUser()
   .then(user => {
-    console.log('messages bruh', user);
     $scope.currentUserID = user.uid;
-    // $scope.otherUserID = $;
     ConversationFactory.getUserConvoIds($scope.currentUserID)
     .then((arrayOfConvoIds)=>{
       console.log('convos:',arrayOfConvoIds);
@@ -18,16 +15,17 @@ module.exports = function
         MessageFactory.getConvoInfo(convoId)
         .then((convoInfo)=>{
           console.log('convoInfo',convoInfo);
+          $scope.tempMessageList.push(convoInfo);
         });
       });
     });
+    $scope.conversationList = $scope.tempMessageList;
   }).catch(err => {
     console.log('error',err);
     $location.path("/registerLogin");
   });
 
   
-
 
 
   // TODO: 
