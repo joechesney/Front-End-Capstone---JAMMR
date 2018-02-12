@@ -65,15 +65,8 @@ module.exports = function
       }});
       if(counter === $scope.filterArray.length){$scope.showAlert = true;}
 
-      setTimeout(function(){
-        $scope.THEuserArray = $scope.userArray;
-        _.uniqBy($scope.THEuserArray, "uid");
-        console.log('THEuserArray in settimeout',$scope.THEuserArray);
-      }, 2500);
-      console.log('THEuserArray outside settimeout',$scope.THEuserArray);
       
     };
-
 
 
     function removeDuplicateUsingFilter(arr){

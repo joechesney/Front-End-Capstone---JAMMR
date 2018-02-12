@@ -64,7 +64,7 @@ module.exports = function
   $scope.beginConvo = () =>{
     ProfileFactory.checkForConvo($scope.uid, $routeParams.pid)
     .then((data)=>{
-      
+      console.log('data in controler',data);
     });
   };
 

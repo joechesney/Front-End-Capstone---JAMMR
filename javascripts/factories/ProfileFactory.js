@@ -32,6 +32,10 @@ module.exports = function($q, $http, fbConfig){
       $http.get(`${fbConfig.databaseURL}/convos.json`)
       .then(({data})=>{
         console.log('data',data);
+        let keys = Object.keys(data);
+        keys.forEach(key => data[key].convoid = key);
+        data = Object.values(data);
+        resolve(data);
       });
     });
   };

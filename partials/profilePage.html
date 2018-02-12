@@ -4,7 +4,7 @@
 
 <div ng-show="!editing" class="profile">
   <button ng-show="myProfile" ng-click="editing=true">EDIT PROFILE</button>
-  <button ng-show="!myProfile" ng-click="messageUser()">MESSAGE </button>
+  <button ng-show="!myProfile" ng-click="beginConvo()">MESSAGE </button>
   <div>Name: {{newProfileObj.name}}</div>
   <div>Age: {{newProfileObj.age}} years old</div>
   <div>Instruments: {{newProfileObj.instruments}}</div>
