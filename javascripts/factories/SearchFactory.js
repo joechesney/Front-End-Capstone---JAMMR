@@ -31,15 +31,16 @@ module.exports = function($q, $http, fbConfig){
       $http.get(`${fbConfig.databaseURL}/users.json?orderBy="age"&startAt=${ageLow}&endAt=${ageHigh}`)
       .then(({data})=>{
         data = Object.values(data);
-        angular.toJson(data);
         resolve(data);
       });
     });
   };
 
   const searchByExperience = (experience) =>{
+    let expHigh = experience + 3;
+    let expLow = experience - 3;
     return $q((resolve, reject)=>{
-      $http.get(`${fbConfig.databaseURL}/users.json?orderBy="experience"&equalTo="${experience}"`)
+      $http.get(`${fbConfig.databaseURL}/users.json?orderBy="experience"&startAt=${expLow}&endAt=${expHigh}`)
       .then(({data})=>{
         data = Object.values(data);
         resolve(data);

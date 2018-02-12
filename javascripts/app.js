@@ -31,7 +31,7 @@ app
       templateUrl: "partials/registerLogin.html",
       controller: "AuthCtrl"
   })
-  .when("/profilePage", {
+  .when("/profilePage/:pid", {
     templateUrl: "partials/profilePage.html",
     controller: "ProfilePageCtrl"
   })
@@ -39,7 +39,7 @@ app
     templateUrl: "partials/messagesPage.html",
     controller: "MessagesCtrl"
   })
-  .when("/conversation", {
+  .when("/conversation/:convoid", {
     templateUrl: "partials/conversation.html",
     controller: "ConversationCtrl"
   })

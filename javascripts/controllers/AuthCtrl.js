@@ -14,7 +14,7 @@ module.exports = function($scope, AuthFactory, $location, $window, $q){
         AuthFactory.postUserProfile(data)
         .then(response => {
           console.log('successful profile post',response);
-          $window.location.href = "#!/profilePage";
+          $window.location.href = `#!/profilePage/${data.uid}`;
         }).catch(err => console.log(err));
         }).catch(err => console.log(err));
       });
