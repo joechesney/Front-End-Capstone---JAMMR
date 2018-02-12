@@ -6,12 +6,9 @@ module.exports = function($q, $http, fbConfig){
 
   
   const getUserProfileData = uid =>{
-    console.log('uid in factory',uid);
     return $q ((resolve, reject)=>{
       $http.get(`${fbConfig.databaseURL}/users/${uid}.json`)
       .then(({data}) =>{
-        console.log('data in profile factory',data);
-        // "userName": user.userName,
         resolve(data);
       });
     });
