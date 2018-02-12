@@ -1,5 +1,7 @@
 "use strict";
 
+const _ = require("lodash");
+
 // SEARCH PAGE CTRL
 module.exports = function
 ($scope, $location, AuthFactory, SearchFactory, $window){
@@ -63,32 +65,13 @@ module.exports = function
       }});
       if(counter === $scope.filterArray.length){$scope.showAlert = true;}
 
-      // console.log('filtersArray',$scope.filterArray);
-      // console.log('userArray',$scope.userArray);
       setTimeout(function(){
-        let THEuserArray = $scope.userArray;
-        // $scope.finalUserArray = THEuserArray.filter(function(item, pos) {
-        //   item.$$hashKey = "";
-        //   console.log('item:', item);
-        //   console.log('pos:', pos);
-        //   console.log('indexOf',$scope.userArray.indexOf(item));
-        //   // console.log('sdfgsdfhsd',$scope.userArray.indexOf(item.name));
-        //   return $scope.userArray.indexOf(item, 0) === pos;
-          
-        $scope.finalUserArray = THEuserArray.filter(function(elem, index, self) {
-          elem.$$hashKey = "";
-          // console.log('elem',elem);
-          // console.log('index',index);
-          // console.log('self',self);
-          // console.log('self.indexOf(elem)',self.indexOf(elem));
-          return index == self.indexOf(elem);
-        });
-
-
-        // });
-        console.log('finalUserArray',$scope.finalUserArray);
+        $scope.THEuserArray = $scope.userArray;
+        _.uniqBy($scope.THEuserArray, "uid");
+        console.log('THEuserArray in settimeout',$scope.THEuserArray);
       }, 2500);
-
+      console.log('THEuserArray outside settimeout',$scope.THEuserArray);
+      
     };
 
 

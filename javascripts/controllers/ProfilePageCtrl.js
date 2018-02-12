@@ -61,6 +61,13 @@ module.exports = function
   // even if they have not responded yet. That way, they will be involved in the conversation,
   // even if they havent added a message to the conversation
 
+  $scope.beginConvo = () =>{
+    ProfileFactory.checkForConvo($scope.uid, $routeParams.pid)
+    .then((data)=>{
+      
+    });
+  };
+
   // TODO: 
   // // ngclick on the message button on profile will call a function:
   // that function will first check if there is a convo between 

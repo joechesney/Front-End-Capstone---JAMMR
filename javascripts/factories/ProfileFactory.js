@@ -4,9 +4,7 @@ const firebase = require('firebase');
 
 module.exports = function($q, $http, fbConfig){
 
-  const editProfile = user =>{
-    // this will patch any profile changes to the users profile
-  };
+  
   const getUserProfileData = uid =>{
     console.log('uid in factory',uid);
     return $q ((resolve, reject)=>{
@@ -29,7 +27,16 @@ module.exports = function($q, $http, fbConfig){
     });
   };
 
-  return{ editProfile, getUserProfileData, saveProfileWithChanges };
+  const checkForConvo = (uid, pid) =>{
+    return $q((resolve, reject)=>{
+      $http.get(`${fbConfig.databaseURL}/convos.json`)
+      .then(({data})=>{
+        console.log('data',data);
+      });
+    });
+  };
+
+  return{ checkForConvo, getUserProfileData, saveProfileWithChanges };
 };
 
 
