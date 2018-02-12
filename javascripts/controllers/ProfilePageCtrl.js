@@ -62,28 +62,38 @@ module.exports = function
   // even if they have not responded yet. That way, they will be involved in the conversation,
   // even if they havent added a message to the conversation
 
+  $scope.makeNewConvo = ()=>{
+    // createNewConvoObject
+    // addConvoToUserObjects
+    let newConvoObj = {
+      user1: $scope.uid
+    };
+    ProfileFactory.createNewConvoObject()
+    .then((data)=>{
+      console.log('after creating new convo object and sending it',data);
+      // after adding convoId to user object
+    });
+  };
+
+
   $scope.beginConvo = () =>{
     ConversationFactory.getUserConvoIds($scope.uid)
     .then((arrayOfConvoIds)=>{
-      console.log('arrayOfConvoIds for current User',arrayOfConvoIds);
-
       arrayOfConvoIds.forEach(convoId =>{
         ConversationFactory.checkForConvoBetweenTheseTwoUsers(convoId)
         .then((convo)=>{
-          
           convo.convoId = convoId;
-          // console.log('a convo of this current user: ',convo);
           if(convo.user1 === $routeParams.pid || convo.user2 === $routeParams.pid){
             console.log('YUP there is a convo between these 2 users:',convo.messages);
             $location.path(`/conversation/${convo.convoId}`);
-            // here it will redirect to the conversation page,, and then in the conversation 
-            // controller it will run  a GET funciton to get the convo and print it to the screen
           }else{
-            console.log('these users havea not mesaged yet, my dude');
+            console.log('these users have not messaged yet, my dude');
             // this else will only be true if these 2 users have never messaged before. 
-            // if they have never message, then this will create a new convo object, 
+            // if they have never messaged, then this will create a new convo object, 
             // add it to the conversation folder in the database, AND add the new conversation ID to 
             // both users conversation list array
+            // createNewConvoObject
+            // addConvoToUserObjects
           }
         });
       });

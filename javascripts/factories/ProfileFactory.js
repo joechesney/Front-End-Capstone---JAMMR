@@ -24,9 +24,32 @@ module.exports = function($q, $http, fbConfig){
     });
   };
 
+  const createNewConvoObject = (convoObj)=>{
+    return $q((resolve, reject)=>{
+      $http.post(`${fbConfig.databaseURL}/convos.json`, 
+      JSON.stringify(convoObj))
+      .then(({data})=>{
+        resolve(data);
+      });
+    });
+  };
+
+  const addConvoToUserObjects = (uid, convoId)=>{
+    return $q((resolve, reject)=>{
+      $http.post(`${fbConfig.databaseURL}/users/${uid}/convos.json`, JSON.stringify(convoId))
+      .then(({data})=>{
+        resolve(data);
+      });
+    });
+  };
+
   
 
-  return{ getUserProfileData, saveProfileWithChanges };
+  return{ 
+    getUserProfileData, 
+    saveProfileWithChanges, 
+    addConvoToUserObjects, 
+    createNewConvoObject };
 };
 
 

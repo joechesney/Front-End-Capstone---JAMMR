@@ -17,8 +17,6 @@ module.exports = function
 
 
   
-  // and then in the conversation 
-  // controller it will run  a GET funciton to get the convo and print it to the screen
   // TODO: this function should run on snapshot change
   ConversationFactory.getAllConvoMessages($routeParams.convoid)
   .then((messages)=>{
