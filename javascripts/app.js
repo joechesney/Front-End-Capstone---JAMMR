@@ -39,7 +39,7 @@ app
     templateUrl: "partials/messagesPage.html",
     controller: "MessagesCtrl"
   })
-  .when("/conversation", {
+  .when("/conversation/:convoid", {
     templateUrl: "partials/conversation.html",
     controller: "ConversationCtrl"
   })

@@ -21,9 +21,19 @@ module.exports = function($q, $http, fbConfig){
     });
   };
 
-  
+  const getAllConvoMessages = (convoId)=>{
+    return $q((resolve, reject)=>{
+      $http.get(`${fbConfig.databaseURL}/convos/${convoId}/messages.json`)
+      .then(({data})=>{
+        console.log('messages in this convo:',data);
+        resolve(data);
+      });
+    });
+  };
 
   
 
-  return { getUserConvoIds, checkForConvoBetweenTheseTwoUsers };
+  
+
+  return { getUserConvoIds, checkForConvoBetweenTheseTwoUsers, getAllConvoMessages };
 };

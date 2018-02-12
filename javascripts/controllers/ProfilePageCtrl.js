@@ -3,7 +3,8 @@
 
 // PROFILE PAGE CTRL
 module.exports = function
-($scope, AuthFactory, SearchFactory, ProfileFactory, $window, $location, $routeParams, ConversationFactory){
+($scope, AuthFactory, SearchFactory, ProfileFactory, $window, 
+  $location, $routeParams, ConversationFactory){
   
   AuthFactory.getUser()
   .then(user => {
@@ -64,15 +65,17 @@ module.exports = function
   $scope.beginConvo = () =>{
     ConversationFactory.getUserConvoIds($scope.uid)
     .then((arrayOfConvoIds)=>{
-      console.log('arrayOfConvoIds in controler',arrayOfConvoIds);
-      
+      console.log('arrayOfConvoIds for current User',arrayOfConvoIds);
+
       arrayOfConvoIds.forEach(convoId =>{
         ConversationFactory.checkForConvoBetweenTheseTwoUsers(convoId)
-        .then((somethin)=>{
-          console.log('somethin',somethin);
-          if(somethin.user1 === $routeParams.pid || somethin.user2 === $routeParams.pid){
-            console.log('YUP',somethin.messages);
-
+        .then((convo)=>{
+          
+          convo.convoId = convoId;
+          // console.log('a convo of this current user: ',convo);
+          if(convo.user1 === $routeParams.pid || convo.user2 === $routeParams.pid){
+            console.log('YUP there is a convo between these 2 users:',convo.messages);
+            $location.path(`/conversation/${convo.convoId}`);
             // here it will redirect to the conversation page,, and then in the conversation 
             // controller it will run  a GET funciton to get the convo and print it to the screen
           }else{
