@@ -12,30 +12,32 @@ module.exports = function
     JAMMRDatabase.on('value', (snapshot) => {
       console.log('snapshot when convo changes::',snapshot.val());
       ConversationFactory.getAllConvoMessages($routeParams.convoid)
-      .then((messages)=>{
-        $scope.thisConvosMessages = messages;
+      .then((messagesObj)=>{
+        let keys = Object.keys(messagesObj);
+        keys.forEach(key => messagesObj[key].msgID = key);
+        let messagesArray = Object.values(messagesObj);
+        messagesArray.forEach(msg =>{
+          console.log('message',messagesObj[msg.msgID]);
+          if(messagesObj[msg.msgID].uid === $scope.uid){
+            messagesObj[msg.msgID].currentUser = true;
+          } else {
+            messagesObj[msg.msgID].currentUser = false;
+          }
+        });
+        console.log('messages in controller',messagesObj);
+        $scope.thisConvosMessages = messagesObj;
       });
     });
   };
   
-
   AuthFactory.getUser()
   .then(user => {
     $scope.uid = user.uid;
-    // console.log('user',user);
+    console.log('scope uid',$scope.uid);
+    $scope.listenToConvo($routeParams.convoid);
   }).catch(err => {
     console.log('error',err);
     $location.path("/registerLogin");
-  });
-
-
-
-  // TODO: this function should run on snapshot change
-  ConversationFactory.getAllConvoMessages($routeParams.convoid)
-  .then((messages)=>{
-    console.log('messages in controller',messages);
-    $scope.thisConvosMessages = messages;
-    $scope.listenToConvo($routeParams.convoid);
   });
 
   $scope.sendNewMessage = ()=>{

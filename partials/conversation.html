@@ -1,5 +1,5 @@
 
-<div ng-repeat="message in thisConvosMessages">
+<div ng-repeat="message in thisConvosMessages" ng-class="{'currentUserMsg': message.currentUser, 'otherUserMsg': !message.currentUser}">
   <div>{{message.text}}</div>
   <div>{{message.userName}}</div>
   <hr>
