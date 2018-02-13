@@ -13,9 +13,11 @@ module.exports = function
       console.log('snapshot when convo changes::',snapshot.val());
       ConversationFactory.getAllConvoMessages($routeParams.convoid)
       .then((messagesObj)=>{
-        let newMessagesObj = $scope.assignUserMessagerClasses(messagesObj);
-        console.log('newMessagesObj in controller',newMessagesObj);
-        $scope.thisConvosMessages = newMessagesObj;
+        if(messagesObj !== undefined && messagesObj !== null){
+          let newMessagesObj = $scope.assignUserMessagerClasses(messagesObj);
+          console.log('newMessagesObj in controller',newMessagesObj);
+          $scope.thisConvosMessages = newMessagesObj;
+        }
       });
     });
   };
@@ -30,11 +32,9 @@ module.exports = function
     $location.path("/registerLogin");
   });
 
-  // TODO: give conversation box a bottom margin so it doesnt run behind the input box
 
   // TODO: scroll the page to the bottom when a new message is sent
 
-  // TODO: make input box stick to bottom of page
   
   $scope.sendNewMessage = (event)=>{
     // console.log('evetn',event);
@@ -47,9 +47,9 @@ module.exports = function
         .then((messageData)=>{
           ConversationFactory.getAllConvoMessages($routeParams.convoid)
           .then((messagesObj)=>{
-            let newMessagesObj = $scope.assignUserMessagerClasses(messagesObj);
-            console.log('newmessagesObj',newMessagesObj);
-            $scope.thisConvosMessages = newMessagesObj;
+            // let newMessagesObj = $scope.assignUserMessagerClasses(messagesObj);
+            // console.log('newmessagesObj',newMessagesObj);
+            // $scope.thisConvosMessages = newMessagesObj;
           });
         });
       });

@@ -2,7 +2,7 @@
   <div class="msg" ng-repeat="message in thisConvosMessages" ng-class="{'currentUserMsg': message.currentUser, 'otherUserMsg': !message.currentUser}">
     <div class="text">{{message.text}}</div>
     <div class="text">{{message.userName}}</div>
-  
+    <div>{{message.time}}</div>
   </div>
 </div>
 <input ng-keyup="sendNewMessage($event)" id="messageInput" type="text" ng-model="newMessage.text" placeholder="send message..." />
