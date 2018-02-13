@@ -2,8 +2,7 @@
 const angular = require('angular'); 
 
 module.exports = function($q, $http, fbConfig){
-  // Ability to search for other users based on profile properties
-  // TODO: if the filter is a number, filter for values within +/- 3
+
   const searchByInstrument = (instrument) =>{
     return $q((resolve, reject)=>{
       $http.get(`${fbConfig.databaseURL}/users.json?orderBy="instruments"&equalTo="${instrument}"`)
@@ -46,10 +45,7 @@ module.exports = function($q, $http, fbConfig){
         resolve(data);
       });
     });
-  };
-
-  // ability to get those user profiles and display them
-  
+  };  
   
   return { searchByInstrument, searchByInterest, searchByAge, searchByExperience };
 };

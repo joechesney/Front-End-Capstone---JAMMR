@@ -5,13 +5,10 @@ const _ = require("lodash");
 // SEARCH PAGE CTRL
 module.exports = function
 ($scope, $location, AuthFactory, SearchFactory, $window){
-  $scope.test2 = "search reslts here";
   // ALL DATA:
   $scope.instruments = ["guitar", "bass","violin"];
   $scope.interests = ["band", "jam","chat"];
   
-
-
   AuthFactory.getUser()
   .then(user => {
     // console.log('search for dudes/dudettes bruh', user);
@@ -22,7 +19,8 @@ module.exports = function
   
   
   $scope.searchForUsers = () =>{
-    $scope.filterArray = [$scope.instrumentSearch, $scope.interestSearch, $scope.experienceSearch, $scope.ageSearch];
+    $scope.filterArray = [$scope.instrumentSearch, $scope.interestSearch, 
+      $scope.experienceSearch, $scope.ageSearch];
   
 
     $scope.userArray = [];
@@ -64,8 +62,6 @@ module.exports = function
       }
       }});
       if(counter === $scope.filterArray.length){$scope.showAlert = true;}
-
-      
     };
 
 
@@ -81,9 +77,4 @@ module.exports = function
     // the search does not show up IN the search results
 
     // TODO: use lodash to make sure there are no duplicate entries in the userArray
-
-
-  // receives back a list of other users, saves them to a scope variable,
-  //  and redirects to searchResults page, which displays the list
-
 };

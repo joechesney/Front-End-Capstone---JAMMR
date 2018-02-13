@@ -25,7 +25,6 @@ module.exports = function($q, $http, fbConfig){
     return $q((resolve, reject)=>{
       $http.get(`${fbConfig.databaseURL}/convos/${convoId}/messages.json`)
       .then(({data})=>{
-        console.log('messages in this convo:',data);
         resolve(data);
       });
     });
