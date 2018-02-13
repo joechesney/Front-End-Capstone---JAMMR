@@ -13,19 +13,9 @@ module.exports = function
       console.log('snapshot when convo changes::',snapshot.val());
       ConversationFactory.getAllConvoMessages($routeParams.convoid)
       .then((messagesObj)=>{
-        let keys = Object.keys(messagesObj);
-        keys.forEach(key => messagesObj[key].msgID = key);
-        let messagesArray = Object.values(messagesObj);
-        messagesArray.forEach(msg =>{
-          console.log('message',messagesObj[msg.msgID]);
-          if(messagesObj[msg.msgID].uid === $scope.uid){
-            messagesObj[msg.msgID].currentUser = true;
-          } else {
-            messagesObj[msg.msgID].currentUser = false;
-          }
-        });
-        console.log('messages in controller',messagesObj);
-        $scope.thisConvosMessages = messagesObj;
+        let newMessagesObj = $scope.assignUserMessagerClasses(messagesObj);
+        console.log('newMessagesObj in controller',newMessagesObj);
+        $scope.thisConvosMessages = newMessagesObj;
       });
     });
   };
@@ -40,21 +30,40 @@ module.exports = function
     $location.path("/registerLogin");
   });
 
-  $scope.sendNewMessage = ()=>{
-    ProfileFactory.getUserProfileData($scope.uid)
-    .then((theUser)=>{
-      $scope.newMessage.userName = theUser.name;
-      $scope.newMessage.uid = $scope.uid;
-      ConversationFactory.saveNewMessage($scope.newMessage, $routeParams.convoid)
-      .then((messageData)=>{
-        ConversationFactory.getAllConvoMessages($routeParams.convoid)
-        .then((messages)=>{
-          $scope.thisConvosMessages = messages;
+  $scope.sendNewMessage = (event)=>{
+    console.log('evetn',event);
+    if(event.keyCode === 13){
+      ProfileFactory.getUserProfileData($scope.uid)
+      .then((theUser)=>{
+        $scope.newMessage.userName = theUser.name;
+        $scope.newMessage.uid = $scope.uid;
+        ConversationFactory.saveNewMessage($scope.newMessage, $routeParams.convoid)
+        .then((messageData)=>{
+          ConversationFactory.getAllConvoMessages($routeParams.convoid)
+          .then((messagesObj)=>{
+            let newMessagesObj = $scope.assignUserMessagerClasses(messagesObj);
+            console.log('newmessagesObj',newMessagesObj);
+            $scope.thisConvosMessages = newMessagesObj;
+          });
         });
       });
-    });
+    }
   };
 
+  $scope.assignUserMessagerClasses=(messagesObj)=>{
+    let keys = Object.keys(messagesObj);
+    keys.forEach(key => messagesObj[key].msgID = key);
+    let messagesArray = Object.values(messagesObj);
+    messagesArray.forEach(msg =>{
+      console.log('message',messagesObj[msg.msgID]);
+      if(messagesObj[msg.msgID].uid === $scope.uid){
+        messagesObj[msg.msgID].currentUser = true;
+      } else {
+        messagesObj[msg.msgID].currentUser = false;
+      }
+    });
+    return messagesObj;
+  };
 
 
   // TODO: input box at the bottom to send a new message
