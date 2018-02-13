@@ -13,6 +13,7 @@ module.exports = function
       console.log('snapshot when convo changes::',snapshot.val());
       ConversationFactory.getAllConvoMessages($routeParams.convoid)
       .then((messagesObj)=>{
+        console.log('messagesObbj', messagesObj);
         if(messagesObj !== undefined && messagesObj !== null){
           let newMessagesObj = $scope.assignUserMessagerClasses(messagesObj);
           console.log('newMessagesObj in controller',newMessagesObj);
@@ -25,7 +26,6 @@ module.exports = function
   AuthFactory.getUser()
   .then(user => {
     $scope.uid = user.uid;
-    console.log('scope uid',$scope.uid);
     $scope.listenToConvo($routeParams.convoid);
   }).catch(err => {
     console.log('error',err);
