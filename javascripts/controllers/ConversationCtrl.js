@@ -27,17 +27,12 @@ module.exports = function
   $scope.sendNewMessage = ()=>{
     ProfileFactory.getUserProfileData($scope.uid)
     .then((theUser)=>{
-      console.log('theUser',theUser);
       $scope.newMessage.userName = theUser.name;
       $scope.newMessage.uid = $scope.uid;
-      console.log('newMessage',$scope.newMessage);
-      // TODO: also save userName to message
       ConversationFactory.saveNewMessage($scope.newMessage, $routeParams.convoid)
       .then((messageData)=>{
-        console.log('after sending a new message',messageData);
         ConversationFactory.getAllConvoMessages($routeParams.convoid)
         .then((messages)=>{
-          console.log('messages in controller',messages);
           $scope.thisConvosMessages = messages;
         });
       });
