@@ -63,50 +63,47 @@ module.exports = function
   // even if they havent added a message to the conversation
 
   $scope.makeNewConvo = ()=>{
-    
-    // createNewConvoObject
-    // addConvoToUserObjects
     let newConvoObj = {
       user1: $scope.uid,
       user2: $routeParams.pid
     };
-    console.log('newConvoObj',newConvoObj);
     ProfileFactory.createNewConvoObject(newConvoObj)
     .then((data)=>{
-      console.log('after creating new convo object and sending it',data);
-      $location.path(`/conversation/${data.name}`);
-      // after adding convoId to user object
+      $scope.brandNewConvoId = data.name;
+      ProfileFactory.addConvoToUserObjects($scope.uid, $scope.brandNewConvoId)
+      .then((data)=>{
+        ProfileFactory.addConvoToUserObjects($routeParams.pid, $scope.brandNewConvoId)
+        .then((data)=>{
+          $location.path(`/conversation/${data.name}`);
+        });
+      });
     });
   };
 
 
   $scope.beginConvo = () =>{
     ConversationFactory.getUserConvoIds($scope.uid)
-    .then((arrayOfConvoIds)=>{
-      let convoExists = false;
-      arrayOfConvoIds.forEach(convoId =>{
-        ConversationFactory.checkForConvoBetweenTheseTwoUsers(convoId)
-        .then((convo)=>{
-          convo.convoId = convoId;
-          if(convo.user1 === $routeParams.pid || convo.user2 === $routeParams.pid){
-            console.log('YUP there is a convo between these 2 users:',convo.messages);
-            convoExists = true;
-            $location.path(`/conversation/${convo.convoId}`);
-          }else if(convoExists === false){
-            console.log('these users have not messaged yet, my dude. here go one doe');
-            $scope.makeNewConvo(); 
-            convoExists = true;
+    .then((objectOfConvoIds)=>{
+      if(objectOfConvoIds === null){
+        $scope.makeNewConvo(); 
+      }else{
+        let arrayOfConvoIds = Object.values(objectOfConvoIds);
+        let convoExists = false;
+        arrayOfConvoIds.forEach(convoId =>{
+          ConversationFactory.checkForConvoBetweenTheseTwoUsers(convoId)
+          .then((convo)=>{
+            convo.convoId = convoId;
+            if(convo.user1 === $routeParams.pid || convo.user2 === $routeParams.pid){
+              convoExists = true;
+              $location.path(`/conversation/${convo.convoId}`);
+            }else if(convoExists === false){
+              $scope.makeNewConvo(); 
+              convoExists = true;
 
-          
-            // this else will only be true if these 2 users have never messaged before. 
-            // if they have never messaged, then this will create a new convo object, 
-            // add it to the conversation folder in the database, AND add the new conversation ID to 
-            // both users conversation list array
-            // createNewConvoObject
-            // addConvoToUserObjects
-          }
+            }
+          });
         });
-      });
+      } // end of else
     });
   };
 
