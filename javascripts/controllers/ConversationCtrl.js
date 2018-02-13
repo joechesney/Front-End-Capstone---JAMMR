@@ -1,10 +1,23 @@
 "use strict";
 
+const firebase = require('firebase');
 
 // CONVERSATION CTRL
 module.exports = function
-($scope, AuthFactory, $location, MessageFactory, ConversationFactory, $routeParams, ProfileFactory){
+($scope, AuthFactory, $location, MessageFactory, 
+  ConversationFactory, $routeParams, ProfileFactory){
 
+  $scope.listenToConvo = (convoId)=>{
+    let JAMMRDatabase = firebase.database().ref("convos/"+convoId);
+    JAMMRDatabase.on('value', (snapshot) => {
+      console.log('snapshot when convo changes::',snapshot.val());
+      ConversationFactory.getAllConvoMessages($routeParams.convoid)
+      .then((messages)=>{
+        $scope.thisConvosMessages = messages;
+      });
+    });
+  };
+  
 
   AuthFactory.getUser()
   .then(user => {
@@ -16,11 +29,13 @@ module.exports = function
   });
 
 
+
   // TODO: this function should run on snapshot change
   ConversationFactory.getAllConvoMessages($routeParams.convoid)
   .then((messages)=>{
     console.log('messages in controller',messages);
     $scope.thisConvosMessages = messages;
+    $scope.listenToConvo($routeParams.convoid);
   });
 
   $scope.sendNewMessage = ()=>{
