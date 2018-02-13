@@ -3,21 +3,20 @@
 
 // CONVERSATION CTRL
 module.exports = function
-($scope, AuthFactory, $location, MessageFactory, ConversationFactory, $routeParams){
+($scope, AuthFactory, $location, MessageFactory, ConversationFactory, $routeParams, ProfileFactory){
 
-  $scope.test = "Conversation here";
 
   AuthFactory.getUser()
   .then(user => {
-    console.log('convos bruh', user);
     $scope.uid = user.uid;
+    // console.log('user',user);
   }).catch(err => {
     console.log('error',err);
     $location.path("/registerLogin");
   });
 
-  // and then in the conversation 
-  // controller it will run  a GET funciton to get the convo and print it to the screen
+
+  // TODO: this function should run on snapshot change
   ConversationFactory.getAllConvoMessages($routeParams.convoid)
   .then((messages)=>{
     console.log('messages in controller',messages);
@@ -25,14 +24,20 @@ module.exports = function
   });
 
   $scope.sendNewMessage = ()=>{
-    $scope.newMessage.user = $scope.uid;
-    // TODO: also save userName to message
-    // save message as object inside an object, instead of an array
-    ConversationFactory.saveNewMessage($scope.newMessage, $routeParams.convoid)
-    .then((messageData)=>{
-      console.log('after sending a new message',messageData);
+    ProfileFactory.getUserProfileData($scope.uid)
+    .then((theUser)=>{
+      $scope.newMessage.userName = theUser.name;
+      $scope.newMessage.uid = $scope.uid;
+      ConversationFactory.saveNewMessage($scope.newMessage, $routeParams.convoid)
+      .then((messageData)=>{
+        ConversationFactory.getAllConvoMessages($routeParams.convoid)
+        .then((messages)=>{
+          $scope.thisConvosMessages = messages;
+        });
+      });
     });
   };
+
 
 
   // TODO: input box at the bottom to send a new message
@@ -47,6 +52,5 @@ module.exports = function
 
   // TODO: display name of the other user in the convo at the top of the page
 
-  // TODO: get username of each user, using their userid attached to the message
 
 };

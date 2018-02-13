@@ -4,14 +4,10 @@ const firebase = require('firebase');
 
 module.exports = function($q, $http, fbConfig){
 
-  
   const getUserProfileData = uid =>{
-    console.log('uid in factory',uid);
     return $q ((resolve, reject)=>{
       $http.get(`${fbConfig.databaseURL}/users/${uid}.json`)
       .then(({data}) =>{
-        console.log('data in profile factory',data);
-        // "userName": user.userName,
         resolve(data);
       });
     });
@@ -19,17 +15,39 @@ module.exports = function($q, $http, fbConfig){
   
   const saveProfileWithChanges = (newProfileObj) =>{
     return $q((resolve, reject)=>{
-      $http.patch(`${fbConfig.databaseURL}/users/${newProfileObj.uid}.json`, JSON.stringify(newProfileObj))
+      $http.patch(`${fbConfig.databaseURL}/users/${newProfileObj.uid}.json`, 
+      JSON.stringify(newProfileObj))
       .then((response)=>{
-        console.log('response after saving profile changes',response);
+        // console.log('response after saving profile changes',response);
         resolve(response);
       });
     });
   };
 
-  
+  const createNewConvoObject = (convoObj)=>{
+    return $q((resolve, reject)=>{
+      $http.post(`${fbConfig.databaseURL}/convos.json`, 
+      JSON.stringify(convoObj))
+      .then(({data})=>{
+        resolve(data);
+      });
+    });
+  };
 
-  return{ getUserProfileData, saveProfileWithChanges };
+  const addConvoToUserObjects = (uid, convoId)=>{
+    return $q((resolve, reject)=>{
+      $http.post(`${fbConfig.databaseURL}/users/${uid}/convos.json`, JSON.stringify(convoId))
+      .then(({data})=>{
+        resolve(data);
+      });
+    });
+  };
+
+  return{ 
+    getUserProfileData, 
+    saveProfileWithChanges, 
+    addConvoToUserObjects, 
+    createNewConvoObject };
 };
 
 

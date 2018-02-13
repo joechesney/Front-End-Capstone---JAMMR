@@ -25,7 +25,6 @@ module.exports = function($q, $http, fbConfig){
     return $q((resolve, reject)=>{
       $http.get(`${fbConfig.databaseURL}/convos/${convoId}/messages.json`)
       .then(({data})=>{
-        console.log('messages in this convo:',data);
         resolve(data);
       });
     });
@@ -33,17 +32,15 @@ module.exports = function($q, $http, fbConfig){
 
   const saveNewMessage = (newMessage, convoId)=>{
     return $q((resolve, reject)=>{
-      $http.patch(`${fbConfig.databaseURL}/convos/${convoId}/messages/0.json`, 
+      $http.post(`${fbConfig.databaseURL}/convos/${convoId}/messages.json`, 
       JSON.stringify(newMessage))
       .then(({data})=>{
-        console.log('messages in this convo:',data);
         resolve(data);
       });
     });
   };
 
   
-
   return { 
     getUserConvoIds, 
     checkForConvoBetweenTheseTwoUsers, 
