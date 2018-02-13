@@ -7,22 +7,30 @@ module.exports = function
 ($scope, AuthFactory, $location, MessageFactory, 
   ConversationFactory, $routeParams, ProfileFactory){
 
+    
+    
   $scope.listenToConvo = (convoId)=>{
     let JAMMRDatabase = firebase.database().ref("convos/"+convoId);
     JAMMRDatabase.on('value', (snapshot) => {
       console.log('snapshot when convo changes::',snapshot.val());
-      ConversationFactory.getAllConvoMessages($routeParams.convoid)
-      .then((messagesObj)=>{
-        console.log('messagesObbj', messagesObj);
-        if(messagesObj !== undefined && messagesObj !== null){
-          let newMessagesObj = $scope.assignUserMessagerClasses(messagesObj);
-          console.log('newMessagesObj in controller',newMessagesObj);
-          $scope.thisConvosMessages = newMessagesObj;
-        }
-      });
+      $scope.getConvo();
     });
   };
   
+  $scope.getConvo = ()=>{
+    ConversationFactory.getAllConvoMessages($routeParams.convoid)
+    .then((messagesObj)=>{
+      console.log('messagesObbj', messagesObj);
+      if(messagesObj !== undefined && messagesObj !== null){
+        let newMessagesObj = $scope.assignUserMessagerClasses(messagesObj);
+        console.log('newMessagesObj in controller',newMessagesObj);
+        $scope.thisConvosMessages = newMessagesObj;
+      }
+    });
+  };
+  
+  $scope.getConvo();
+
   AuthFactory.getUser()
   .then(user => {
     $scope.uid = user.uid;
@@ -45,12 +53,11 @@ module.exports = function
         $scope.newMessage.uid = $scope.uid;
         ConversationFactory.saveNewMessage($scope.newMessage, $routeParams.convoid)
         .then((messageData)=>{
-          ConversationFactory.getAllConvoMessages($routeParams.convoid)
-          .then((messagesObj)=>{
-            // let newMessagesObj = $scope.assignUserMessagerClasses(messagesObj);
-            // console.log('newmessagesObj',newMessagesObj);
-            // $scope.thisConvosMessages = newMessagesObj;
-          });
+          // ConversationFactory.getAllConvoMessages($routeParams.convoid)
+          // .then((messagesObj)=>{
+          //   // console.log('messagesObj',messagesObj);
+          // });
+          console.log('swag',messageData);
         });
       });
     }
