@@ -7,8 +7,6 @@ module.exports = function
 ($scope, AuthFactory, $location, MessageFactory, 
   ConversationFactory, $routeParams, ProfileFactory){
 
-    
-    
   $scope.listenToConvo = (convoId)=>{
     let JAMMRDatabase = firebase.database().ref("convos/"+convoId);
     JAMMRDatabase.on('value', (snapshot) => {
@@ -19,8 +17,23 @@ module.exports = function
   
   $scope.getConvo = ()=>{
     ConversationFactory.getAllConvoMessages($routeParams.convoid)
-    .then((messagesObj)=>{
-      console.log('messagesObbj', messagesObj);
+    .then((data)=>{
+      console.log('THE MOTHERUFCKIN DATA',data);
+      let nameArray = [];
+      nameArray.push(data.user1);
+      nameArray.push(data.user2);
+      nameArray.forEach(uid=>{
+        console.log('UID AFRRRRRRRRRRRRR',uid);
+        if(uid !== $scope.uid){
+          AuthFactory.getUserName(uid)
+          .then((name)=>{
+            console.log('name::EE*888888',name);
+            $scope.otherUserName = name.name;
+          });
+        }
+      });
+      let messagesObj = data.messages;
+      console.log('messagesObj', messagesObj);
       if(messagesObj !== undefined && messagesObj !== null){
         let newMessagesObj = $scope.assignUserMessagerClasses(messagesObj);
         console.log('newMessagesObj in controller',newMessagesObj);
@@ -51,6 +64,7 @@ module.exports = function
       .then((theUser)=>{
         $scope.newMessage.userName = theUser.name;
         $scope.newMessage.uid = $scope.uid;
+        
         ConversationFactory.saveNewMessage($scope.newMessage, $routeParams.convoid)
         .then((messageData)=>{
           // ConversationFactory.getAllConvoMessages($routeParams.convoid)
@@ -68,16 +82,25 @@ module.exports = function
     keys.forEach(key => messagesObj[key].msgID = key);
     let messagesArray = Object.values(messagesObj);
     messagesArray.forEach(msg =>{
-      console.log('message',messagesObj[msg.msgID]);
+      // console.log('message wif UID',messagesObj[msg.msgID]);
+      // console.log('scopeuid',$scope.uid);
       if(messagesObj[msg.msgID].uid === $scope.uid){
         messagesObj[msg.msgID].currentUser = true;
-      } else {
+      }else if(messagesObj[msg.msgID].uid !== $scope.uid){
         messagesObj[msg.msgID].currentUser = false;
+        // $scope.otherUserName = messagesObj[msg.msgID].userName;
+        // console.log('otherUserName',$scope.otherUserName);
       }
     });
     return messagesObj;
   };
 
+  // TODO: MAJOR TODO: make conversation page show other users name but not pull
+  // it from the messages. it needs to display even if the other user has 
+  // not sent any messages
+
+  // TODO: MAJOR TODO: make message list page show names of 
+  // other users instead of their UID
 
   // TODO: input box at the bottom to send a new message
   // when the message sends, it will save it to firebase,

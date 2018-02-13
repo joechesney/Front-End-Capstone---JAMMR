@@ -29,11 +29,17 @@ module.exports = function
   AuthFactory.getUser()
   .then(user => {
     console.log('navbar breh', user);
+    AuthFactory.getUserName(user.uid)
+    .then((data)=>{
+      console.log('data in vabar HWUTCHU WANT',data);
+      $scope.userName = data.name;
+    });
   }).catch(err => {
     console.log('error',err);
     $location.path("/registerLogin");
   });
 
+  
   //TODO: make this controller also check for a user, 
   // then display that user's name in the navbar. swag
 

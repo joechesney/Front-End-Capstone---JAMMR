@@ -46,6 +46,13 @@ module.exports = function($q, $http, fbConfig){
     });
   };
 
+  const getUserName = (uid)=>{
+    return $q((resolve, reject) => {
+      $http.get(`${fbConfig.databaseURL}/users/${uid}.json`)
+        .then(({data}) => resolve(data))
+        .catch(err => reject(err));
+    });
+  };
   
 
   let logout = () => {
@@ -55,5 +62,5 @@ module.exports = function($q, $http, fbConfig){
 
 
   // checks the uid of the user, and matches it to any convos/ profiles
-  return {registerNewUser, loginWithEmailPassword, getUser, logout, postUserProfile};
+  return {registerNewUser, loginWithEmailPassword, getUser, logout, postUserProfile, getUserName};
 };

@@ -1,4 +1,5 @@
 <div id="conversationBox">
+  <div>Convo with: {{otherUserName}}</div>
   <div class="msg" ng-repeat="message in thisConvosMessages" ng-class="{'currentUserMsg': message.currentUser, 'otherUserMsg': !message.currentUser}">
     <div class="text">{{message.text}}</div>
     <div class="text">{{message.userName}}</div>
