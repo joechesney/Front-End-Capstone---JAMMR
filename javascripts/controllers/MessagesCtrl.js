@@ -4,13 +4,16 @@
 // MESSAGES CTRL
 module.exports = function
 ($scope, $location, AuthFactory, MessageFactory, $routeParams, ConversationFactory){
+
   $scope.tempMessageList = [];
+
   AuthFactory.getUser()
   .then(user => {
     $scope.currentUserID = user.uid;
     ConversationFactory.getUserConvoIds($scope.currentUserID)
-    .then((arrayOfConvoIds)=>{
-      console.log('convos:',arrayOfConvoIds);
+    .then((objectOfConvoIds)=>{
+      console.log('convos:',objectOfConvoIds);
+      let arrayOfConvoIds = Object.values(objectOfConvoIds);
       arrayOfConvoIds.forEach(convoId=>{
         MessageFactory.getConvoInfo(convoId)
         .then((convoInfo)=>{
