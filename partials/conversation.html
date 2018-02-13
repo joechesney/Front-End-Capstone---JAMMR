@@ -1,12 +1,8 @@
-
-<div ng-repeat="message in thisConvosMessages" ng-class="{'currentUserMsg': message.currentUser, 'otherUserMsg': !message.currentUser}">
-  <div>{{message.text}}</div>
-  <div>{{message.userName}}</div>
-  <hr>
-
+<div id="conversationBox">
+  <div class="msg" ng-repeat="message in thisConvosMessages" ng-class="{'currentUserMsg': message.currentUser, 'otherUserMsg': !message.currentUser}">
+    <div class="text">{{message.text}}</div>
+    <div class="text">{{message.userName}}</div>
+  
+  </div>
 </div>
-<input ng-keyup="sendNewMessage($event)" id="messageInput" type="text" ng-model="newMessage.text"/>
-<!-- <button ng-click="sendNewMessage()">Send</button> -->
-
-<!-- TODO: make the input box stuck to the 
-  bottom of the page so it doesnt go away -->
+<input ng-keyup="sendNewMessage($event)" id="messageInput" type="text" ng-model="newMessage.text" placeholder="send message..." />

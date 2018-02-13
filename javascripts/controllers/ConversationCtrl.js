@@ -30,8 +30,14 @@ module.exports = function
     $location.path("/registerLogin");
   });
 
+  // TODO: give conversation box a bottom margin so it doesnt run behind the input box
+
+  // TODO: scroll the page to the bottom when a new message is sent
+
+  // TODO: make input box stick to bottom of page
+  
   $scope.sendNewMessage = (event)=>{
-    console.log('evetn',event);
+    // console.log('evetn',event);
     if(event.keyCode === 13){
       ProfileFactory.getUserProfileData($scope.uid)
       .then((theUser)=>{
