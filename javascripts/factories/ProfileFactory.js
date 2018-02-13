@@ -15,7 +15,8 @@ module.exports = function($q, $http, fbConfig){
   
   const saveProfileWithChanges = (newProfileObj) =>{
     return $q((resolve, reject)=>{
-      $http.patch(`${fbConfig.databaseURL}/users/${newProfileObj.uid}.json`, JSON.stringify(newProfileObj))
+      $http.patch(`${fbConfig.databaseURL}/users/${newProfileObj.uid}.json`, 
+      JSON.stringify(newProfileObj))
       .then((response)=>{
         // console.log('response after saving profile changes',response);
         resolve(response);

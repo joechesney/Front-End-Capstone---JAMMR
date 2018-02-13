@@ -3,22 +3,20 @@
 
 // HOME PAGE CTRL
 module.exports = function 
-($scope, AuthFactory, $location, $window) {
+($scope, AuthFactory, $location, $window, ProfileFactory) {
 
  // TODO: remove back button from the home page
 
   AuthFactory.getUser()
   .then(user => {
-    console.log('welcome home bruh', user);
-    $scope.displayUserName = user.displayName;
-    $scope.userEmail = user.email;
-    $scope.uid = user.uid;
+    ProfileFactory.getUserProfileData(user.uid)
+    .then((user)=>{
+      $scope.displayUserName = user.name;
+      $scope.uid = user.uid;
+    });
   }).catch(err => {
     console.log('error',err);
     $location.path("/registerLogin");
   });
   
-
 };
-
-
