@@ -12,11 +12,11 @@ module.exports = function
     JAMMRDatabase.on('value', (snapshot) => {
       console.log('snapshot when convo changes::',snapshot.val());
       $scope.getConvo();
+      document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
     });
   };
   
 
-  
   $scope.getConvo = ()=>{
     ConversationFactory.getAllConvoMessages($routeParams.convoid)
     .then((data)=>{
@@ -39,10 +39,25 @@ module.exports = function
           let newMessagesObj = $scope.assignUserMessageClasses(messagesObj);
           $scope.thisConvosMessages = newMessagesObj;
         }
+        // let elementHeight = (document.getElementById("conversationBox").offsetHeight - 2em);
+        // console.log('elementHiehgt',elementHeight);
 
+
+        // let newHeight = document.getElementById("conversationBox").scrollHeight;
+        console.log('elementHeight',document.getElementById("conversationBox").scrollHeight);
+        document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
       }
+      document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
+
     });
   };
+
+  document.getElementById("conversationBox").addEventListener("resize", function(){
+    console.log('insid event listenrnernenrne');
+    document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
+  });
+
+  // TODO: add delete button to messages
 
   AuthFactory.getUser()
   .then(user => {
@@ -72,11 +87,15 @@ module.exports = function
         ConversationFactory.saveNewMessage($scope.newMessage, $routeParams.convoid)
         .then((messageData)=>{
           console.log('swag',messageData);
+          document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
+
         });
       });
     }
   };
 
+
+  
   $scope.assignUserMessageClasses=(messagesObj)=>{
     let keys = Object.keys(messagesObj);
     keys.forEach(key => messagesObj[key].msgID = key);
