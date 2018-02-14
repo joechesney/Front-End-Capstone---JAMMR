@@ -5,7 +5,7 @@ module.exports = function($q, $http, fbConfig){
 
   const searchByInstrument = (instrument) =>{
     return $q((resolve, reject)=>{
-      $http.get(`${fbConfig.databaseURL}/users.json?orderBy="instruments"&equalTo="${instrument}"`)
+      $http.get(`${fbConfig.databaseURL}/users.json?orderBy="${instrument}"&equalTo=true`)
       .then(({data})=>{
         data = Object.values(data);
         resolve(data);

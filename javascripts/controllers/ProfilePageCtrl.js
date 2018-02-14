@@ -34,6 +34,7 @@ module.exports = function
   };
 
   $scope.saveProfile = (newProfileObj) =>{
+    console.log('instruments: ',$scope.instruments);
     ProfileFactory.saveProfileWithChanges(newProfileObj)
     .then(({data})=>{
       console.log('data after its sent, back in ctlr',data);
@@ -66,64 +67,27 @@ module.exports = function
   };
 
 
-//   $scope.beginConvo = () =>{
-//     ConversationFactory.getUserConvoIds($scope.uid)
-//     .then((objectOfConvoIds)=>{
-//       if(objectOfConvoIds === null){
-//         $scope.makeNewConvo(); 
-//       }else{
-//         console.log('objectofConvoIds',objectOfConvoIds);
-//         let arrayOfConvoIds = Object.values(objectOfConvoIds);
-//         console.log('arrayOfConvoIds',arrayOfConvoIds);
-//         let convoExists = false;
-//         arrayOfConvoIds.forEach(convoId =>{
-//           console.log('convoId',convoId);
-//           ConversationFactory.checkForConvoBetweenTheseTwoUsers(convoId)
-//           .then((convo)=>{
-//             console.log('convo',convo);
-//             convo.convoId = convoId;
-//             if(convo.user1 === $routeParams.pid || convo.user2 === $routeParams.pid){
-//               convoExists = true;
-//               $location.path(`/conversation/${convo.convoId}`);
-//             }else if(convoExists === false){
-//               $scope.makeNewConvo(); 
-//               convoExists = true;
-//             }
-//           });
-//         });
-//       } // end of else
-//     });
-//   };
-// };
-
 $scope.beginConvo = () =>{
   ConversationFactory.getUserConvoIds($scope.uid)
   .then((objectOfConvoIds)=>{
     if(objectOfConvoIds === null){
       $scope.makeNewConvo(); 
     }else{
-      console.log('objectofConvoIds',objectOfConvoIds);
       let arrayOfConvoIds = Object.values(objectOfConvoIds);
-      console.log('arrayOfConvoIds',arrayOfConvoIds);
       let convoExists = false;
 
       /* jshint ignore:start */
       // while (convoExists === false) {
         for(let i = 0; i < arrayOfConvoIds.length; i++){
           let convoId = arrayOfConvoIds[i];
-          console.log('the first i: ',i);
-          console.log('convoId',convoId);
           ConversationFactory.checkForConvoBetweenTheseTwoUsers(convoId)
           .then((convoObj)=>{
-            console.log('convoObj',convoObj);
             convoObj.convoId = convoId;
             if(convoObj.user1 === $routeParams.pid || convoObj.user2 === $routeParams.pid){
               convoExists = true;
               i = arrayOfConvoIds.length;
-              console.log('old convo found! ', i);
               $location.path(`/conversation/${convoObj.convoId}`);
             }else if(i === (arrayOfConvoIds.length - 1)){
-              console.log('new convo created here ',i);
               $scope.makeNewConvo(); 
               convoExists = true;
             }
