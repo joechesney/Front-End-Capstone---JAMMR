@@ -9,8 +9,12 @@
 }
 #navbar{
   display: block;
-  margin: 1em auto;
+  margin: 0 auto;
   width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: white;
+  height: 3.5em;
 }
 
 #profilePicture{
@@ -26,4 +30,50 @@
 
 .searchResultsPic{
   width: 10%;
+}
+
+.msg{
+  border-radius: 10px;
+  margin: .2em auto;
+  width: 51%;
+}
+
+.currentUserMsg{
+  background-color: lightskyblue;
+  float: right;
+}
+
+.otherUserMsg{
+  background-color: lightgrey;
+  float: left;
+}
+
+#messageInput{
+  position: fixed;
+  bottom:0;
+  height: 2em;
+  width:100%;
+  display: block;
+  margin: 0 auto;
+}
+
+#conversationBox{
+  margin-top: 4.1em;
+  margin-bottom: 2.8em;
+  height: calc(100vh - 5em);
+  overflow-y: scroll;
+}
+
+.text{
+  padding:.3em;
+  font-size: 1em;
+}
+
+#containerBox{
+  margin-top: 4.1em;
+}
+
+.msgName{
+  font-size: .6em;
+  padding: .3em;
 }

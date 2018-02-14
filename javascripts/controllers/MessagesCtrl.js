@@ -12,20 +12,36 @@ module.exports = function
     $scope.currentUserID = user.uid;
     ConversationFactory.getUserConvoIds($scope.currentUserID)
     .then((objectOfConvoIds)=>{
-      let arrayOfConvoIds = Object.values(objectOfConvoIds);
-      arrayOfConvoIds.forEach(convoId=>{
-        MessageFactory.getConvoInfo(convoId)
-        .then((convoInfo)=>{
-          $scope.tempMessageList.push(convoInfo);
+      if(objectOfConvoIds === null || objectOfConvoIds === undefined){
+        console.log('no convos bro bro');
+      }else{
+        let arrayOfConvoIds = Object.values(objectOfConvoIds);
+        arrayOfConvoIds.forEach(convoId=>{
+          MessageFactory.getConvoInfo(convoId)
+          .then((convoInfo)=>{
+            let uidArray = [];
+            uidArray.push(convoInfo.user1);
+            uidArray.push(convoInfo.user2);
+            uidArray.forEach(uid=>{
+              if(uid !== $scope.currentUserID){
+                AuthFactory.getUserName(uid)
+                .then((otherUser)=>{
+                  convoInfo.otherUserName = otherUser.name;
+                });
+              }
+            });
+            $scope.tempMessageList.push(convoInfo);
+          });
         });
-      });
+      }
+      $scope.conversationList = $scope.tempMessageList;
+    }).catch(err => {
+      console.log('error',err);
+      $location.path("/registerLogin");
     });
-    $scope.conversationList = $scope.tempMessageList;
-  }).catch(err => {
-    console.log('error',err);
-    $location.path("/registerLogin");
   });
 
+  
   
   // TODO: Reorder conversations based on the most recent message. 
   // So, WHEN a new message has been sent in a conversation, 

@@ -1,25 +1,29 @@
-<div id="profilePicture">
-  <img src="{{picToDisplay}}" class="profilePicture">
+<div id="containerBox">
+  <div id="profilePicture">
+    <img src="{{picToDisplay}}" class="profilePicture">
+  </div>
+  
+  <div ng-show="!editing" class="profile">
+    <button ng-show="myProfile" ng-click="editing=true">EDIT PROFILE</button>
+    <button ng-show="!myProfile" ng-click="beginConvo()">MESSAGE </button>
+    <div>Name: {{newProfileObj.name}}</div>
+    <div>Age: {{newProfileObj.age}} years old</div>
+    <div>Instruments: {{newProfileObj.instruments}}</div>
+    <div>Interests: {{newProfileObj.interests}}</div>
+    <div>Experience: {{newProfileObj.experience}}</div>
+  </div>
+  
+  <div ng-show="editing" class="editingProfile">
+    <button ng-click="saveProfile(newProfileObj)">SAVE PROFILE</button>
+    <div>Picture URL: <input ng-show="editing" ng-model="newProfileObj.profilePicture"/></div>
+    <div>Name: <input ng-show="editing" ng-model="newProfileObj.name"/></div>
+    <div>Instruments: <input ng-show="editing" ng-model="newProfileObj.instruments"/></div>
+    <div>Interests: <input ng-show="editing" ng-model="newProfileObj.interests"/></div>
+    <div>Experience: <input type="number" ng-show="editing" ng-model="newProfileObj.experience"/></div>
+    <div>Age: <input type="number" ng-show="editing" ng-model="newProfileObj.age"/> years old</div>
+  
+  </div>
+
 </div>
 
-<div ng-show="!editing" class="profile">
-  <button ng-show="myProfile" ng-click="editing=true">EDIT PROFILE</button>
-  <button ng-show="!myProfile" ng-click="beginConvo()">MESSAGE </button>
-  <div>Name: {{newProfileObj.name}}</div>
-  <div>Age: {{newProfileObj.age}} years old</div>
-  <div>Instruments: {{newProfileObj.instruments}}</div>
-  <div>Interests: {{newProfileObj.interests}}</div>
-  <div>Experience: {{newProfileObj.experience}}</div>
-</div>
-
-<div ng-show="editing" class="editingProfile">
-  <button ng-click="saveProfile(newProfileObj)">SAVE PROFILE</button>
-  <div>Picture URL: <input ng-show="editing" ng-model="newProfileObj.profilePicture"/></div>
-  <div>Name: <input ng-show="editing" ng-model="newProfileObj.name"/></div>
-  <div>Instruments: <input ng-show="editing" ng-model="newProfileObj.instruments"/></div>
-  <div>Interests: <input ng-show="editing" ng-model="newProfileObj.interests"/></div>
-  <div>Experience: <input type="number" ng-show="editing" ng-model="newProfileObj.experience"/></div>
-  <div>Age: <input type="number" ng-show="editing" ng-model="newProfileObj.age"/> years old</div>
-
-</div>
 

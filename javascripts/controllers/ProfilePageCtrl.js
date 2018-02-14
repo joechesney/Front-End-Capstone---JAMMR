@@ -19,7 +19,6 @@ module.exports = function
   $scope.getUserProfileDataCTRLR = () =>{
     ProfileFactory.getUserProfileData($routeParams.pid)
     .then((user)=>{
-      console.log('user in profileData',user);
       $scope.picToDisplay = user.profilePicture;
       $scope.newProfileObj = {
         name : user.name,
@@ -54,13 +53,13 @@ module.exports = function
       user2: $routeParams.pid
     };
     ProfileFactory.createNewConvoObject(newConvoObj)
-    .then((data)=>{
-      $scope.brandNewConvoId = data.name;
-      ProfileFactory.addConvoToUserObjects($scope.uid, $scope.brandNewConvoId)
-      .then((data)=>{
-        ProfileFactory.addConvoToUserObjects($routeParams.pid, $scope.brandNewConvoId)
-        .then((data)=>{
-          $location.path(`/conversation/${data.name}`);
+    .then((data1)=>{
+      let brandNewConvoId = data1.name;
+      ProfileFactory.addConvoToUserObjects($scope.uid, brandNewConvoId)
+      .then((data2)=>{
+        ProfileFactory.addConvoToUserObjects($routeParams.pid, brandNewConvoId)
+        .then((data3)=>{
+          $location.path(`/conversation/${data1.name}`);
         });
       });
     });
@@ -85,12 +84,10 @@ module.exports = function
             }else if(convoExists === false){
               $scope.makeNewConvo(); 
               convoExists = true;
-
             }
           });
         });
       } // end of else
     });
   };
-
 };
