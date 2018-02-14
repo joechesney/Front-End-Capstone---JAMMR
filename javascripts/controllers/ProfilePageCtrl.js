@@ -55,14 +55,11 @@ module.exports = function
     };
     ProfileFactory.createNewConvoObject(newConvoObj)
     .then((data1)=>{
-      console.log('data1',data1);
       let brandNewConvoId = data1.name;
       ProfileFactory.addConvoToUserObjects($scope.uid, brandNewConvoId)
       .then((data2)=>{
-        console.log('data2',data2);
         ProfileFactory.addConvoToUserObjects($routeParams.pid, brandNewConvoId)
         .then((data3)=>{
-          console.log('data3', data3);
           $location.path(`/conversation/${data1.name}`);
         });
       });
@@ -81,7 +78,6 @@ module.exports = function
         arrayOfConvoIds.forEach(convoId =>{
           ConversationFactory.checkForConvoBetweenTheseTwoUsers(convoId)
           .then((convo)=>{
-            console.log('convo',convo);
             convo.convoId = convoId;
             if(convo.user1 === $routeParams.pid || convo.user2 === $routeParams.pid){
               convoExists = true;
@@ -89,12 +85,10 @@ module.exports = function
             }else if(convoExists === false){
               $scope.makeNewConvo(); 
               convoExists = true;
-
             }
           });
         });
       } // end of else
     });
   };
-
 };

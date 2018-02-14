@@ -12,33 +12,33 @@ module.exports = function
     $scope.currentUserID = user.uid;
     ConversationFactory.getUserConvoIds($scope.currentUserID)
     .then((objectOfConvoIds)=>{
-      let arrayOfConvoIds = Object.values(objectOfConvoIds);
-      // console.log('arrayofConvoIds',arrayOfConvoIds);
-      arrayOfConvoIds.forEach(convoId=>{
-        MessageFactory.getConvoInfo(convoId)
-        .then((convoInfo)=>{
-          let uidArray = [];
-          uidArray.push(convoInfo.user1);
-          uidArray.push(convoInfo.user2);
-          uidArray.forEach(uid=>{
-            // console.log('UID AFRRRRRRRRRRRRR',uid);
-            if(uid !== $scope.currentUserID){
-              AuthFactory.getUserName(uid)
-              .then((name)=>{
-                // console.log('name::EE*888888',name);
-                convoInfo.otherUserName = name.name;
-                // console.log('convoInfo',convoInfo);
-              });
-            }
+      if(objectOfConvoIds === null || objectOfConvoIds === undefined){
+        console.log('no convos bro bro');
+      }else{
+        let arrayOfConvoIds = Object.values(objectOfConvoIds);
+        arrayOfConvoIds.forEach(convoId=>{
+          MessageFactory.getConvoInfo(convoId)
+          .then((convoInfo)=>{
+            let uidArray = [];
+            uidArray.push(convoInfo.user1);
+            uidArray.push(convoInfo.user2);
+            uidArray.forEach(uid=>{
+              if(uid !== $scope.currentUserID){
+                AuthFactory.getUserName(uid)
+                .then((name)=>{
+                  convoInfo.otherUserName = name.name;
+                });
+              }
+            });
+            $scope.tempMessageList.push(convoInfo);
           });
-          $scope.tempMessageList.push(convoInfo);
         });
-      });
+      }
+      $scope.conversationList = $scope.tempMessageList;
+    }).catch(err => {
+      console.log('error',err);
+      $location.path("/registerLogin");
     });
-    $scope.conversationList = $scope.tempMessageList;
-  }).catch(err => {
-    console.log('error',err);
-    $location.path("/registerLogin");
   });
 
   

@@ -15,39 +15,34 @@ module.exports = function
     });
   };
   
+
+  
   $scope.getConvo = ()=>{
     ConversationFactory.getAllConvoMessages($routeParams.convoid)
     .then((data)=>{
       if(data === null || data === undefined){
         console.log('no messages between these users');
       }else{
-        console.log('THE MOTHERUFCKIN DATA',data);
         let nameArray = [];
         nameArray.push(data.user1);
         nameArray.push(data.user2);
         nameArray.forEach(uid=>{
-          console.log('UID AFRRRRRRRRRRRRR',uid);
-          if(uid !== $scope.uid){
-            AuthFactory.getUserName(uid)
-            .then((name)=>{
-              console.log('name::EE*888888',name);
-              $scope.otherUserName = name.name;
-            });
-          }
+        if(uid !== $scope.uid){
+          AuthFactory.getUserName(uid)
+          .then((name)=>{
+            $scope.otherUserName = name.name;
+          });
+        }
         });
         let messagesObj = data.messages;
-        console.log('messagesObj', messagesObj);
         if(messagesObj !== undefined && messagesObj !== null){
           let newMessagesObj = $scope.assignUserMessagerClasses(messagesObj);
-          console.log('newMessagesObj in controller',newMessagesObj);
           $scope.thisConvosMessages = newMessagesObj;
         }
 
       }
     });
   };
-  
-  $scope.getConvo();
 
   AuthFactory.getUser()
   .then(user => {
@@ -57,6 +52,9 @@ module.exports = function
     console.log('error',err);
     $location.path("/registerLogin");
   });
+  
+  $scope.getConvo();
+
 
 
   // TODO: scroll the page to the bottom when a new message is sent
@@ -73,10 +71,6 @@ module.exports = function
         
         ConversationFactory.saveNewMessage($scope.newMessage, $routeParams.convoid)
         .then((messageData)=>{
-          // ConversationFactory.getAllConvoMessages($routeParams.convoid)
-          // .then((messagesObj)=>{
-          //   // console.log('messagesObj',messagesObj);
-          // });
           console.log('swag',messageData);
         });
       });
@@ -88,14 +82,10 @@ module.exports = function
     keys.forEach(key => messagesObj[key].msgID = key);
     let messagesArray = Object.values(messagesObj);
     messagesArray.forEach(msg =>{
-      // console.log('message wif UID',messagesObj[msg.msgID]);
-      // console.log('scopeuid',$scope.uid);
       if(messagesObj[msg.msgID].uid === $scope.uid){
         messagesObj[msg.msgID].currentUser = true;
       }else if(messagesObj[msg.msgID].uid !== $scope.uid){
         messagesObj[msg.msgID].currentUser = false;
-        // $scope.otherUserName = messagesObj[msg.msgID].userName;
-        // console.log('otherUserName',$scope.otherUserName);
       }
     });
     return messagesObj;
