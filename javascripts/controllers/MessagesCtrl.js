@@ -25,8 +25,8 @@ module.exports = function
             uidArray.forEach(uid=>{
               if(uid !== $scope.currentUserID){
                 AuthFactory.getUserName(uid)
-                .then((name)=>{
-                  convoInfo.otherUserName = name.name;
+                .then((otherUser)=>{
+                  convoInfo.otherUserName = otherUser.name;
                 });
               }
             });

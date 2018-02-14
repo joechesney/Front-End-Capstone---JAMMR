@@ -19,7 +19,6 @@ module.exports = function
   $scope.getUserProfileDataCTRLR = () =>{
     ProfileFactory.getUserProfileData($routeParams.pid)
     .then((user)=>{
-      console.log('user in profileData',user);
       $scope.picToDisplay = user.profilePicture;
       $scope.newProfileObj = {
         name : user.name,

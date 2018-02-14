@@ -52,7 +52,7 @@ module.exports = function
     console.log('error',err);
     $location.path("/registerLogin");
   });
-  
+
   $scope.getConvo();
 
 
@@ -90,25 +90,5 @@ module.exports = function
     });
     return messagesObj;
   };
-
-  // TODO: MAJOR TODO: make conversation page show other users name but not pull
-  // it from the messages. it needs to display even if the other user has 
-  // not sent any messages
-
-  // TODO: MAJOR TODO: make message list page show names of 
-  // other users instead of their UID
-
-  // TODO: input box at the bottom to send a new message
-  // when the message sends, it will save it to firebase,
-  // and update the screen to show that new message,
-  // which will be done with a new call to firebase
-
-  // TODO: message object will contain uidm, message text,
-  // and will be sent to the cid of that convo
-
-  // TODO: add timestamp to messages
-
-  // TODO: display name of the other user in the convo at the top of the page
-
 
 };

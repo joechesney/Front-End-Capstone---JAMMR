@@ -39,8 +39,5 @@ module.exports = function
     $location.path("/registerLogin");
   });
 
-  
-  //TODO: make this controller also check for a user, 
-  // then display that user's name in the navbar. swag
 
 };
