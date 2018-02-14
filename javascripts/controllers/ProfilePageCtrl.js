@@ -55,10 +55,10 @@ module.exports = function
     };
     ProfileFactory.createNewConvoObject(newConvoObj)
     .then((data)=>{
-      $scope.brandNewConvoId = data.name;
-      ProfileFactory.addConvoToUserObjects($scope.uid, $scope.brandNewConvoId)
+      let brandNewConvoId = data.name;
+      ProfileFactory.addConvoToUserObjects($scope.uid, brandNewConvoId)
       .then((data)=>{
-        ProfileFactory.addConvoToUserObjects($routeParams.pid, $scope.brandNewConvoId)
+        ProfileFactory.addConvoToUserObjects($routeParams.pid, brandNewConvoId)
         .then((data)=>{
           $location.path(`/conversation/${data.name}`);
         });

@@ -13,9 +13,24 @@ module.exports = function
     ConversationFactory.getUserConvoIds($scope.currentUserID)
     .then((objectOfConvoIds)=>{
       let arrayOfConvoIds = Object.values(objectOfConvoIds);
+      // console.log('arrayofConvoIds',arrayOfConvoIds);
       arrayOfConvoIds.forEach(convoId=>{
         MessageFactory.getConvoInfo(convoId)
         .then((convoInfo)=>{
+          let uidArray = [];
+          uidArray.push(convoInfo.user1);
+          uidArray.push(convoInfo.user2);
+          uidArray.forEach(uid=>{
+            // console.log('UID AFRRRRRRRRRRRRR',uid);
+            if(uid !== $scope.currentUserID){
+              AuthFactory.getUserName(uid)
+              .then((name)=>{
+                // console.log('name::EE*888888',name);
+                convoInfo.otherUserName = name.name;
+                // console.log('convoInfo',convoInfo);
+              });
+            }
+          });
           $scope.tempMessageList.push(convoInfo);
         });
       });
@@ -26,6 +41,7 @@ module.exports = function
     $location.path("/registerLogin");
   });
 
+  
   
   // TODO: Reorder conversations based on the most recent message. 
   // So, WHEN a new message has been sent in a conversation, 
