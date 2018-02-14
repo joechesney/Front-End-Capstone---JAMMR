@@ -10,7 +10,7 @@ module.exports = function
   $scope.listenToConvo = (convoId)=>{
     let JAMMRDatabase = firebase.database().ref("convos/"+convoId);
     JAMMRDatabase.on('value', (snapshot) => {
-      console.log('snapshot when convo changes::',snapshot.val());
+      // console.log('snapshot when convo changes::',snapshot.val());
       $scope.getConvo();
       document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
     });
@@ -44,7 +44,7 @@ module.exports = function
 
 
         // let newHeight = document.getElementById("conversationBox").scrollHeight;
-        console.log('elementHeight',document.getElementById("conversationBox").scrollHeight);
+        // console.log('elementHeight',document.getElementById("conversationBox").scrollHeight);
         document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
       }
       document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
@@ -52,10 +52,7 @@ module.exports = function
     });
   };
 
-  document.getElementById("conversationBox").addEventListener("resize", function(){
-    console.log('insid event listenrnernenrne');
-    document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
-  });
+  
 
   // TODO: add delete button to messages
 
@@ -91,12 +88,17 @@ module.exports = function
           setTimeout(() => {
             document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
             console.log('timeoutAF');
-          }, 100);
+          }, 50);
         });
       });
     }
   };
 
+
+
+  // TODO: fix the creating of a new convo when the users already have one
+
+  // TODO: name on each message should grab the name from the user object, not save it to the message object
 
 
 
