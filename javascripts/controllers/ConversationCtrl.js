@@ -64,6 +64,7 @@ module.exports = function
       .then((theUser)=>{
         $scope.newMessage.userName = theUser.name;
         $scope.newMessage.uid = $scope.uid;
+        $scope.newMessage.time = new Date().toLocaleString();
         
         ConversationFactory.saveNewMessage($scope.newMessage, $routeParams.convoid)
         .then((messageData)=>{
