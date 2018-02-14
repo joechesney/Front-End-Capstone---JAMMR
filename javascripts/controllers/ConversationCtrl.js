@@ -76,7 +76,6 @@ module.exports = function
 
   
   $scope.sendNewMessage = (event)=>{
-    // console.log('evetn',event);
     if(event.keyCode === 13){
       ProfileFactory.getUserProfileData($scope.uid)
       .then((theUser)=>{
@@ -89,13 +88,18 @@ module.exports = function
           console.log('swag',messageData);
           document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
 
+          setTimeout(() => {
+            document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
+            console.log('timeoutAF');
+          }, 100);
         });
       });
     }
   };
 
 
-  
+
+
   $scope.assignUserMessageClasses=(messagesObj)=>{
     let keys = Object.keys(messagesObj);
     keys.forEach(key => messagesObj[key].msgID = key);
