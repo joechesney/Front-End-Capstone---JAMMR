@@ -36,7 +36,7 @@ module.exports = function
         });
         let messagesObj = data.messages;
         if(messagesObj !== undefined && messagesObj !== null){
-          let newMessagesObj = $scope.assignUserMessagerClasses(messagesObj);
+          let newMessagesObj = $scope.assignUserMessageClasses(messagesObj);
           $scope.thisConvosMessages = newMessagesObj;
         }
 
@@ -77,7 +77,7 @@ module.exports = function
     }
   };
 
-  $scope.assignUserMessagerClasses=(messagesObj)=>{
+  $scope.assignUserMessageClasses=(messagesObj)=>{
     let keys = Object.keys(messagesObj);
     keys.forEach(key => messagesObj[key].msgID = key);
     let messagesArray = Object.values(messagesObj);
