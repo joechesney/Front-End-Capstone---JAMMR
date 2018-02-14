@@ -18,26 +18,31 @@ module.exports = function
   $scope.getConvo = ()=>{
     ConversationFactory.getAllConvoMessages($routeParams.convoid)
     .then((data)=>{
-      console.log('THE MOTHERUFCKIN DATA',data);
-      let nameArray = [];
-      nameArray.push(data.user1);
-      nameArray.push(data.user2);
-      nameArray.forEach(uid=>{
-        console.log('UID AFRRRRRRRRRRRRR',uid);
-        if(uid !== $scope.uid){
-          AuthFactory.getUserName(uid)
-          .then((name)=>{
-            console.log('name::EE*888888',name);
-            $scope.otherUserName = name.name;
-          });
+      if(data === null || data === undefined){
+        console.log('no messages between these users');
+      }else{
+        console.log('THE MOTHERUFCKIN DATA',data);
+        let nameArray = [];
+        nameArray.push(data.user1);
+        nameArray.push(data.user2);
+        nameArray.forEach(uid=>{
+          console.log('UID AFRRRRRRRRRRRRR',uid);
+          if(uid !== $scope.uid){
+            AuthFactory.getUserName(uid)
+            .then((name)=>{
+              console.log('name::EE*888888',name);
+              $scope.otherUserName = name.name;
+            });
+          }
+        });
+        let messagesObj = data.messages;
+        console.log('messagesObj', messagesObj);
+        if(messagesObj !== undefined && messagesObj !== null){
+          let newMessagesObj = $scope.assignUserMessagerClasses(messagesObj);
+          console.log('newMessagesObj in controller',newMessagesObj);
+          $scope.thisConvosMessages = newMessagesObj;
         }
-      });
-      let messagesObj = data.messages;
-      console.log('messagesObj', messagesObj);
-      if(messagesObj !== undefined && messagesObj !== null){
-        let newMessagesObj = $scope.assignUserMessagerClasses(messagesObj);
-        console.log('newMessagesObj in controller',newMessagesObj);
-        $scope.thisConvosMessages = newMessagesObj;
+
       }
     });
   };
