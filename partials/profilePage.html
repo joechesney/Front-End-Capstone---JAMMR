@@ -9,7 +9,16 @@
     <br><br>
     <div>Name: {{newProfileObj.name}}</div>
     <div>Age: {{newProfileObj.age}} years old</div>
-    <div>Instruments: {{newProfileObj.instruments}}</div>
+    <div>Instruments: {{newProfileObj.instruments}}
+      <span ng-show="newProfileObj.guitar">guitar </span>
+      <span ng-show="newProfileObj.bass">bass </span>
+      <span ng-show="newProfileObj.drums">drums </span>
+      <span ng-show="newProfileObj.vocals">vocals </span>
+      <span ng-show="newProfileObj.keyboard">keyboard </span>
+      <span ng-show="newProfileObj.violin">violin </span>
+
+
+    </div>
     <div>Interests: {{newProfileObj.interests}}</div>
     <div>Experience: {{newProfileObj.experience}}</div>
   </div>

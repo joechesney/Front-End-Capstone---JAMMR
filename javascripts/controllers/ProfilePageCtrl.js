@@ -24,6 +24,13 @@ module.exports = function
         name : user.name,
         age : +user.age,
         uid : user.uid,
+        guitar: user.guitar,
+        bass: user.bass,
+        drums: user.drums,
+        vocals: user.vocals,
+        keyboard: user.keyboard,
+        violin: user.violin,
+
         instruments : user.instruments,
         interests : user.interests,
         experience : +user.experience,
