@@ -34,7 +34,6 @@ module.exports = function
             console.log('scope otherUserName',$scope.otherUserName);
           });
         }
-        
         });
         let messagesObj = data.messages;
         if(messagesObj !== undefined && messagesObj !== null){
@@ -46,12 +45,10 @@ module.exports = function
         // document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
       }
       // document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
-
     });
   };
 
   
-
   // TODO: add delete button to messages
 
   AuthFactory.getUser()
@@ -70,24 +67,17 @@ module.exports = function
 
   $scope.getConvo();
 
-
-
-  // TODO: scroll the page to the bottom when a new message is sent
-
   
   $scope.sendNewMessage = (event)=>{
     if(event.keyCode === 13){
       ProfileFactory.getUserProfileData($scope.uid)
       .then((theUser)=>{
-        // $scope.newMessage.userName = theUser.name;
         $scope.newMessage.uid = $scope.uid;
         $scope.newMessage.time = new Date().toLocaleString();
         
         ConversationFactory.saveNewMessage($scope.newMessage, $routeParams.convoid)
         .then((messageData)=>{
-          console.log('swag',messageData);
           // document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
-
           setTimeout(() => {
             document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
             console.log('timeoutAF');
@@ -98,8 +88,6 @@ module.exports = function
   };
 
   // TODO: make sure each partial has a containerBox around it so it fits under navbar
-
-  // TODO: name on each message should grab the name from the user object, not save it to the message object
 
   // TODO: make input box text empty when a message is sent
 
@@ -123,15 +111,23 @@ module.exports = function
     let messagesArray = Object.values(newMessagesObj);
     messagesArray.forEach(msg =>{
       if(newMessagesObj[msg.msgID].uid === $scope.uid){
-        // assign the current Users name to this object
         newMessagesObj[msg.msgID].userName = $scope.currentUserName;
       }else if(newMessagesObj[msg.msgID].uid !== $scope.uid){
-        // assign the OTHER users name to this object
         newMessagesObj[msg.msgID].userName = $scope.otherUserName;
       }
     });
     return newMessagesObj;
   };
+
+  $scope.deleteMessage = (message)=>{
+    console.log('message',message);
+    ConversationFactory.deleteMessageFromFireBaseForever(message.msgID, $routeParams.convoid)
+    .then((response)=>{
+      console.log('response after deletion: ',response);
+    });
+  };
+
+
 };
 
 
