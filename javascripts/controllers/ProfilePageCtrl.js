@@ -24,11 +24,31 @@ module.exports = function
         name : user.name,
         age : +user.age,
         uid : user.uid,
-        instruments : user.instruments,
-        interests : user.interests,
         experience : +user.experience,
+        profilePicture: user.profilePicture,
         convos: user.convos,
-        profilePicture: user.profilePicture
+
+
+        guitar: user.guitar,
+        bass: user.bass,
+        drums: user.drums,
+        vocals: user.vocals,
+        keyboard: user.keyboard,
+        violin: user.violin,
+        saxophone: user.saxophone,
+        trumpet: user.trumpet,
+        trombone: user.trombone,
+
+
+        professionalBand: user.professionalBand,
+        hobbyBand: user.hobbyBand,
+        jam: user.jam,
+        chat: user.chat,
+        learn: user.learn,
+        session: user.session,
+
+        otherInstruments : user.otherInstruments,
+        otherInterests : user.otherInterests
       };
     });
   };
@@ -36,16 +56,28 @@ module.exports = function
   $scope.saveProfile = (newProfileObj) =>{
     ProfileFactory.saveProfileWithChanges(newProfileObj)
     .then(({data})=>{
-      console.log('data after its sent, back in ctlr',data);
+      // console.log('data after its sent, back in ctlr',data);
       $scope.editing = false;
       $scope.getUserProfileDataCTRLR(data.uid);
     });
   };
 
-  //TODO: make "interests" section a list of checkboxes in 'edit' mode
 
   // TODO: some sort of image uploader to save profile images to firebase?
   // otherwise, images must link from a url
+
+//   // TODO: refactor data structure:
+
+        //remove convoIDs from user objects:
+        //   since the convo objects already have the uid as a property,
+        //   i can just orderBy user1 and then make a separate call to orderBy user2,
+        //   and retrieve the convos that way. This will provide flatter data, and 
+        //   reduce the amount of XHRs (i think).
+        
+        // TODO: 
+        //remove userName from convo message object:
+        //   use the uid of the user who sent the message to get the name
+
 
   $scope.makeNewConvo = ()=>{
     let newConvoObj = {
@@ -66,28 +98,36 @@ module.exports = function
   };
 
 
-  $scope.beginConvo = () =>{
-    ConversationFactory.getUserConvoIds($scope.uid)
-    .then((objectOfConvoIds)=>{
-      if(objectOfConvoIds === null){
-        $scope.makeNewConvo(); 
-      }else{
-        let arrayOfConvoIds = Object.values(objectOfConvoIds);
-        let convoExists = false;
-        arrayOfConvoIds.forEach(convoId =>{
+$scope.beginConvo = () =>{
+  ConversationFactory.getUserConvoIds($scope.uid)
+  .then((objectOfConvoIds)=>{
+    if(objectOfConvoIds === null){
+      $scope.makeNewConvo(); 
+    }else{
+      let arrayOfConvoIds = Object.values(objectOfConvoIds);
+      let convoExists = false;
+
+      /* jshint ignore:start */
+      // while (convoExists === false) {
+        for(let i = 0; i < arrayOfConvoIds.length; i++){
+          let convoId = arrayOfConvoIds[i];
           ConversationFactory.checkForConvoBetweenTheseTwoUsers(convoId)
-          .then((convo)=>{
-            convo.convoId = convoId;
-            if(convo.user1 === $routeParams.pid || convo.user2 === $routeParams.pid){
+          .then((convoObj)=>{
+            convoObj.convoId = convoId;
+            if(convoObj.user1 === $routeParams.pid || convoObj.user2 === $routeParams.pid){
               convoExists = true;
-              $location.path(`/conversation/${convo.convoId}`);
-            }else if(convoExists === false){
+              i = arrayOfConvoIds.length;
+              $location.path(`/conversation/${convoObj.convoId}`);
+            }else if(i === (arrayOfConvoIds.length - 1)){
               $scope.makeNewConvo(); 
               convoExists = true;
             }
           });
-        });
-      } // end of else
-    });
-  };
+        }
+        
+      // }
+      /* jshint ignore:end */
+    } // end of else
+  });
+};
 };

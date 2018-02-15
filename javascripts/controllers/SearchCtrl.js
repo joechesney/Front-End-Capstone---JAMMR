@@ -6,8 +6,6 @@ const _ = require("lodash");
 module.exports = function
 ($scope, $location, AuthFactory, SearchFactory, $window){
   // ALL DATA:
-  $scope.instruments = ["guitar", "bass","violin"];
-  $scope.interests = ["band", "jam","chat"];
   
   AuthFactory.getUser()
   .then(user => {
@@ -22,7 +20,6 @@ module.exports = function
     $scope.filterArray = [$scope.instrumentSearch, $scope.interestSearch, 
       $scope.experienceSearch, $scope.ageSearch];
   
-
     $scope.userArray = [];
     let counter = 0;
     $scope.filterArray.forEach((filter, index)=>{if(filter === undefined){counter++;}
@@ -61,7 +58,7 @@ module.exports = function
             console.log('no filters selected!!!');
       }
       }});
-      if(counter === $scope.filterArray.length){$scope.showAlert = true;}
+      if(counter === ($scope.filterArray.length-1)){$scope.showAlert = true;}
     };
 
 

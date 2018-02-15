@@ -10,13 +10,13 @@ module.exports = function
   $scope.listenToConvo = (convoId)=>{
     let JAMMRDatabase = firebase.database().ref("convos/"+convoId);
     JAMMRDatabase.on('value', (snapshot) => {
-      console.log('snapshot when convo changes::',snapshot.val());
+      // console.log('snapshot when convo changes::',snapshot.val());
       $scope.getConvo();
+      // document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
     });
   };
   
 
-  
   $scope.getConvo = ()=>{
     ConversationFactory.getAllConvoMessages($routeParams.convoid)
     .then((data)=>{
@@ -39,10 +39,16 @@ module.exports = function
           let newMessagesObj = $scope.assignUserMessageClasses(messagesObj);
           $scope.thisConvosMessages = newMessagesObj;
         }
-
+        // document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
       }
+      // document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
+
     });
   };
+
+  
+
+  // TODO: add delete button to messages
 
   AuthFactory.getUser()
   .then(user => {
@@ -61,7 +67,6 @@ module.exports = function
 
   
   $scope.sendNewMessage = (event)=>{
-    // console.log('evetn',event);
     if(event.keyCode === 13){
       ProfileFactory.getUserProfileData($scope.uid)
       .then((theUser)=>{
@@ -72,10 +77,24 @@ module.exports = function
         ConversationFactory.saveNewMessage($scope.newMessage, $routeParams.convoid)
         .then((messageData)=>{
           console.log('swag',messageData);
+          // document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
+
+          setTimeout(() => {
+            document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
+            console.log('timeoutAF');
+          }, 50);
         });
       });
     }
   };
+
+  // TODO: make sure each partial has a containerBox around it so it fits under navbar
+
+  // TODO: fix the creating of a new convo when the users already have one
+
+  // TODO: name on each message should grab the name from the user object, not save it to the message object
+
+
 
   $scope.assignUserMessageClasses=(messagesObj)=>{
     let keys = Object.keys(messagesObj);

@@ -20,7 +20,7 @@ app
 .constant("listenToDatabase", () => {
   let JAMMRDatabase = firebase.database().ref();
   JAMMRDatabase.on('value', (snapshot) => {
-      console.log('snapshot',snapshot.val());
+      // console.log('snapshot',snapshot.val());
   });
 })
 .config($routeProvider => {
