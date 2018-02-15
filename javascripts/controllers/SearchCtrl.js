@@ -1,6 +1,5 @@
 "use strict";
 
-const _ = require("lodash");
 
 // SEARCH PAGE CTRL
 module.exports = function
@@ -11,6 +10,11 @@ module.exports = function
   
   AuthFactory.getUser()
   .then(user => {
+    $scope.currentUser = user;
+    AuthFactory.getUserName(user.uid)
+    .then((name)=>{
+      $scope.currentUserName = name.name;
+    });
     // console.log('search for dudes/dudettes bruh', user);
   }).catch(err => {
     console.log('error',err);
@@ -22,7 +26,7 @@ module.exports = function
     $scope.filterArray = [$scope.instrumentSearch, $scope.interestSearch, 
       $scope.experienceSearch, $scope.ageSearch];
     let promiseArray = [];
-    $scope.userArray = [];
+    let tempArray = [];
     let counter = 0;
     $scope.filterArray.forEach((filter, index)=>{if(filter === undefined){counter++;}
       else{
@@ -64,38 +68,25 @@ module.exports = function
             console.log('no filters selected!!!');
       }
       }});
-      Promise.all(promiseArray)
+      $q.all(promiseArray)
       .then((data)=>{
-        console.log('data after promise all',data[0]);
-        data[0].forEach(user=>{
-          $scope.userArray.push(user);
+        console.log('data after promise all',data);
+        data.forEach(dataArray=>{
+          dataArray.forEach(user=>{
+            tempArray.push(user);
+          });
         });
-        $scope.removeDuplicateUsingFilter($scope.userArray)
-        .then((data)=>{
-          let filteredUserArray1 = data;
-          console.log('filteredUserArray1',filteredUserArray1);
-          
-        });
+        console.log('temparray',tempArray);
+        let tempArray2 = _.uniqBy(tempArray, "uid");
+        let tempArray3 = _.remove(tempArray2, (obj)=>{return obj.uid !== $scope.currentUser.uid;} );
+        console.log('temparray2',tempArray2);
+        console.log('temparray3',tempArray3);
+        $scope.filteredUserArray = tempArray3;
       });
 
       if(counter === ($scope.filterArray.length-1)){$scope.showAlert = true;}
 
       // use filter function here and return new array as scope variable for partial to read from
-    };
-
-    // This is awful, I know. Please JS Gods, forgive me.
-    $scope.removeDuplicateUsingFilter = (arr)=>{
-      return $q((resolve, reject)=>{
-        let unique_array = arr;
-        console.log('arr',arr);
-        arr.forEach((userObject, index)=>{
-          console.log('userObject',userObject, index);
-          arr.forEach((userObjectInside, indexInside)=>{
-            console.log('userObjectInside',userObjectInside, indexInside);
-          });
-        });
-        resolve(unique_array);
-      });
     };
 
 
