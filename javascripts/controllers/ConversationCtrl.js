@@ -83,13 +83,12 @@ module.exports = function
             console.log('timeoutAF');
           }, 50);
         });
+        $scope.newMessage.text = "";
       });
     }
   };
 
   // TODO: make sure each partial has a containerBox around it so it fits under navbar
-
-  // TODO: make input box text empty when a message is sent
 
   $scope.assignUserMessageClasses=(messagesObj)=>{
     let keys = Object.keys(messagesObj);
