@@ -6,8 +6,8 @@ const _ = require("lodash");
 module.exports = function
 ($scope, $location, AuthFactory, SearchFactory, $window){
   // ALL DATA:
-  $scope.instruments = ["guitar", "bass", "drums", "vocals", "keyboard", "violin", ];
-  $scope.interests = ["band", "jam","chat", "professional", "session"];
+  // $scope.instruments = ["guitar", "bass", "drums", "vocals", "keyboard", "violin", "saxophone", "trumpet", "trombone"];
+  // $scope.interests = ["hobbyBand", "jam","chat", "professionalBand", "session"];
   
   AuthFactory.getUser()
   .then(user => {

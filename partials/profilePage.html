@@ -8,19 +8,32 @@
     <button ng-show="!myProfile" ng-click="beginConvo()">MESSAGE </button>
     <br><br>
     <div>Name: {{newProfileObj.name}}</div>
-    <div>Age: {{newProfileObj.age}} years old</div>
-    <div>Instruments: {{newProfileObj.instruments}}
-      <span ng-show="newProfileObj.guitar">guitar </span>
-      <span ng-show="newProfileObj.bass">bass </span>
-      <span ng-show="newProfileObj.drums">drums </span>
-      <span ng-show="newProfileObj.vocals">vocals </span>
-      <span ng-show="newProfileObj.keyboard">keyboard </span>
-      <span ng-show="newProfileObj.violin">violin </span>
-
-
+    <div>Age: {{newProfileObj.age}}</div>
+    <div>Experience: {{newProfileObj.experience}} years</div>
+    <div>Instruments: 
+      <span ng-show="newProfileObj.guitar">Guitar </span>
+      <span ng-show="newProfileObj.bass">Bass </span>
+      <span ng-show="newProfileObj.drums">Drums </span>
+      <span ng-show="newProfileObj.vocals">Vocals </span>
+      <span ng-show="newProfileObj.keyboard">Keyboard </span>
+      <span ng-show="newProfileObj.violin">Violin </span>
+      <span ng-show="newProfileObj.saxophone">Saxophone </span>
+      <span ng-show="newProfileObj.trumpet">Trumpet </span>
+      <span ng-show="newProfileObj.trombone">Trombone </span>
     </div>
-    <div>Interests: {{newProfileObj.interests}}</div>
-    <div>Experience: {{newProfileObj.experience}}</div>
+    <div>Other Instruments: {{newProfileObj.otherInstruments}}</div>
+    <div>Interests: 
+        <span ng-show="newProfileObj.professionalBand">Band-Professional </span>
+        <span ng-show="newProfileObj.hobbyBand">Band - Hobby </span>
+        <span ng-show="newProfileObj.jam">Jam </span>
+        <span ng-show="newProfileObj.chat">Chat </span>
+        <span ng-show="newProfileObj.learn">Learn </span>
+        <span ng-show="newProfileObj.session">Session </span>
+        <!-- <span ng-show="newProfileObj.saxophone">saxophone </span> -->
+        <!-- <span ng-show="newProfileObj.trumpet">trumpet </span> -->
+        <!-- <span ng-show="newProfileObj.trombone">trombone </span> -->
+    </div>
+    <div>Other Interests: {{newProfileObj.otherInterests}}</div>
   </div>
   
   <div ng-show="editing" class="editingProfile">
@@ -28,19 +41,35 @@
     
     <div>Picture URL: <input ng-show="editing" ng-model="newProfileObj.profilePicture"/></div>
     <div>Name: <input ng-show="editing" ng-model="newProfileObj.name"/></div>
-    <div>Age: <input type="number" ng-show="editing" ng-model="newProfileObj.age"/> years old</div>
+    <div>Age: <input type="number" ng-show="editing" ng-model="newProfileObj.age"/></div>
     <div>
-      <input type="checkbox" ng-model="newProfileObj.guitar">Guitar
-      <input type="checkbox" ng-model="newProfileObj.bass">Bass
-      <input type="checkbox" ng-model="newProfileObj.drums">Drums
-      <input type="checkbox" ng-model="newProfileObj.vocals">Vocals
-      <input type="checkbox" ng-model="newProfileObj.keyboard">Keyboard
-      <input type="checkbox" ng-model="newProfileObj.violin">Violin
-
+      <br><input type="checkbox" ng-model="newProfileObj.guitar">Guitar
+      <br><input type="checkbox" ng-model="newProfileObj.bass">Bass
+      <br><input type="checkbox" ng-model="newProfileObj.drums">Drums
+      <br><input type="checkbox" ng-model="newProfileObj.vocals">Vocals
+      <br><input type="checkbox" ng-model="newProfileObj.keyboard">Keyboard
+      <br><input type="checkbox" ng-model="newProfileObj.violin">Violin
+      <br><input type="checkbox" ng-model="newProfileObj.saxophone">Saxophone
+      <br><input type="checkbox" ng-model="newProfileObj.trumpet">Trumpet
+      <br><input type="checkbox" ng-model="newProfileObj.trombone">Trombone
     </div>
 
-    <div>Instruments: <input ng-show="editing" ng-model="newProfileObj.instruments"/></div>
-    <div>Interests: <input ng-show="editing" ng-model="newProfileObj.interests"/></div>
+    <div>Other Instruments: <input ng-show="editing" ng-model="newProfileObj.otherInstruments"/></div>
+    <div>
+      
+    </div>
+    <div>
+      <br><input type="checkbox" ng-model="newProfileObj.professionalBand">Band - Professional
+      <br><input type="checkbox" ng-model="newProfileObj.hobbyBand">Band - Hobby
+      <br><input type="checkbox" ng-model="newProfileObj.jam">Jam
+      <br><input type="checkbox" ng-model="newProfileObj.chat">Chat
+      <br><input type="checkbox" ng-model="newProfileObj.learn">Learn
+      <br><input type="checkbox" ng-model="newProfileObj.session">Session
+      <!-- <br><input type="checkbox" ng-model="newProfileObj.saxophone">Saxophone -->
+      <!-- <br><input type="checkbox" ng-model="newProfileObj.trumpet">Trumpet -->
+      <!-- <br><input type="checkbox" ng-model="newProfileObj.trombone">Trombone -->
+    </div>
+    <div>Other Interests: <input ng-show="editing" ng-model="newProfileObj.otherInterests"/></div>
     <div>Experience: <input type="number" ng-show="editing" ng-model="newProfileObj.experience"/></div>
   
   </div>

@@ -24,18 +24,31 @@ module.exports = function
         name : user.name,
         age : +user.age,
         uid : user.uid,
+        experience : +user.experience,
+        profilePicture: user.profilePicture,
+        convos: user.convos,
+
+
         guitar: user.guitar,
         bass: user.bass,
         drums: user.drums,
         vocals: user.vocals,
         keyboard: user.keyboard,
         violin: user.violin,
+        saxophone: user.saxophone,
+        trumpet: user.trumpet,
+        trombone: user.trombone,
 
-        instruments : user.instruments,
-        interests : user.interests,
-        experience : +user.experience,
-        convos: user.convos,
-        profilePicture: user.profilePicture
+
+        professionalBand: user.professionalBand,
+        hobbyBand: user.hobbyBand,
+        jam: user.jam,
+        chat: user.chat,
+        learn: user.learn,
+        session: user.session,
+
+        otherInstruments : user.otherInstruments,
+        otherInterests : user.otherInterests
       };
     });
   };
@@ -54,6 +67,19 @@ module.exports = function
 
   // TODO: some sort of image uploader to save profile images to firebase?
   // otherwise, images must link from a url
+
+//   // TODO: refactor data structure:
+
+        //remove convoIDs from user objects:
+        //   since the convo objects already have the uid as a property,
+        //   i can just orderBy user1 and then make a separate call to orderBy user2,
+        //   and retrieve the convos that way. This will provide flatter data, and 
+        //   reduce the amount of XHRs (i think).
+        
+        // TODO: 
+        //remove userName from convo message object:
+        //   use the uid of the user who sent the message to get the name
+
 
   $scope.makeNewConvo = ()=>{
     let newConvoObj = {
