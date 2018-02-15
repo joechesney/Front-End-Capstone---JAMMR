@@ -67,7 +67,7 @@ module.exports = function
 
   
   $scope.sendNewMessage = (event)=>{
-    if(event.keyCode === 13){
+    if(event.keyCode === 13 && $scope.newMessage !== undefined){
       ProfileFactory.getUserProfileData($scope.uid)
       .then((theUser)=>{
         $scope.newMessage.uid = $scope.uid;
