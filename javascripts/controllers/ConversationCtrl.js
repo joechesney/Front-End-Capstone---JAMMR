@@ -40,9 +40,11 @@ module.exports = function
           let newMessagesObjWithNames = $scope.assignUserNamesToMessages(newMessagesObj);
           $scope.thisConvosMessages = newMessagesObjWithNames;
         }
-        // document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
       }
-      // document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
+      setTimeout(() => {
+        document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
+        console.log('timeoutAF');
+      }, 50);
     });
   };
 
