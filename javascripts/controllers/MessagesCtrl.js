@@ -19,7 +19,6 @@ module.exports = function
         arrayOfConvoIds.forEach(convoId=>{
           MessageFactory.getConvoInfo(convoId)
           .then((convoInfo)=>{
-            console.log('convo Info',convoInfo);
             let uidArray = [];
             uidArray.push(convoInfo.user1);
             uidArray.push(convoInfo.user2);
@@ -27,7 +26,6 @@ module.exports = function
               if(uid !== $scope.currentUserID){
                 AuthFactory.getUserName(uid)
                 .then((otherUser)=>{
-                  console.log('otherUser',otherUser);
                   convoInfo.otherUserName = otherUser.name;
                   convoInfo.otherUserPic = otherUser.profilePicture;
                 });
@@ -44,7 +42,6 @@ module.exports = function
     });
   });
 
-  // TODO: display some more info about the other user on the messages page, including picture
   
   // TODO: Reorder conversations based on the most recent message. 
   // So, WHEN a new message has been sent in a conversation, 
@@ -52,6 +49,6 @@ module.exports = function
   // to the front of their conversations array. that way, it will be
   // at the top of their conversation list when it displays.
 
-  // Also, somehow display the most recent message on the convo block
+  // TODO: Also, somehow display the most recent message on the convo block
 
 };

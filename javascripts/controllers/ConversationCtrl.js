@@ -31,7 +31,6 @@ module.exports = function
           AuthFactory.getUserName(uid)
           .then((name)=>{
             $scope.otherUserName = name.name;
-            console.log('scope otherUserName',$scope.otherUserName);
           });
         }
         });
@@ -39,7 +38,6 @@ module.exports = function
         if(messagesObj !== undefined && messagesObj !== null){
           let newMessagesObj = $scope.assignUserMessageClasses(messagesObj);
           let newMessagesObjWithNames = $scope.assignUserNamesToMessages(newMessagesObj);
-          console.log('newMessagesObjWithNames',newMessagesObjWithNames);
           $scope.thisConvosMessages = newMessagesObjWithNames;
         }
         // document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
@@ -48,6 +46,7 @@ module.exports = function
     });
   };
 
+  // TODO: test that the convo is scrolling down when the convo is long as hell
   
   // TODO: add delete button to messages
 
@@ -57,7 +56,6 @@ module.exports = function
     AuthFactory.getUserName($scope.uid)
     .then((name)=>{
       $scope.currentUserName = name.name;
-      console.log('scope currentUserName',$scope.currentUserName);
     });
     $scope.listenToConvo($routeParams.convoid);
   }).catch(err => {
@@ -119,10 +117,8 @@ module.exports = function
   };
 
   $scope.deleteMessage = (message)=>{
-    console.log('message',message);
     ConversationFactory.deleteMessageFromFireBaseForever(message.msgID, $routeParams.convoid)
     .then((response)=>{
-      console.log('response after deletion: ',response);
     });
   };
 

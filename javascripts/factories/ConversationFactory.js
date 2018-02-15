@@ -44,13 +44,12 @@ module.exports = function($q, $http, fbConfig){
     return $q((resolve, reject)=>{
       $http.delete(`${fbConfig.databaseURL}/convos/${convoId}/messages/${messageID}.json`)
       .then(({data})=>{
-        console.log('data after deletion',data);
         resolve(data);
       });
     });
   };
 
-  
+
 
   return { 
     getUserConvoIds, 

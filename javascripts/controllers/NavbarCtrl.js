@@ -5,6 +5,8 @@
 module.exports = function
 ($scope, $window, $location, AuthFactory){
 
+  // TODO: make navbar a grid so the back button looks better, and the logo is centered
+
   $scope.title = "JAMMR";
   if($window.location.href === "#!/registerLogin" ||
     $window.location.href === "#!/homePage"){

@@ -36,6 +36,7 @@ module.exports = function($q, $http, fbConfig){
     });
   };
 
+  // TODO: change the name of this function to 'AuthUser' to be more clear
   // authorization to check if a user is logged in
   const getUser = () => {
     return $q((resolve, reject) => {
@@ -46,6 +47,7 @@ module.exports = function($q, $http, fbConfig){
     });
   };
 
+  // TODO: change this function name to 'GetUserInfo' to be more clear
   const getUserName = (uid)=>{
     return $q((resolve, reject) => {
       $http.get(`${fbConfig.databaseURL}/users/${uid}.json`)
