@@ -1,6 +1,8 @@
 <div id="containerBox">
   <hr>
-  <h2>Search for JAMRs</h2>
+  <h2 ng-show="!filteredUserArray" class="centered">Search for JAMRs</h2>
+  <h2 ng-show="filteredUserArray" class="centered">JAMR Results</h2>
+
   <div ng-show="!filteredUserArray" id="filterSelect">
     <br>
     Instruments:
