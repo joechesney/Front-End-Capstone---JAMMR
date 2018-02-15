@@ -101,7 +101,7 @@ module.exports = function
 
   // TODO: name on each message should grab the name from the user object, not save it to the message object
 
-
+  // TODO: make input box text empty when a message is sent
 
   $scope.assignUserMessageClasses=(messagesObj)=>{
     let keys = Object.keys(messagesObj);
