@@ -34,19 +34,14 @@ module.exports = function
             console.log('scope otherUserName',$scope.otherUserName);
           });
         }
-        if(uid === $scope.uid){
-          AuthFactory.getUserName(uid)
-          .then((name)=>{
-            $scope.currentUserName = name.name;
-            console.log('scope currentUserName',$scope.currentUserName);
-          });
-        }
+        
         });
         let messagesObj = data.messages;
         if(messagesObj !== undefined && messagesObj !== null){
           let newMessagesObj = $scope.assignUserMessageClasses(messagesObj);
           let newMessagesObjWithNames = $scope.assignUserNamesToMessages(newMessagesObj);
-          $scope.thisConvosMessages = newMessagesObj;
+          console.log('newMessagesObjWithNames',newMessagesObjWithNames);
+          $scope.thisConvosMessages = newMessagesObjWithNames;
         }
         // document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
       }
@@ -62,6 +57,11 @@ module.exports = function
   AuthFactory.getUser()
   .then(user => {
     $scope.uid = user.uid;
+    AuthFactory.getUserName($scope.uid)
+    .then((name)=>{
+      $scope.currentUserName = name.name;
+      console.log('scope currentUserName',$scope.currentUserName);
+    });
     $scope.listenToConvo($routeParams.convoid);
   }).catch(err => {
     console.log('error',err);
@@ -131,9 +131,7 @@ module.exports = function
       }
     });
     return newMessagesObj;
-
   };
-
 };
 
 
