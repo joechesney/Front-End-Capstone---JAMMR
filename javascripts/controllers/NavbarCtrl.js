@@ -34,7 +34,7 @@ module.exports = function
     AuthFactory.getUserName(user.uid)
     .then((data)=>{
       console.log('data in vabar HWUTCHU WANT',data);
-      $scope.userName = data.name;
+      // $scope.userName = data.name;
     });
   }).catch(err => {
     console.log('error',err);

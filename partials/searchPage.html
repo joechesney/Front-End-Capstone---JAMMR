@@ -1,6 +1,9 @@
 <div id="containerBox">
   <hr>
-  <div ng-show="!userArray" id="filterSelect">
+  <h2 ng-show="!filteredUserArray" class="centered">Search for JAMRs</h2>
+  <h2 ng-show="filteredUserArray" class="centered">JAMR Results</h2>
+
+  <div ng-show="!filteredUserArray" id="filterSelect">
     <br>
     Instruments:
     <select ng-model="instrumentSearch" ng-options="instrument as instrument for instrument in instruments">
@@ -21,8 +24,8 @@
     <button ng-click="searchForUsers()">Search</button>
   </div>
   
-  <div ng-show="userArray">
-      <div ng-repeat="otherUser in userArray">
+  <div ng-show="filteredUserArray">
+      <div ng-repeat="otherUser in filteredUserArray">
         <a ng-href="#!/profilePage/{{otherUser.uid}}">
           <div class="userBlock">
             <div class="userBlockPic">
