@@ -1,5 +1,5 @@
 <div id="containerBox">
-
+  <hr>
   <div ng-show="!userArray" id="filterSelect">
     <br>
     Instruments:
@@ -25,13 +25,35 @@
       <div ng-repeat="otherUser in userArray">
         <a ng-href="#!/profilePage/{{otherUser.uid}}">
           <div class="userBlock">
-            <img class="searchResultsPic" ng-src="{{otherUser.profilePicture}}"/>
-            <div>Name: {{otherUser.name}}</div>
-            <div>Age: {{otherUser.age}}</div>
-            <div>Instrument: {{otherUser.instruments}}</div>
-            <div>Experience: {{otherUser.experience}} years</div>
-            <div>Interests: {{otherUser.interests}}</div>
-            <hr>
+            <div class="userBlockPic">
+              <img class="tinyPic" ng-src="{{otherUser.profilePicture}}"/>
+            </div>
+            <div class="userBlockInfo">
+              <div>Name: {{otherUser.name}}          Age: {{otherUser.age}}</div>
+              <div>Instruments: 
+                  <span ng-show="otherUser.guitar">Guitar </span>
+                  <span ng-show="otherUser.bass">Bass </span>
+                  <span ng-show="otherUser.drums">Drums </span>
+                  <span ng-show="otherUser.vocals">Vocals </span>
+                  <span ng-show="otherUser.keyboard">Keyboard </span>
+                  <span ng-show="otherUser.violin">Violin </span>
+                  <span ng-show="otherUser.saxophone">Saxophone </span>
+                  <span ng-show="otherUser.trumpet">Trumpet </span>
+                  <span ng-show="otherUser.trombone">Trombone </span>
+                </div>
+                <div>Interests: 
+                  <span ng-show="otherUser.professionalBand">Band-Professional </span>
+                  <span ng-show="otherUser.hobbyBand">Band-Hobby </span>
+                  <span ng-show="otherUser.jam">Jam </span>
+                  <span ng-show="otherUser.chat">Chat </span>
+                  <span ng-show="otherUser.learn">Learn </span>
+                  <span ng-show="otherUser.session">Session </span>
+                  <!-- <span ng-show="otherUser.saxophone">saxophone </span> -->
+                  <!-- <span ng-show="otherUser.trumpet">trumpet </span> -->
+                  <!-- <span ng-show="otherUser.trombone">trombone </span> -->
+                </div>
+                <div>Experience: {{otherUser.experience}} years</div>
+            </div>
           </div>
         </a>
       </div>

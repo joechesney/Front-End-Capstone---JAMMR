@@ -10,7 +10,7 @@
 #navbar{
   display: block;
   margin: 0 auto;
-  width: 100%;
+  width: 95%;
   position: fixed;
   top: 0;
   background-color: white;
@@ -28,9 +28,7 @@
   margin: 1em auto;
 }
 
-.searchResultsPic{
-  width: 10%;
-}
+
 
 .msg{
   border-radius: 10px;
@@ -55,7 +53,7 @@
   position: fixed;
   bottom:0;
   height: 2em;
-  width:100%;
+  width:95%;
   display: block;
   margin: 0 auto;
 }
@@ -66,14 +64,12 @@
   padding-bottom: 3em;
   height: calc(100vh - 6em);
   overflow: auto;
-  // display: grid;
 }
 
 .msgtext{
   padding:.3em;
   font-size: 1em;
   grid-row-start: 1;
-  // grid-row-end: 1;
   margin: .3em;
 }
 
@@ -86,20 +82,42 @@
   margin: .3em;
   padding: .3em;
   grid-row-start: 2;
-  // grid-row-end: 2;
   grid-column-start: span 2;
-
 }
 
 .deleteButton{
   grid-row-start: 1;
-  // grid-row-end: 2;
   grid-column-start: 2;
-  // grid-column-end: 2;
-
 }
 
 .timestamp{
   grid-row-start: 2;
-  // grid-column-start: 2;
+}
+
+.centered{
+  text-align: center;   
+  margin: 0 auto;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+.tinyPic{
+  width: 90%;
+  padding-right: .2em;
+  margin: .3em;
+  display: block;
+}
+.userBlock{
+  display: inline-grid;
+  grid-template-columns: 25% 75%;
+  border: 1px solid black;
+}
+.userBlockPic{
+  grid-column-start: 1;
+}
+.userBlockInfo{
+  grid-column-start: 2;
+  min-height: 65px;
 }
