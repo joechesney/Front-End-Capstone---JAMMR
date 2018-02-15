@@ -19,4 +19,8 @@ module.exports = function
     $location.path("/registerLogin");
   });
   
+  // TODO: move logout button to the home page??? and out of the navbar
+
+  
+
 };

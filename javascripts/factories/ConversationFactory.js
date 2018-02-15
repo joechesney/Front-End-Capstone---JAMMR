@@ -40,12 +40,22 @@ module.exports = function($q, $http, fbConfig){
     });
   };
 
-  
+  const deleteMessageFromFireBaseForever = (messageID, convoId)=>{
+    return $q((resolve, reject)=>{
+      $http.delete(`${fbConfig.databaseURL}/convos/${convoId}/messages/${messageID}.json`)
+      .then(({data})=>{
+        resolve(data);
+      });
+    });
+  };
+
 
 
   return { 
     getUserConvoIds, 
     checkForConvoBetweenTheseTwoUsers, 
     getAllConvoMessages, 
-    saveNewMessage };
+    saveNewMessage,
+    deleteMessageFromFireBaseForever
+  };
 };

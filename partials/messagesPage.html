@@ -1,10 +1,17 @@
 <div id="containerBox">
+  <hr>
   <div ng-repeat="convo in conversationList">
     <a ng-href="#!/conversation/{{convo.convoId}}">
-      <div>convoId: {{convo.convoId}}</div>
-      <div>{{convo.otherUserName}}</div>
-      <hr>
+      <div class="userBlock">
+        <div class="userBlockPic">
+          <img class="tinyPic" src="{{convo.otherUserPic}}">
+        </div>
+        <div class="userBlockInfo">
+          <div><b>{{convo.otherUserName}}</b></div>
+        </div>
+      </div>
     </a>
+
   </div>
 
 </div>

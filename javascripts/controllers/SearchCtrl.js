@@ -6,6 +6,8 @@ const _ = require("lodash");
 module.exports = function
 ($scope, $location, AuthFactory, SearchFactory, $window){
   // ALL DATA:
+  $scope.instruments = ["guitar", "bass", "drums", "vocals", "keyboard", "violin", "saxophone", "trumpet", "trombone"];
+ $scope.interests = ["professionalBand", "hobbyBand", "jam", "chat", "learn", "session"];
   
   AuthFactory.getUser()
   .then(user => {
@@ -71,7 +73,16 @@ module.exports = function
 
 
     // TODO: make it so that the user that is making 
-    // the search does not show up IN the search results
+    // the search does not show up IN the search results. do this in 
+    // the nested forEach loop described below. if a duplicate is found OR 
+    // if the logged-in user is found, then remove it from the array
+    // BEFORE assigning array to the scope variable to be printed
 
+    // TODO: filter maybe by running a nested for each on the array of user objects
+    // inside the nested foreach check that the uid is the EXACT same one &&
+    // that the index of user object is NOT THE SAME. 
+    
     // TODO: use lodash to make sure there are no duplicate entries in the userArray
+
+    // TODO: Refactor to rename 'messages' page 'AllConversations' or something more clear
 };
