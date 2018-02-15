@@ -21,8 +21,8 @@
     <button ng-click="searchForUsers()">Search</button>
   </div>
   
-  <div ng-show="userArray">
-      <div ng-repeat="otherUser in userArray">
+  <div ng-show="filteredUserArray">
+      <div ng-repeat="otherUser in filteredUserArray">
         <a ng-href="#!/profilePage/{{otherUser.uid}}">
           <div class="userBlock">
             <div class="userBlockPic">

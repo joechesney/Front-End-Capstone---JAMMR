@@ -4,7 +4,7 @@ const _ = require("lodash");
 
 // SEARCH PAGE CTRL
 module.exports = function
-($scope, $location, AuthFactory, SearchFactory, $window){
+($scope, $location, AuthFactory, SearchFactory, $window, $q){
   // ALL DATA:
   $scope.instruments = ["guitar", "bass", "drums", "vocals", "keyboard", "violin", "saxophone", "trumpet", "trombone"];
  $scope.interests = ["professionalBand", "hobbyBand", "jam", "chat", "learn", "session"];
@@ -21,7 +21,7 @@ module.exports = function
   $scope.searchForUsers = () =>{
     $scope.filterArray = [$scope.instrumentSearch, $scope.interestSearch, 
       $scope.experienceSearch, $scope.ageSearch];
-  
+    let promiseArray = [];
     $scope.userArray = [];
     let counter = 0;
     $scope.filterArray.forEach((filter, index)=>{if(filter === undefined){counter++;}
@@ -29,47 +29,74 @@ module.exports = function
         switch(index) {
           case 0:
             console.log('instrument search');
-            SearchFactory.searchByInstrument($scope.filterArray[index])
-            .then((users)=>{
-              console.log('users instrument',users);
-              users.forEach(user=>{$scope.userArray.push(user);});
-            });
+            promiseArray.push(SearchFactory.searchByInstrument($scope.filterArray[index]));
+            // SearchFactory.searchByInstrument($scope.filterArray[index])
+            // .then((users)=>{
+            //   console.log('users instrument',users);
+            //   users.forEach(user=>{$scope.userArray.push(user);});
+            // });
             break;
           case 1:
-            SearchFactory.searchByInterest($scope.filterArray[index])
-            .then((users)=>{
-              console.log('users interest',users);
-              users.forEach(user=>{$scope.userArray.push(user);});
-            });
+            promiseArray.push(SearchFactory.searchByInterest($scope.filterArray[index]));
+            // SearchFactory.searchByInterest($scope.filterArray[index])
+            // .then((users)=>{
+            //   console.log('users interest',users);
+            //   users.forEach(user=>{$scope.userArray.push(user);});
+            // });
             break;
           case 2:
-            SearchFactory.searchByExperience($scope.filterArray[index])
-            .then((users)=>{
-              console.log('users experience',users);
-              users.forEach(user=>{$scope.userArray.push(user);});
-            });
+            promiseArray.push(SearchFactory.searchByExperience($scope.filterArray[index]));
+            // SearchFactory.searchByExperience($scope.filterArray[index])
+            // .then((users)=>{
+            //   console.log('users experience',users);
+            //   users.forEach(user=>{$scope.userArray.push(user);});
+            // });
             break;
           case 3:
-            SearchFactory.searchByAge($scope.filterArray[index])
-            .then((users)=>{
-              console.log('users age',users);
-              users.forEach(user=>{$scope.userArray.push(user);});
-            });
+            promiseArray.push(SearchFactory.searchByAge($scope.filterArray[index]));
+            // SearchFactory.searchByAge($scope.filterArray[index])
+            // .then((users)=>{
+            //   console.log('users age',users);
+            //   users.forEach(user=>{$scope.userArray.push(user);});
+            // });
             break;
           default:
             console.log('no filters selected!!!');
       }
       }});
+      Promise.all(promiseArray)
+      .then((data)=>{
+        console.log('data after promise all',data[0]);
+        data[0].forEach(user=>{
+          $scope.userArray.push(user);
+        });
+        $scope.removeDuplicateUsingFilter($scope.userArray)
+        .then((data)=>{
+          let filteredUserArray1 = data;
+          console.log('filteredUserArray1',filteredUserArray1);
+          
+        });
+      });
+
       if(counter === ($scope.filterArray.length-1)){$scope.showAlert = true;}
+
+      // use filter function here and return new array as scope variable for partial to read from
     };
 
-
-    function removeDuplicateUsingFilter(arr){
-      let unique_array = arr.filter(function(elem, index, self) {
-          return index == self.indexOf(elem);
+    // This is awful, I know. Please JS Gods, forgive me.
+    $scope.removeDuplicateUsingFilter = (arr)=>{
+      return $q((resolve, reject)=>{
+        let unique_array = arr;
+        console.log('arr',arr);
+        arr.forEach((userObject, index)=>{
+          console.log('userObject',userObject, index);
+          arr.forEach((userObjectInside, indexInside)=>{
+            console.log('userObjectInside',userObjectInside, indexInside);
+          });
+        });
+        resolve(unique_array);
       });
-      return unique_array;
-    }
+    };
 
 
     // TODO: make it so that the user that is making 
