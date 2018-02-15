@@ -31,12 +31,21 @@ module.exports = function
           AuthFactory.getUserName(uid)
           .then((name)=>{
             $scope.otherUserName = name.name;
+            console.log('scope otherUserName',$scope.otherUserName);
+          });
+        }
+        if(uid === $scope.uid){
+          AuthFactory.getUserName(uid)
+          .then((name)=>{
+            $scope.currentUserName = name.name;
+            console.log('scope currentUserName',$scope.currentUserName);
           });
         }
         });
         let messagesObj = data.messages;
         if(messagesObj !== undefined && messagesObj !== null){
           let newMessagesObj = $scope.assignUserMessageClasses(messagesObj);
+          let newMessagesObjWithNames = $scope.assignUserNamesToMessages(newMessagesObj);
           $scope.thisConvosMessages = newMessagesObj;
         }
         // document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
@@ -70,7 +79,7 @@ module.exports = function
     if(event.keyCode === 13){
       ProfileFactory.getUserProfileData($scope.uid)
       .then((theUser)=>{
-        $scope.newMessage.userName = theUser.name;
+        // $scope.newMessage.userName = theUser.name;
         $scope.newMessage.uid = $scope.uid;
         $scope.newMessage.time = new Date().toLocaleString();
         
@@ -90,8 +99,6 @@ module.exports = function
 
   // TODO: make sure each partial has a containerBox around it so it fits under navbar
 
-  // TODO: fix the creating of a new convo when the users already have one
-
   // TODO: name on each message should grab the name from the user object, not save it to the message object
 
 
@@ -110,7 +117,22 @@ module.exports = function
     return messagesObj;
   };
 
+  $scope.assignUserNamesToMessages = (newMessagesObj)=>{
+    let keys = Object.keys(newMessagesObj);
+    keys.forEach(key => newMessagesObj[key].msgID = key);
+    let messagesArray = Object.values(newMessagesObj);
+    messagesArray.forEach(msg =>{
+      if(newMessagesObj[msg.msgID].uid === $scope.uid){
+        // assign the current Users name to this object
+        newMessagesObj[msg.msgID].userName = $scope.currentUserName;
+      }else if(newMessagesObj[msg.msgID].uid !== $scope.uid){
+        // assign the OTHER users name to this object
+        newMessagesObj[msg.msgID].userName = $scope.otherUserName;
+      }
+    });
+    return newMessagesObj;
 
+  };
 
 };
 

@@ -6,6 +6,8 @@ const _ = require("lodash");
 module.exports = function
 ($scope, $location, AuthFactory, SearchFactory, $window){
   // ALL DATA:
+  $scope.instruments = ["guitar", "bass", "drums", "vocals", "keyboard", "violin", "saxophone", "trumpet", "trombone"];
+ $scope.interests = ["professionalBand", "hobbyBand", "jam", "chat", "learn", "session"];
   
   AuthFactory.getUser()
   .then(user => {
@@ -82,4 +84,5 @@ module.exports = function
     
     // TODO: use lodash to make sure there are no duplicate entries in the userArray
 
+    // TODO: Refactor to rename 'messages' page 'AllConversations' or something more clear
 };
