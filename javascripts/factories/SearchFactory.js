@@ -15,7 +15,7 @@ module.exports = function($q, $http, fbConfig){
 
   const searchByInterest = (interest) =>{
     return $q((resolve, reject)=>{
-      $http.get(`${fbConfig.databaseURL}/users.json?orderBy="interests"&equalTo="${interest}"`)
+      $http.get(`${fbConfig.databaseURL}/users.json?orderBy="${interest}"&equalTo=true`)
       .then(({data})=>{
         data = Object.values(data);
         resolve(data);

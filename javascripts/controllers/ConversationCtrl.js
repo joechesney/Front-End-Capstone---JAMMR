@@ -12,7 +12,7 @@ module.exports = function
     JAMMRDatabase.on('value', (snapshot) => {
       // console.log('snapshot when convo changes::',snapshot.val());
       $scope.getConvo();
-      document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
+      // document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
     });
   };
   
@@ -39,15 +39,9 @@ module.exports = function
           let newMessagesObj = $scope.assignUserMessageClasses(messagesObj);
           $scope.thisConvosMessages = newMessagesObj;
         }
-        // let elementHeight = (document.getElementById("conversationBox").offsetHeight - 2em);
-        // console.log('elementHiehgt',elementHeight);
-
-
-        // let newHeight = document.getElementById("conversationBox").scrollHeight;
-        // console.log('elementHeight',document.getElementById("conversationBox").scrollHeight);
-        document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
+        // document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
       }
-      document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
+      // document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
 
     });
   };
@@ -83,7 +77,7 @@ module.exports = function
         ConversationFactory.saveNewMessage($scope.newMessage, $routeParams.convoid)
         .then((messageData)=>{
           console.log('swag',messageData);
-          document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
+          // document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
 
           setTimeout(() => {
             document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
@@ -94,7 +88,7 @@ module.exports = function
     }
   };
 
-
+  // TODO: make sure each partial has a containerBox around it so it fits under navbar
 
   // TODO: fix the creating of a new convo when the users already have one
 

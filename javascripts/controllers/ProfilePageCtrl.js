@@ -54,16 +54,14 @@ module.exports = function
   };
 
   $scope.saveProfile = (newProfileObj) =>{
-    console.log('instruments: ',$scope.instruments);
     ProfileFactory.saveProfileWithChanges(newProfileObj)
     .then(({data})=>{
-      console.log('data after its sent, back in ctlr',data);
+      // console.log('data after its sent, back in ctlr',data);
       $scope.editing = false;
       $scope.getUserProfileDataCTRLR(data.uid);
     });
   };
 
-  //TODO: make "interests" section a list of checkboxes in 'edit' mode
 
   // TODO: some sort of image uploader to save profile images to firebase?
   // otherwise, images must link from a url
