@@ -30,10 +30,10 @@ module.exports = function
   };
   AuthFactory.getUser()
   .then(user => {
-    console.log('navbar breh', user);
+    // console.log('navbar breh', user);
     AuthFactory.getUserName(user.uid)
     .then((data)=>{
-      console.log('data in vabar HWUTCHU WANT',data);
+      // console.log('data in vabar HWUTCHU WANT',data);
       // $scope.userName = data.name;
     });
   }).catch(err => {
