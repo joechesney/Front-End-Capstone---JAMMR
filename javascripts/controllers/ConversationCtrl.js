@@ -43,7 +43,7 @@ module.exports = function
       }
       setTimeout(() => {
         document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
-        console.log('timeoutAF');
+        // console.log('timeoutAF');
       }, 50);
     });
   };

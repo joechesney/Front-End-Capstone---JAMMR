@@ -16,6 +16,7 @@ module.exports = function
     $location.path("/registerLogin");
   });
 
+  // TODO: make check boxes on profile page be CHECKED if they are true already
   $scope.getUserProfileDataCTRLR = () =>{
     ProfileFactory.getUserProfileData($routeParams.pid)
     .then((user)=>{
@@ -26,7 +27,6 @@ module.exports = function
         uid : user.uid,
         experience : +user.experience,
         profilePicture: user.profilePicture,
-        convos: user.convos,
 
 
         guitar: user.guitar,

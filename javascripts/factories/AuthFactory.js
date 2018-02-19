@@ -30,7 +30,7 @@ module.exports = function($q, $http, fbConfig){
   const postUserProfile = user => {
     return $q((resolve, reject) => {
       $http.patch(`${fbConfig.databaseURL}/users/${user.uid}.json`,
-      JSON.stringify({"uid": user.uid, "convos": [""]}))
+      JSON.stringify({"uid": user.uid}))
         .then(response => resolve(response))
         .catch(err => reject(err));
     });
