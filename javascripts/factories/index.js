@@ -8,5 +8,6 @@ app.factory('SearchFactory', require('./SearchFactory'));
 app.factory('MessageFactory', require('./MessageFactory'));
 app.factory('ProfileFactory', require('./ProfileFactory'));
 app.factory('ConversationFactory', require('./ConversationFactory'));
+app.factory('MapFactory', require('./MapFactory'));
 
  

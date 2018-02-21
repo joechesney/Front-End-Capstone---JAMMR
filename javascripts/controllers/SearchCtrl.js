@@ -34,35 +34,15 @@ module.exports = function
           case 0:
             console.log('instrument search');
             promiseArray.push(SearchFactory.searchByInstrument($scope.filterArray[index]));
-            // SearchFactory.searchByInstrument($scope.filterArray[index])
-            // .then((users)=>{
-            //   console.log('users instrument',users);
-            //   users.forEach(user=>{$scope.userArray.push(user);});
-            // });
             break;
           case 1:
             promiseArray.push(SearchFactory.searchByInterest($scope.filterArray[index]));
-            // SearchFactory.searchByInterest($scope.filterArray[index])
-            // .then((users)=>{
-            //   console.log('users interest',users);
-            //   users.forEach(user=>{$scope.userArray.push(user);});
-            // });
             break;
           case 2:
             promiseArray.push(SearchFactory.searchByExperience($scope.filterArray[index]));
-            // SearchFactory.searchByExperience($scope.filterArray[index])
-            // .then((users)=>{
-            //   console.log('users experience',users);
-            //   users.forEach(user=>{$scope.userArray.push(user);});
-            // });
             break;
           case 3:
             promiseArray.push(SearchFactory.searchByAge($scope.filterArray[index]));
-            // SearchFactory.searchByAge($scope.filterArray[index])
-            // .then((users)=>{
-            //   console.log('users age',users);
-            //   users.forEach(user=>{$scope.userArray.push(user);});
-            // });
             break;
           default:
             console.log('no filters selected!!!');

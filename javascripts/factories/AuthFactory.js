@@ -56,6 +56,13 @@ module.exports = function($q, $http, fbConfig){
     });
   };
   
+  const getAllUsers = ()=>{
+    return $q((resolve, reject) => {
+      $http.get(`${fbConfig.databaseURL}/users.json`)
+        .then(({data}) => resolve(data))
+        .catch(err => reject(err));
+    });
+  };
 
   let logout = () => {
     return firebase.auth().signOut();
@@ -64,5 +71,13 @@ module.exports = function($q, $http, fbConfig){
 
 
   // checks the uid of the user, and matches it to any convos/ profiles
-  return {registerNewUser, loginWithEmailPassword, getUser, logout, postUserProfile, getUserName};
+  return {
+    registerNewUser, 
+    loginWithEmailPassword, 
+    getUser, 
+    logout, 
+    postUserProfile, 
+    getUserName,
+    getAllUsers
+  };
 };

@@ -24,10 +24,10 @@ module.exports = function
       $scope.newProfileObj = {
         name : user.name,
         age : +user.age,
+        zipCode: +user.zipCode,
         uid : user.uid,
         experience : +user.experience,
         profilePicture: user.profilePicture,
-
 
         guitar: user.guitar,
         bass: user.bass,
@@ -38,7 +38,6 @@ module.exports = function
         saxophone: user.saxophone,
         trumpet: user.trumpet,
         trombone: user.trombone,
-
 
         professionalBand: user.professionalBand,
         hobbyBand: user.hobbyBand,
@@ -54,31 +53,43 @@ module.exports = function
   };
 
   $scope.saveProfile = (newProfileObj) =>{
-    ProfileFactory.saveProfileWithChanges(newProfileObj)
-    .then(({data})=>{
-      // console.log('data after its sent, back in ctlr',data);
-      $scope.editing = false;
-      $scope.getUserProfileDataCTRLR(data.uid);
-    });
+    if(newProfileObj.zipCode){
+      ProfileFactory.getCoordinatesFromZip(newProfileObj.zipCode)
+      .then((zipData)=>{
+        console.log('data from converting zip mug:: ',zipData.results[0].geometry);
+        let zipLocation = zipData.results[0].geometry.location;
+        newProfileObj.latitude = zipLocation.lat;
+        newProfileObj.longitude = zipLocation.lng;
+        ProfileFactory.saveProfileWithChanges(newProfileObj)
+          .then(({data})=>{
+            // console.log('data after its sent, back in ctlr',data);
+            $scope.editing = false;
+            $scope.getUserProfileDataCTRLR(data.uid);
+          });
+      });
+    }else{
+      ProfileFactory.saveProfileWithChanges(newProfileObj)
+      .then(({data})=>{
+        // console.log('data after its sent, back in ctlr',data);
+        $scope.editing = false;
+        $scope.getUserProfileDataCTRLR(data.uid);
+      });
+    }
   };
 
+  // TODO: add map to user profile that shows the pin where the user is located.
+  // maybe make this map in a modal that you can swipe to past the picture
 
   // TODO: some sort of image uploader to save profile images to firebase?
   // otherwise, images must link from a url
 
-//   // TODO: refactor data structure:
-
-        //remove convoIDs from user objects:
-        //   since the convo objects already have the uid as a property,
-        //   i can just orderBy user1 and then make a separate call to orderBy user2,
-        //   and retrieve the convos that way. This will provide flatter data, and 
-        //   reduce the amount of XHRs (i think).
-        
-        // TODO: 
-        //remove userName from convo message object:
-        //   use the uid of the user who sent the message to get the name
-
-
+  // TODO: refactor data structure:
+    //remove convoIDs from user objects:
+    //   since the convo objects already have the uid as a property,
+    //   i can just orderBy user1 and then make a separate call to orderBy user2,
+    //   and retrieve the convos that way. This will provide flatter data, and 
+    //   reduce the amount of XHRs (i think).
+      
   $scope.makeNewConvo = ()=>{
     let newConvoObj = {
       user1: $scope.uid,

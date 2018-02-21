@@ -3,10 +3,11 @@
 const angular = require('angular'); 
 const ngRoute = require('angular-route');
 const firebase = require('firebase');
+const ngMap = require('ngmap');
 
 
 // Other dependencies below
-const app = angular.module('JAMMRApp', [ngRoute]); // name of app. app definition
+const app = angular.module('JAMMRApp', [ngRoute, ngMap]); // name of app. app definition
 // this is requiring the controllers and factories folders for you,
 // because of the index.js files in those folders
 require('./factories');
@@ -54,6 +55,10 @@ app
   .when("/homePage", {
     templateUrl: "partials/homePage.html",
     controller: "HomePageCtrl"
+  })
+  .when("/mapPage", {
+    templateUrl: "partials/mapPage.html",
+    controller: "MapPageCtrl"
   })
   .otherwise("/registerLogin");
 })

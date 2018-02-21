@@ -121,3 +121,26 @@ a{
   grid-column-start: 2;
   min-height: 65px;
 }
+
+.mapBox{
+  margin-top: 5.1em;
+  height: 87vh;
+  width: 96vw;
+}
+
+#infoWindow{
+  max-width: 50vw;
+}
+
+.infoWindowPic{
+  width: 35vw;
+}
+
+.infoWindowAnchor{
+  color: red;
+  font-style: italic;
+}
+
+.infoWindowInstruments{
+  font-size: .7em;
+}
