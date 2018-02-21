@@ -5,6 +5,9 @@
 module.exports = function
 ($scope, AuthFactory, $routeParams, NgMap, MapFactory){
 
+// add whether they have a practice space to the user object/profile
+// if it is true, then maybe give them a styled border on the profile and map somehow??
+
   $scope.userArray = [];
   AuthFactory.getAllUsers()
   .then((data)=>{
@@ -18,15 +21,6 @@ module.exports = function
     });
   });
   
-  $scope.testUser = {
-    name: "Joe Dih",
-    age: 27,
-    guitar: true,
-    uid: "12345",
-    latitude: "36.1030036",
-    longitude: "-86.87221459999999"
-  };
-  $scope.userArray = [$scope.testUser];
 
   $scope.showDetails = function (e, userObj) {
     $scope.selectedUser = userObj;
