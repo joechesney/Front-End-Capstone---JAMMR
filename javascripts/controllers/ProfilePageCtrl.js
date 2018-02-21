@@ -16,7 +16,13 @@ module.exports = function
     $location.path("/registerLogin");
   });
 
-  // TODO: make check boxes on profile page be CHECKED if they are true already
+
+
+  // TODO: make a page that will show just one user on a map
+  // #!/mapPage/:uid
+  // add link that takes you to that map on the profile page, i guess??
+
+
   $scope.getUserProfileDataCTRLR = () =>{
     ProfileFactory.getUserProfileData($routeParams.pid)
     .then((user)=>{
