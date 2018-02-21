@@ -11,5 +11,6 @@ app.controller('MessagesCtrl', require('./MessagesCtrl'));
 app.controller('ProfilePageCtrl', require('./ProfilePageCtrl'));
 app.controller('SearchCtrl', require('./SearchCtrl'));
 app.controller('NavBarCtrl', require('./NavBarCtrl'));
+app.controller('MapPageCtrl', require('./MapPageCtrl'));
 
 
