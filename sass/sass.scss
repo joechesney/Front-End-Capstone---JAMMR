@@ -128,6 +128,15 @@ a{
   width: 96vw;
 }
 
+#infoWindow{
+  max-width: 50vw;
+}
+
 .infoWindowPic{
   width: 35vw;
+}
+
+.infoWindowAnchor{
+  color: red;
+  font-style: italic;
 }

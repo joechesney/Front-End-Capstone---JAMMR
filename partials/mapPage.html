@@ -3,14 +3,24 @@
 <ng-map zoom="11" center="[36.1627, -86.7816]" class="mapBox">
 
   <marker ng-repeat = "user in userArray track by user.uid" id="{{user.uid}}" position="{{[user.latitude, user.longitude]}}" on-click="showDetails(user)"></marker>
-  <info-window id="infoWindow">
+  <info-window style="max-width: 50px;" id="infoWindow">
     <div ng-non-bindable>
       <img class="infoWindowPic" ng-src="{{selectedUser.profilePicture}}">
       <h3> {{selectedUser.name}}</h3>
-      <strong>Address:</strong> {{selectedUser.name}} <br>
-      <strong>Type:</strong> {{selectedStay.type}} <br>
-      <strong>Your Review:</strong> {{selectedStay.review}} <br>
-      <a href="#!/profilePage/{{selectedUser.uid}}">View Details</a>
+      <strong>Age:</strong> {{selectedUser.age}} <br>
+      <strong>Experience:</strong> {{selectedUser.experience}} <br>
+      <div><strong>Instruments: </strong><br>
+        <span ng-show="selectedUser.guitar">  Guitar <br></span>
+        <span ng-show="selectedUser.bass">  Bass <br></span>
+        <span ng-show="selectedUser.drums">  Drums <br></span>
+        <span ng-show="selectedUser.vocals">  Vocals <br></span>
+        <span ng-show="selectedUser.keyboard">  Keyboard <br></span>
+        <span ng-show="selectedUser.violin">  Violin <br></span>
+        <span ng-show="selectedUser.saxophone">  Saxophone <br></span>
+        <span ng-show="selectedUser.trumpet">  Trumpet <br></span>
+        <span ng-show="selectedUser.trombone">  Trombone <br></span>
+      </div>
+      <a class="infoWindowAnchor" href="#!/profilePage/{{selectedUser.uid}}">View Profile</a>
     </div> 
   </info-window>
     
