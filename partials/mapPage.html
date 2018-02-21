@@ -1,3 +1,20 @@
 
 
-<ng-map zoom="11" center="[36.1627, -86.7816]" class="containerBox"></ng-map>
+<ng-map zoom="11" center="[36.1627, -86.7816]" id="mapBox">
+
+  <!-- <marker ng-repeat = "location in tripLocations track by $index" position={{location.formatted_address}} title={{location.name}} id={{location.id}} on-click = "showDetails(location)"></marker> -->
+  <marker ng-repeat = "user in userArray track by user.uid" id="{{testUser.uid}}" position="36.1030036,-86.87221459999999" on-click="showDetails(user)"></marker>
+  <info-window id="testMarker">
+    <div ng-non-bindable>
+      <img class="infoWindowPic" ng-src="{{selectedUser.profilePicture}}">
+      <h3> {{selectedUser.name}}</h3>
+      <strong>Address:</strong> {{selectedUser.name}} <br>
+      <strong>Type:</strong> {{selectedStay.type}} <br>
+      <strong>Your Review:</strong> {{selectedStay.review}} <br>
+      <a href="#!/profilePage/{{selectedUser.uid}}">View Details</a>
+    </div> 
+  </info-window>
+    
+
+
+</ng-map>
