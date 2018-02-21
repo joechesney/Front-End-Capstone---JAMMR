@@ -77,19 +77,18 @@ module.exports = function
     }
   };
 
-  // add map to user profile that shows the pin where the user is located.
+  // TODO: add map to user profile that shows the pin where the user is located.
   // maybe make this map in a modal that you can swipe to past the picture
 
   // TODO: some sort of image uploader to save profile images to firebase?
   // otherwise, images must link from a url
 
   // TODO: refactor data structure:
-
-        //remove convoIDs from user objects:
-        //   since the convo objects already have the uid as a property,
-        //   i can just orderBy user1 and then make a separate call to orderBy user2,
-        //   and retrieve the convos that way. This will provide flatter data, and 
-        //   reduce the amount of XHRs (i think).
+    //remove convoIDs from user objects:
+    //   since the convo objects already have the uid as a property,
+    //   i can just orderBy user1 and then make a separate call to orderBy user2,
+    //   and retrieve the convos that way. This will provide flatter data, and 
+    //   reduce the amount of XHRs (i think).
       
   $scope.makeNewConvo = ()=>{
     let newConvoObj = {
