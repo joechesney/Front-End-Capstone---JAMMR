@@ -5,7 +5,7 @@
 module.exports = function
 ($scope, AuthFactory, $routeParams, NgMap, MapFactory){
 
-// add whether they have a practice space to the user object/profile
+// TODO: add whether they have a practice space to the user object/profile
 // if it is true, then maybe give them a styled border on the profile and map somehow??
 
   $scope.userArray = [];
@@ -30,7 +30,7 @@ module.exports = function
 
 
 
-  // all users should have a lat-long saved to their object,
+  // TODO: all users should have a lat-long saved to their object,
   // that takes the zip code they type in on their profile page, 
   // and converts it to a lat/long BEFORE saving it. so the lat/lnog
   // is saved to their object instead of their zip code. or both?
