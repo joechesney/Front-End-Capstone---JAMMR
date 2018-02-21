@@ -11,6 +11,8 @@
     <div>Name: {{newProfileObj.name}}</div>
     <div>Age: {{newProfileObj.age}}</div>
     <div>Experience: {{newProfileObj.experience}} years</div>
+    <div>Zip Code: {{newProfileObj.zipCode}}</div>
+
     <div>Instruments: 
       <span ng-show="newProfileObj.guitar">Guitar </span>
       <span ng-show="newProfileObj.bass">Bass </span>
@@ -43,6 +45,8 @@
     <div>Picture URL: <input ng-show="editing" ng-model="newProfileObj.profilePicture"/></div>
     <div>Name: <input ng-show="editing" ng-model="newProfileObj.name"/></div>
     <div>Age: <input type="number" ng-show="editing" ng-model="newProfileObj.age"/></div>
+    <div>Experience: <input type="number" ng-show="editing" ng-model="newProfileObj.experience"/></div>
+    <div>Zip Code: <input type="text" ng-show="editing" ng-model="newProfileObj.zipCode"/></div>
     <div>
       <br><input type="checkbox" ng-model="newProfileObj.guitar">Guitar
       <br><input type="checkbox" ng-model="newProfileObj.bass">Bass
@@ -71,7 +75,6 @@
       <!-- <br><input type="checkbox" ng-model="newProfileObj.trombone">Trombone -->
     </div>
     <div>Other Interests: <input ng-show="editing" ng-model="newProfileObj.otherInterests"/></div>
-    <div>Experience: <input type="number" ng-show="editing" ng-model="newProfileObj.experience"/></div>
   
   </div>
 

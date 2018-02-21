@@ -2,9 +2,8 @@
 
 <ng-map zoom="11" center="[36.1627, -86.7816]" class="mapBox">
 
-  <!-- <marker ng-repeat = "location in tripLocations track by $index" position={{location.formatted_address}} title={{location.name}} id={{location.id}} on-click = "showDetails(location)"></marker> -->
-  <marker ng-repeat = "user in userArray track by user.uid" id="{{testUser.uid}}" position="36.1030036,-86.87221459999999" on-click="showDetails(user)"></marker>
-  <info-window id="testMarker">
+  <marker ng-repeat = "user in userArray track by user.uid" id="{{user.uid}}" position="{{[user.latitude, user.longitude]}}" on-click="showDetails(user)"></marker>
+  <info-window id="infoWindow">
     <div ng-non-bindable>
       <img class="infoWindowPic" ng-src="{{selectedUser.profilePicture}}">
       <h3> {{selectedUser.name}}</h3>

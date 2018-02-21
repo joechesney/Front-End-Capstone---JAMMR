@@ -5,23 +5,32 @@
 module.exports = function
 ($scope, AuthFactory, $routeParams, NgMap, MapFactory){
 
-
+  $scope.userArray = [];
   AuthFactory.getAllUsers()
   .then((data)=>{
-    console.log('data in mapPageCtrl:',data);
+    let allUsers = Object.values(data);
+    console.log('data in mapPageCtrl:',allUsers);
+    allUsers.forEach(user=>{
+      if(user.latitude && user.longitude){
+        $scope.userArray.push(user);
+        console.log('user:::',user);
+      }
+    });
   });
   
   $scope.testUser = {
     name: "Joe Dih",
     age: 27,
     guitar: true,
-    uid: "12345"
+    uid: "12345",
+    latitude: "36.1030036",
+    longitude: "-86.87221459999999"
   };
   $scope.userArray = [$scope.testUser];
 
   $scope.showDetails = function (e, userObj) {
     $scope.selectedUser = userObj;
-    $scope.map.showInfoWindow("testMarker", userObj.uid);
+    $scope.map.showInfoWindow("infoWindow", userObj.uid);
   };
 
 
