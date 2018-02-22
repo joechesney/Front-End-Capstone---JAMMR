@@ -14,23 +14,20 @@ module.exports = function
 // if it is true, then maybe give them a styled border on the profile and map somehow??
 
   $scope.userArray = [];
-  console.log('map page route parms:',$routeParams.uid);
+
   if($routeParams.uid === undefined){
     AuthFactory.getAllUsers()
     .then((data)=>{
       let allUsers = Object.values(data);
-      console.log('data in mapPageCtrl:',allUsers);
       allUsers.forEach(user=>{
         if(user.latitude && user.longitude){
           $scope.userArray.push(user);
-          console.log('all users if no speific user: ',user);
         }
       });
     });
   } else {
     AuthFactory.getUserInfo($routeParams.uid)
     .then((user)=>{
-      console.log('userInfo for one user: ',user);
       $scope.userArray.push(user);
     });
   }
