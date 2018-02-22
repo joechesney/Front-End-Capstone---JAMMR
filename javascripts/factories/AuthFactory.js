@@ -48,7 +48,7 @@ module.exports = function($q, $http, fbConfig){
   };
 
   // TODO: change this function name to 'GetUserInfo' to be more clear
-  const getUserName = (uid)=>{
+  const getUserInfo = (uid)=>{
     return $q((resolve, reject) => {
       $http.get(`${fbConfig.databaseURL}/users/${uid}.json`)
         .then(({data}) => resolve(data))
@@ -77,7 +77,7 @@ module.exports = function($q, $http, fbConfig){
     getUser, 
     logout, 
     postUserProfile, 
-    getUserName,
+    getUserInfo,
     getAllUsers
   };
 };

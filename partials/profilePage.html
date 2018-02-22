@@ -5,13 +5,20 @@
   </div>
   
   <div ng-show="!editing" class="profile">
-    <button ng-show="myProfile" ng-click="editing=true">EDIT PROFILE</button>
-    <button ng-show="!myProfile" ng-click="beginConvo()">MESSAGE </button>
+    <button ng-show="myProfile" ng-click="editing=true">
+      <i class="fas fa-edit"></i>
+    </button>
+    <button ng-show="!myProfile" ng-click="beginConvo()">
+      <i class="fas fa-envelope"></i> 
+    </button>
+    <a ng-href="#!/mapPage/{{currentProfileUid}}">
+      <i class="fas fa-map-marker-alt"></i>
+    </a> 
     <br><br>
     <div>Name: {{newProfileObj.name}}</div>
     <div>Age: {{newProfileObj.age}}</div>
     <div>Experience: {{newProfileObj.experience}} years</div>
-    <div>Zip Code: {{newProfileObj.zipCode}}</div>
+    <!-- <div>Zip Code: {{newProfileObj.zipCode}}</div> -->
 
     <div>Instruments: 
       <span ng-show="newProfileObj.guitar">Guitar </span>

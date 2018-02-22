@@ -56,6 +56,10 @@ app
     templateUrl: "partials/homePage.html",
     controller: "HomePageCtrl"
   })
+  .when("/mapPage/:uid", {
+    templateUrl: "partials/mapPage.html",
+    controller: "MapPageCtrl"
+  })
   .when("/mapPage", {
     templateUrl: "partials/mapPage.html",
     controller: "MapPageCtrl"

@@ -5,22 +5,37 @@
 module.exports = function
 ($scope, AuthFactory, $routeParams, NgMap, MapFactory){
 
+  // TODO: when you look at a specific person on the map page,
+  // it should show YOUR pin too, so you can see how far away they are
+  // TODO: also maybe, on the profile page, have it calculate the miles
+  // between your pin and their pin, so you can see how far away they are
+
 // TODO: add whether they have a practice space to the user object/profile
 // if it is true, then maybe give them a styled border on the profile and map somehow??
 
   $scope.userArray = [];
-  AuthFactory.getAllUsers()
-  .then((data)=>{
-    let allUsers = Object.values(data);
-    console.log('data in mapPageCtrl:',allUsers);
-    allUsers.forEach(user=>{
-      if(user.latitude && user.longitude){
-        $scope.userArray.push(user);
-        console.log('user:::',user);
-      }
+  console.log('map page route parms:',$routeParams.uid);
+  if($routeParams.uid === undefined){
+    AuthFactory.getAllUsers()
+    .then((data)=>{
+      let allUsers = Object.values(data);
+      console.log('data in mapPageCtrl:',allUsers);
+      allUsers.forEach(user=>{
+        if(user.latitude && user.longitude){
+          $scope.userArray.push(user);
+          console.log('all users if no speific user: ',user);
+        }
+      });
     });
-  });
-  
+  } else {
+    AuthFactory.getUserInfo($routeParams.uid)
+    .then((user)=>{
+      console.log('userInfo for one user: ',user);
+      $scope.userArray.push(user);
+    });
+  }
+
+  // TODO: remove maximize button, satellite button, and street view button on map
 
   $scope.showDetails = function (e, userObj) {
     $scope.selectedUser = userObj;

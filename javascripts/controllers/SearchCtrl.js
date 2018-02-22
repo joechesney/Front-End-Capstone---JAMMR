@@ -11,7 +11,7 @@ module.exports = function
   AuthFactory.getUser()
   .then(user => {
     $scope.currentUser = user;
-    AuthFactory.getUserName(user.uid)
+    AuthFactory.getUserInfo(user.uid)
     .then((name)=>{
       $scope.currentUserName = name.name;
     });

@@ -24,7 +24,7 @@ module.exports = function
             uidArray.push(convoInfo.user2);
             uidArray.forEach(uid=>{
               if(uid !== $scope.currentUserID){
-                AuthFactory.getUserName(uid)
+                AuthFactory.getUserInfo(uid)
                 .then((otherUser)=>{
                   convoInfo.otherUserName = otherUser.name;
                   convoInfo.otherUserPic = otherUser.profilePicture;

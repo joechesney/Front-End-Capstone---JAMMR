@@ -6,6 +6,8 @@ module.exports = function
 ($scope, AuthFactory, SearchFactory, ProfileFactory, $window, 
   $location, $routeParams, ConversationFactory){
   
+  $scope.currentProfileUid = $routeParams.pid;
+
   AuthFactory.getUser()
   .then(user => {
     $scope.uid = user.uid;
@@ -16,7 +18,8 @@ module.exports = function
     $location.path("/registerLogin");
   });
 
-
+  // TODO: check to see if i need the search results partial at all
+  // if not, then delete it
 
   // TODO: make a page that will show just one user on a map
   // #!/mapPage/:uid
