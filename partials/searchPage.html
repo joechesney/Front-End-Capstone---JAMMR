@@ -1,7 +1,9 @@
 <div id="containerBox">
-  <hr>
+  <!-- <hr> -->
   <h2 ng-show="!filteredUserArray" class="centered">Search for JAMRs</h2>
   <h2 ng-show="filteredUserArray" class="centered">Search Results</h2>
+  <h2 ng-show="filteredUserArray" class="centered">Click on a user to view their profile</h2>
+
 
   <div ng-show="!filteredUserArray"  id="filterSelect">
     <div class="field">
@@ -52,7 +54,7 @@
               <div class="nameRow">
                 <div class="nameBig"><b>{{otherUser.name}}</b>&nbsp;&nbsp; </div>
                 <div>Age: {{otherUser.age}}</div>
-                <i class="fas fa-user"></i>
+                <i class="fas fa-user lilProfIconFix"></i>
               </div>
               <div class="recentMessage userBlockInfo">
                 <div>Instruments: 

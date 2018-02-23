@@ -1,5 +1,5 @@
 <div id="conversationBox">
-  <hr>
+  <!-- <hr> -->
   <h3 class="centered" >Convo with {{otherUserName}}</h3>
   <div class="msg" ng-repeat="message in thisConvosMessages" ng-class="{'currentUserMsg': message.currentUser, 'otherUserMsg': !message.currentUser}">
     <div class="msgtext">{{message.text}}</div><div ng-click="deleteMessage(message)" class="deleteButton">x</div>
