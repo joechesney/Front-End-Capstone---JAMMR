@@ -1,3 +1,29 @@
+#To run this Repo:
+1. clone this repo
+2. run npm install
+3. run grunt in your terminal from the root of this repo
+4. open this project in Chrome, and for best visual results, use mobile device perspective mode in Chrome Dev Tools, or resize the Chrome window to a mobile phone-shaped size.
+
+
+How to Use the app:
+1. create a new account by registering with a email/pw, and you will be taken to the profile editing page to create your new profile.
+  - OR - 
+  Log in using an account I have made available to testers: email: z@z.com pw: aaaaaa
+2. click the 'JAMMR' logo at the top to go back to the Home Page at any time
+3. click the Back arrow in the top left corner to go back from any page (does not work on Search Results page. Once the results page has been left, those results are gone, and you must re-search to see those results again).
+4. View your profile at any time by clicking the Profile button on the home page.
+5. The search page has a fun feature where if you choose more than 1 search filter, you will actually get MORE results, instead of less! Awesome!
+6. To view the map of other JAMMRs in Nashville, click the Map button on the Home Page. 
+7. View any open conversations with other users by clicking the Messages button on the Home Page. Here you can see any messages you have available from other users, as well as if there are any new messages available! 
+8. click on a conversation in the Messages List to open that conversation and view Messages.
+9. Have fun! and Thanks for checking out my app!
+ 
+
+
+
+
+
+
 # Front-End-Capstone
 This is my Front End Capstone Project at Nashville Software School
 
