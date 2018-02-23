@@ -16,7 +16,8 @@
 6. To view the map of other JAMMRs in Nashville, click the Map button on the Home Page. 
 7. View any open conversations with other users by clicking the Messages button on the Home Page. Here you can see any messages you have available from other users, as well as if there are any new messages available! 
 8. click on a conversation in the Messages List to open that conversation and view Messages.
-9. Have fun! and Thanks for checking out my app!
+9. On the Map Page, click on a pin to see who that user is, a bit about them, and then click 'View Profile' at the bottom of the info bubble to go directly to that users profile in JAMMR. 
+10. Have fun! and Thanks for checking out my app!
  
 
 
