@@ -142,6 +142,9 @@ a{
   display: block;
   border-radius: 50%;
   object-fit: cover;
+  min-height: 52.2px;
+  max-height: 52.2px;
+
 }
 .userBlock{
   display: inline-grid;
@@ -152,8 +155,10 @@ a{
   grid-column-start: 1;
 }
 .userBlockInfo{
-  grid-column-start: 2;
-  min-height: 65px;
+  font-size: .7em;
+}
+.nameRow .nameBig{
+  color: black;
 }
 
 
@@ -213,6 +218,7 @@ a .userBlock {
   display: grid;
   grid-template-columns: 18% 82%;
   // grid-template-rows: 25% 75%;
+  min-height: 74.4px;
 }
 .recentMessage{
   color: gray;
@@ -237,4 +243,6 @@ a .userBlock {
 .messagePic{
   grid-column-start: 1;
   grid-row: span 2;
+  min-height: 74.4px;
+
 }

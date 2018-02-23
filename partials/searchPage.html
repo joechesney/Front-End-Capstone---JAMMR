@@ -44,13 +44,18 @@
   <div ng-show="filteredUserArray">
       <div ng-repeat="otherUser in filteredUserArray">
         <a ng-href="#!/profilePage/{{otherUser.uid}}">
-          <div class="userBlock">
-            <div class="userBlockPic">
+          <div class="messageCard">
+            <div class="messagePic">
               <img class="tinyPic" ng-src="{{otherUser.profilePicture}}"/>
             </div>
-            <div class="userBlockInfo">
-              <div>Name: {{otherUser.name}}&nbsp;&nbsp; Age: {{otherUser.age}}</div>
-              <div>Instruments: 
+            <div>
+              <div class="nameRow">
+                <div class="nameBig"><b>{{otherUser.name}}</b>&nbsp;&nbsp; </div>
+                <div>Age: {{otherUser.age}}</div>
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="recentMessage userBlockInfo">
+                <div>Instruments: 
                   <span ng-show="otherUser.guitar">Guitar </span>
                   <span ng-show="otherUser.bass">Bass </span>
                   <span ng-show="otherUser.drums">Drums </span>
@@ -72,7 +77,8 @@
                   <!-- <span ng-show="otherUser.trumpet">trumpet </span> -->
                   <!-- <span ng-show="otherUser.trombone">trombone </span> -->
                 </div>
-                <!-- <div>Experience: {{otherUser.experience}} years</div> -->
+              </div>
+              
             </div>
           </div>
         </a>
