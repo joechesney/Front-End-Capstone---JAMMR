@@ -3,7 +3,7 @@
 
 // MESSAGES CTRL
 module.exports = function
-($scope, AuthFactory, $routeParams, NgMap, MapFactory){
+($scope, AuthFactory, $routeParams, NgMap){
 
   $scope.userArray = [];
 

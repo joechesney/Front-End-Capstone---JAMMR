@@ -44,10 +44,6 @@ app
     templateUrl: "partials/conversation.html",
     controller: "ConversationCtrl"
   })
-  .when("/searchResults", {
-    templateUrl: "partials/searchResults.html",
-    controller: "SearchCtrl"
-  })
   .when("/searchPage", {
     templateUrl: "partials/searchPage.html",
     controller: "SearchCtrl"

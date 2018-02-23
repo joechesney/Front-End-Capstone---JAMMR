@@ -3,8 +3,7 @@
 
 // NAVBAR CTRL
 module.exports = function
-($scope, $window, $location, AuthFactory){
-
+($scope, $window, $location, AuthFactory, $routeParams){
 
   $scope.title = "JAMMR";
   if($window.location.href === "#!/registerLogin" ||
@@ -25,12 +24,13 @@ module.exports = function
   .then(user => {
     AuthFactory.getUserInfo(user.uid)
     .then((data)=>{
-      // console.log('data in vabar HWUTCHU WANT',data);
-      // $scope.userName = data.name;
+      
     });
   }).catch(err => {
     console.log('error',err);
     $location.path("/registerLogin");
   });
+
+
 
 };

@@ -111,9 +111,13 @@ module.exports = function
   };
 
   $scope.deleteMessage = (message)=>{
-    ConversationFactory.deleteMessageFromFireBaseForever(message.msgID, $routeParams.convoid)
-    .then((response)=>{
-    });
+    console.log('message',message);
+    console.log('uid',$scope.uid);
+    if($scope.uid === message.uid){
+      ConversationFactory.deleteMessageFromFireBaseForever(message.msgID, $routeParams.convoid)
+      .then((response)=>{
+      });
+    }
   };
 
 
