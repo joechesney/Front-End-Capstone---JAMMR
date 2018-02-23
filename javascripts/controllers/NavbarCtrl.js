@@ -5,7 +5,6 @@
 module.exports = function
 ($scope, $window, $location, AuthFactory){
 
-  // TODO: make navbar a grid so the back button looks better, and the logo is centered
 
   $scope.title = "JAMMR";
   if($window.location.href === "#!/registerLogin" ||
@@ -28,9 +27,8 @@ module.exports = function
       $window.location.href = "#!/registerLogin";
     });
   };
-  AuthFactory.getUser()
+  AuthFactory.authUser()
   .then(user => {
-    // console.log('navbar breh', user);
     AuthFactory.getUserInfo(user.uid)
     .then((data)=>{
       // console.log('data in vabar HWUTCHU WANT',data);
@@ -40,6 +38,5 @@ module.exports = function
     console.log('error',err);
     $location.path("/registerLogin");
   });
-
 
 };

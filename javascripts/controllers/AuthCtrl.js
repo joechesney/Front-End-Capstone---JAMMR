@@ -35,7 +35,7 @@ module.exports = function($scope, AuthFactory, $location, $window, $q){
     });
   };
 
-  AuthFactory.getUser()
+  AuthFactory.authUser()
   .then(user => {
     $location.path("/homePage");
   }).catch(err => console.log('error',err));

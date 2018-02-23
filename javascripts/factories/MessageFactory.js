@@ -14,7 +14,5 @@ module.exports = function($q, $http, fbConfig){
     });
   };
 
-  // TODO: display them in chronological order
-
   return { getConvoInfo };
 };

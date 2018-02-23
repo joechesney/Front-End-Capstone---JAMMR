@@ -8,7 +8,7 @@ module.exports = function
   
   $scope.currentProfileUid = $routeParams.pid;
 
-  AuthFactory.getUser()
+  AuthFactory.authUser()
   .then(user => {
     $scope.uid = user.uid;
     if($scope.uid === $routeParams.pid){$scope.myProfile = true;}else{$scope.myProfile = false;}
@@ -17,13 +17,6 @@ module.exports = function
     console.log('error',err);
     $location.path("/registerLogin");
   });
-
-  // TODO: check to see if i need the search results partial at all
-  // if not, then delete it
-
-  // TODO: make a page that will show just one user on a map
-  // #!/mapPage/:uid
-  // add link that takes you to that map on the profile page, i guess??
 
 
   $scope.getUserProfileDataCTRLR = () =>{
@@ -86,18 +79,6 @@ module.exports = function
     }
   };
 
-  // TODO: add map to user profile that shows the pin where the user is located.
-  // maybe make this map in a modal that you can swipe to past the picture
-
-  // TODO: some sort of image uploader to save profile images to firebase?
-  // otherwise, images must link from a url
-
-  // TODO: refactor data structure:
-    //remove convoIDs from user objects:
-    //   since the convo objects already have the uid as a property,
-    //   i can just orderBy user1 and then make a separate call to orderBy user2,
-    //   and retrieve the convos that way. This will provide flatter data, and 
-    //   reduce the amount of XHRs (i think).
       
   $scope.makeNewConvo = ()=>{
     let newConvoObj = {

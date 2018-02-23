@@ -5,9 +5,8 @@
 module.exports = function 
 ($scope, AuthFactory, $location, $window, ProfileFactory) {
 
- // TODO: remove back button from the home page
 
-  AuthFactory.getUser()
+  AuthFactory.authUser()
   .then(user => {
     ProfileFactory.getUserProfileData(user.uid)
     .then((user)=>{
@@ -19,8 +18,4 @@ module.exports = function
     $location.path("/registerLogin");
   });
   
-  // TODO: move logout button to the home page??? and out of the navbar
-
-  
-
 };
