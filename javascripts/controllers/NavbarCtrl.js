@@ -20,13 +20,7 @@ module.exports = function
       currentPath = currentPath.split('?')[0];
       return currentPath === path.split('/')[1];
   };
-  $scope.logout = () =>{
-    AuthFactory.logout()
-    .then((data) => {
-      console.log('successful logout', data);
-      $window.location.href = "#!/registerLogin";
-    });
-  };
+
   AuthFactory.authUser()
   .then(user => {
     AuthFactory.getUserInfo(user.uid)

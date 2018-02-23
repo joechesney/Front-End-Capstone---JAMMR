@@ -30,6 +30,7 @@ module.exports = function
         uid : user.uid,
         experience : +user.experience,
         profilePicture: user.profilePicture,
+        hasPracticeSpace: user.hasPracticeSpace,
 
         guitar: user.guitar,
         bass: user.bass,

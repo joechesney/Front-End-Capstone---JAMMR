@@ -18,4 +18,12 @@ module.exports = function
     $location.path("/registerLogin");
   });
   
+  $scope.logout = () =>{
+    AuthFactory.logout()
+    .then((data) => {
+      console.log('successful logout', data);
+      $window.location.href = "#!/registerLogin";
+    });
+  };
+
 };

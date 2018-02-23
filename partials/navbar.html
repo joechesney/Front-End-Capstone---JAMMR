@@ -1,7 +1,7 @@
 <div id="navbar">
-  <button ng-show="isHomeorLoginPage" id="backButton">back</button>
+  <!-- <button >back</button> -->
+  <i ng-show="isHomeorLoginPage" id="backButton" class="fas fa-2x fa-angle-left"></i>
   <a ng-href="#!/homePage"><h1 id="logo">{{title}}</h1></a>
-  <button ng-click="logout()">LOGOUT</button>
   <div ng-show="userName">current user: {{userName}}</div>
   <br>
 </div>

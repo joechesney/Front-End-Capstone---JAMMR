@@ -5,6 +5,8 @@
   </div>
   
   <div ng-show="!editing" class="profile">
+    <span ng-show="newProfileObj.hasPracticeSpace" class="hasPracticeSpace">THIS USER OWNS A PRACTICE SPACE </span>
+    <br>
     <button ng-show="myProfile" ng-click="editing=true">
       <i class="fas fa-edit"></i>
     </button>
@@ -18,7 +20,6 @@
     <div>Name: {{newProfileObj.name}}</div>
     <div>Age: {{newProfileObj.age}}</div>
     <div>Experience: {{newProfileObj.experience}} years</div>
-    <!-- <div>Zip Code: {{newProfileObj.zipCode}}</div> -->
 
     <div>Instruments: 
       <span ng-show="newProfileObj.guitar">Guitar </span>
@@ -54,6 +55,9 @@
     <div>Age: <input type="number" ng-show="editing" ng-model="newProfileObj.age"/></div>
     <div>Experience: <input type="number" ng-show="editing" ng-model="newProfileObj.experience"/></div>
     <div>Zip Code: <input type="text" ng-show="editing" ng-model="newProfileObj.zipCode"/></div>
+    <div>I can provide a practice space: <input type="checkbox" ng-model="newProfileObj.hasPracticeSpace">
+    </div>
+
     <div>
       <br><input type="checkbox" ng-model="newProfileObj.guitar">Guitar
       <br><input type="checkbox" ng-model="newProfileObj.bass">Bass
