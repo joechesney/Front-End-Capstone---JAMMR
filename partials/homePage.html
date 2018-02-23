@@ -1,23 +1,28 @@
-<div id="containerBox">
+<div id="homePage">
   <div class="centered">
     <hr>
     <h3>Welcome {{displayUserName}}!!!</h3>
     
     <br>
-    <a ng-href="#!/searchPage" >Search</a>
+    <a class="button is-info" ng-href="#!/searchPage" >Search</a>
     <br>
     <br>
-    <a ng-href="#!/profilePage/{{uid}}" >Profile</a>
+    <a class="button is-info" ng-href="#!/messages" >Messages</a>
     <br>
     <br>
-    <a ng-href="#!/messages" >Messages</a>
+    <a class="button is-info" ng-href="#!/mapPage" >Map of JAMMRs</a>
     <br>
     <br>
-    <a ng-href="#!/mapPage" >MAP AS HELL</a>
     <br>
     <br>
-    <div>
-      <div ng-click="logout()">LOGOUT</div>
-    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <a class="button is-info is-outlined" ng-href="#!/profilePage/{{uid}}" >Profile</a>
+    <br>
+    <br>
+    <a class="button is-info is-outlined" ng-click="logout()">LOGOUT</a>
+  
   </div>
 </div>
