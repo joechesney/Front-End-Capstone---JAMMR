@@ -1,39 +1,64 @@
 <div id="containerBox">
-  <hr>
+  <!-- <hr> -->
   <h2 ng-show="!filteredUserArray" class="centered">Search for JAMRs</h2>
-  <h2 ng-show="filteredUserArray" class="centered">JAMR Results</h2>
+  <h2 ng-show="filteredUserArray" class="centered">Search Results</h2>
+  <h2 ng-show="filteredUserArray" class="centered">Click on a user to view their profile</h2>
+<br>
 
-  <div ng-show="!filteredUserArray" id="filterSelect">
-    <br>
-    Instruments:
-    <select ng-model="instrumentSearch" ng-options="instrument as instrument for instrument in instruments">
-    </select><br>
-    Interests:
-    <select ng-model="interestSearch" ng-options="interest for interest in interests">
-    </select><br>
-    Years of Experience: <input type="number" ng-model="experienceSearch"/>
-    <br>Age:<input type="number" ng-model="ageSearch"/><br><br>
+  <div ng-show="!filteredUserArray"  id="filterSelect">
+    <div class="field">
+      <label class="label">Instruments</label>
+      <div class="control" >
+        <select class="select" ng-model="instrumentSearch" ng-options="instrument as instrument for instrument in instruments"></select>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Interests</label>
+      <div class="control">
+        <select class="select" ng-model="interestSearch" ng-options="interest for interest in interests">
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Experience</label>
+      <div class="control">
+        <input class="input" type="number" ng-model="experienceSearch" placeholder="Experience"/>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Age</label>
+      <div class="control">
+        <input class="input" type="number" ng-model="ageSearch" placeholder="Age"/>
+      </div>
+    </div>
     <div ng-show="showAlert">
       <span style="color: red;">Please select at least on filter!</span>
-    </div><br>
-    Current Filters:<br>
-    {{instrumentSearch}}<br>
-    {{interestSearch}}<br>
-    {{experienceSearch}}<br>
-    {{ageSearch}}<br><br>
-    <button ng-click="searchForUsers()">Search</button>
+    </div>
+      <!-- Current Filters:<br>
+      <span ng-show="instrumentSearch">{{instrumentSearch}}<br></span><br>
+      <span ng-show="interestSearch">{{interestSearch}}<br></span>
+      <span ng-show="experienceSearch">{{experienceSearch}}<br></span>
+      <span ng-show="ageSearch">{{ageSearch}}<br></span> -->
+
+      <a class="button is-info centered" ng-click="searchForUsers()"><i class="fas fa-search"></i>&nbsp; Search</a>
+
   </div>
   
   <div ng-show="filteredUserArray">
       <div ng-repeat="otherUser in filteredUserArray">
         <a ng-href="#!/profilePage/{{otherUser.uid}}">
-          <div class="userBlock">
-            <div class="userBlockPic">
+          <div class="messageCard">
+            <div class="messagePic">
               <img class="tinyPic" ng-src="{{otherUser.profilePicture}}"/>
             </div>
-            <div class="userBlockInfo">
-              <div>Name: {{otherUser.name}}          Age: {{otherUser.age}}</div>
-              <div>Instruments: 
+            <div>
+              <div class="nameRow">
+                <div class="nameBig"><b>{{otherUser.name}}</b>&nbsp;&nbsp; </div>
+                <div>Age: {{otherUser.age}}</div>
+                <i class="fas fa-user lilProfIconFix"></i>
+              </div>
+              <div class="recentMessage userBlockInfo">
+                <div>Instruments: 
                   <span ng-show="otherUser.guitar">Guitar </span>
                   <span ng-show="otherUser.bass">Bass </span>
                   <span ng-show="otherUser.drums">Drums </span>
@@ -55,7 +80,8 @@
                   <!-- <span ng-show="otherUser.trumpet">trumpet </span> -->
                   <!-- <span ng-show="otherUser.trombone">trombone </span> -->
                 </div>
-                <div>Experience: {{otherUser.experience}} years</div>
+              </div>
+              
             </div>
           </div>
         </a>
@@ -63,5 +89,3 @@
   </div>
 </div>
 
-<!--  -->
-<!-- TODO: make a default picture appear is the user does not have a profile picture -->

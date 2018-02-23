@@ -12,7 +12,6 @@ module.exports = function
     JAMMRDatabase.on('value', (snapshot) => {
       // console.log('snapshot when convo changes::',snapshot.val());
       $scope.getConvo();
-      // document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
     });
   };
   
@@ -28,7 +27,7 @@ module.exports = function
         nameArray.push(data.user2);
         nameArray.forEach(uid=>{
         if(uid !== $scope.uid){
-          AuthFactory.getUserName(uid)
+          AuthFactory.getUserInfo(uid)
           .then((name)=>{
             $scope.otherUserName = name.name;
           });
@@ -43,19 +42,15 @@ module.exports = function
       }
       setTimeout(() => {
         document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
-        // console.log('timeoutAF');
-      }, 50);
+      }, 70);
     });
   };
 
-  // TODO: test that the convo is scrolling down when the convo is long as hell
   
-  // TODO: add delete button to messages
-
-  AuthFactory.getUser()
+  AuthFactory.authUser()
   .then(user => {
     $scope.uid = user.uid;
-    AuthFactory.getUserName($scope.uid)
+    AuthFactory.getUserInfo($scope.uid)
     .then((name)=>{
       $scope.currentUserName = name.name;
     });
@@ -77,18 +72,15 @@ module.exports = function
         
         ConversationFactory.saveNewMessage($scope.newMessage, $routeParams.convoid)
         .then((messageData)=>{
-          // document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
           setTimeout(() => {
             document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
             console.log('timeoutAF');
-          }, 50);
+          }, 70);
         });
         $scope.newMessage.text = "";
       });
     }
   };
-
-  // TODO: make sure each partial has a containerBox around it so it fits under navbar
 
   $scope.assignUserMessageClasses=(messagesObj)=>{
     let keys = Object.keys(messagesObj);
@@ -119,13 +111,14 @@ module.exports = function
   };
 
   $scope.deleteMessage = (message)=>{
-    ConversationFactory.deleteMessageFromFireBaseForever(message.msgID, $routeParams.convoid)
-    .then((response)=>{
-    });
+    console.log('message',message);
+    console.log('uid',$scope.uid);
+    if($scope.uid === message.uid){
+      ConversationFactory.deleteMessageFromFireBaseForever(message.msgID, $routeParams.convoid)
+      .then((response)=>{
+      });
+    }
   };
 
 
 };
-
-
-// TODO: use skeleton or some other cool styling framework 

@@ -1,18 +1,23 @@
 <div id="containerBox">
-  <hr>
+  <!-- <hr> -->
   <h3 class="centered">Messages</h3>
   <div ng-repeat="convo in conversationList">
-    <a ng-href="#!/conversation/{{convo.convoId}}">
-      <div class="userBlock">
-        <div class="userBlockPic">
-          <img class="tinyPic" ng-src="{{convo.otherUserPic}}">
+    <div class="card">
+      <a ng-href="#!/conversation/{{convo.convoId}}">
+        <div class="messageCard">
+          <div class="messagePic">
+            <img class="tinyPic" ng-src="{{convo.otherUserPic}}">
+          </div>
+          <div>
+            <div class="nameRow">
+              <div class="title is-4"><b>{{convo.otherUserName}}</b></div>
+              <div class="time">{{convo.recentMessage.hour}}</div>
+              <i class="fas fa-angle-right fa-2x carat"></i>
+            </div>
+            <div class="recentMessage">{{convo.recentMessage.text}}</div>
+          </div>
         </div>
-        <div class="userBlockInfo">
-          <div><b>{{convo.otherUserName}}</b></div>
-        </div>
-      </div>
-    </a>
-
+      </a>
+    </div>
   </div>
-
 </div>

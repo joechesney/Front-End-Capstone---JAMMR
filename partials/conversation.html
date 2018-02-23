@@ -1,5 +1,5 @@
 <div id="conversationBox">
-  <hr>
+  <!-- <hr> -->
   <h3 class="centered" >Convo with {{otherUserName}}</h3>
   <div class="msg" ng-repeat="message in thisConvosMessages" ng-class="{'currentUserMsg': message.currentUser, 'otherUserMsg': !message.currentUser}">
     <div class="msgtext">{{message.text}}</div><div ng-click="deleteMessage(message)" class="deleteButton">x</div>
@@ -7,4 +7,8 @@
     <div class="msgName">{{message.userName}}   {{message.time}}</div>
   </div>
 </div>
-<input ng-keyup="sendNewMessage($event)" id="messageInput" type="text" ng-model="newMessage.text" placeholder="send message..." />
+<div class="field">
+  <div class="control">
+    <input id="messageInput" class="input is-small" type="text" ng-keyup="sendNewMessage($event)" ng-model="newMessage.text" placeholder="send message..."/>
+  </div>
+</div>

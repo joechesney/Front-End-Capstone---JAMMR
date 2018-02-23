@@ -1,52 +1,96 @@
 <div id="containerBox">
-  <hr>
   <div id="profilePicture">
     <img src="{{picToDisplay}}" class="profilePicture">
   </div>
   
   <div ng-show="!editing" class="profile">
-    <button ng-show="myProfile" ng-click="editing=true">EDIT PROFILE</button>
-    <button ng-show="!myProfile" ng-click="beginConvo()">MESSAGE </button>
-    <br><br>
-    <div>Name: {{newProfileObj.name}}</div>
-    <div>Age: {{newProfileObj.age}}</div>
-    <div>Experience: {{newProfileObj.experience}} years</div>
-    <div>Zip Code: {{newProfileObj.zipCode}}</div>
+    <div class="profileIcons centered">
+      <a class="button is-info" ng-show="myProfile" ng-click="editing=true">
+        <i class="fas fa-edit"></i>&nbsp; Edit Profile
+      </a>
+      <a class="button is-info" ng-show="!myProfile" ng-click="beginConvo()">
+        <i class="fas fa-envelope"></i> &nbsp; Message {{newProfileObj.name}}
+      </a>
+      <a class="button is-info" ng-show="!myProfile" ng-href="#!/mapPage/{{currentProfileUid}}" >
+        <i class="fas fa-map-marker-alt"></i>&nbsp; Locate {{newProfileObj.name}}
+      </a>
+    </div>
+    <br>
+    <div class="profileInfoContainer">
+      <span ng-show="newProfileObj.hasPracticeSpace" class="hasPracticeSpace centered">THIS USER OWNS A PRACTICE SPACE </span>
+      <div>Name: {{newProfileObj.name}}</div>
+      <div>Age: {{newProfileObj.age}}</div>
+      <div>Experience: {{newProfileObj.experience}} years</div>
+  
+      <div>Instruments: 
+        <span ng-show="newProfileObj.guitar">Guitar </span>
+        <span ng-show="newProfileObj.bass">Bass </span>
+        <span ng-show="newProfileObj.drums">Drums </span>
+        <span ng-show="newProfileObj.vocals">Vocals </span>
+        <span ng-show="newProfileObj.keyboard">Keyboard </span>
+        <span ng-show="newProfileObj.violin">Violin </span>
+        <span ng-show="newProfileObj.saxophone">Saxophone </span>
+        <span ng-show="newProfileObj.trumpet">Trumpet </span>
+        <span ng-show="newProfileObj.trombone">Trombone </span>
+      </div>
+      <div ng-show="newProfileObj.otherInstruments">Other Instruments: {{newProfileObj.otherInstruments}}</div>
+      <div>Interests: 
+          <span ng-show="newProfileObj.professionalBand">Band-Professional </span>
+          <span ng-show="newProfileObj.hobbyBand">Band-Hobby </span>
+          <span ng-show="newProfileObj.jam">Jam </span>
+          <span ng-show="newProfileObj.chat">Chat </span>
+          <span ng-show="newProfileObj.learn">Learn </span>
+          <span ng-show="newProfileObj.session">Session </span>
+          <!-- <span ng-show="newProfileObj.saxophone">saxophone </span> -->
+          <!-- <span ng-show="newProfileObj.trumpet">trumpet </span> -->
+          <!-- <span ng-show="newProfileObj.trombone">trombone </span> -->
+      </div>
+      <div ng-show="newProfileObj.otherInterests">Other Interests: {{newProfileObj.otherInterests}}</div>
 
-    <div>Instruments: 
-      <span ng-show="newProfileObj.guitar">Guitar </span>
-      <span ng-show="newProfileObj.bass">Bass </span>
-      <span ng-show="newProfileObj.drums">Drums </span>
-      <span ng-show="newProfileObj.vocals">Vocals </span>
-      <span ng-show="newProfileObj.keyboard">Keyboard </span>
-      <span ng-show="newProfileObj.violin">Violin </span>
-      <span ng-show="newProfileObj.saxophone">Saxophone </span>
-      <span ng-show="newProfileObj.trumpet">Trumpet </span>
-      <span ng-show="newProfileObj.trombone">Trombone </span>
     </div>
-    <div>Other Instruments: {{newProfileObj.otherInstruments}}</div>
-    <div>Interests: 
-        <span ng-show="newProfileObj.professionalBand">Band-Professional </span>
-        <span ng-show="newProfileObj.hobbyBand">Band-Hobby </span>
-        <span ng-show="newProfileObj.jam">Jam </span>
-        <span ng-show="newProfileObj.chat">Chat </span>
-        <span ng-show="newProfileObj.learn">Learn </span>
-        <span ng-show="newProfileObj.session">Session </span>
-        <!-- <span ng-show="newProfileObj.saxophone">saxophone </span> -->
-        <!-- <span ng-show="newProfileObj.trumpet">trumpet </span> -->
-        <!-- <span ng-show="newProfileObj.trombone">trombone </span> -->
-    </div>
-    <div>Other Interests: {{newProfileObj.otherInterests}}</div>
   </div>
   
-  <div ng-show="editing" class="editingProfile">
-    <button ng-click="saveProfile(newProfileObj)">SAVE PROFILE</button>
+  <div ng-show="editing" class="profileInfoContainer">
+    <div class='centered'>
+      <a class="button is-info" ng-click="saveProfile(newProfileObj)">
+        <i class="fas fa-save"></i>&nbsp; Save Profile
+      </a>
+    </div>
     
-    <div>Picture URL: <input ng-show="editing" ng-model="newProfileObj.profilePicture"/></div>
-    <div>Name: <input ng-show="editing" ng-model="newProfileObj.name"/></div>
-    <div>Age: <input type="number" ng-show="editing" ng-model="newProfileObj.age"/></div>
-    <div>Experience: <input type="number" ng-show="editing" ng-model="newProfileObj.experience"/></div>
-    <div>Zip Code: <input type="text" ng-show="editing" ng-model="newProfileObj.zipCode"/></div>
+    <div class="field">
+      <label class="label is-small">Picture URL</label>
+      <div class="control">
+        <input class="input is-small" type="text" ng-model="newProfileObj.profilePicture" placeholder="Experience"/>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label is-small">Name</label>
+      <div class="control">
+        <input class="input is-small" type="text" ng-model="newProfileObj.name" placeholder="Experience"/>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label is-small">Age</label>
+      <div class="control">
+        <input class="input is-small" type="number" ng-model="newProfileObj.age" placeholder="Experience"/>
+      </div>
+    </div>  
+    <div class="field">
+      <label class="label is-small">Experience</label>
+      <div class="control">
+        <input class="input is-small" type="number" ng-model="newProfileObj.experience" placeholder="Experience"/>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label is-small">Zip Code</label>
+      <div class="control">
+        <input class="input is-small" type="number" ng-model="newProfileObj.zipCode" placeholder="Experience"/>
+      </div>
+    </div>
+    
+    <div>I can provide a practice space: <input type="checkbox" ng-model="newProfileObj.hasPracticeSpace">
+    </div>
+
     <div>
       <br><input type="checkbox" ng-model="newProfileObj.guitar">Guitar
       <br><input type="checkbox" ng-model="newProfileObj.bass">Bass
@@ -59,7 +103,12 @@
       <br><input type="checkbox" ng-model="newProfileObj.trombone">Trombone
     </div>
 
-    <div>Other Instruments: <input ng-show="editing" ng-model="newProfileObj.otherInstruments"/></div>
+    <div class="field">
+      <label class="label is-small">Other Instruments</label>
+      <div class="control">
+        <input class="input is-small" type="text" ng-model="newProfileObj.otherInstruments"/>
+      </div>
+    </div>
     <div>
       
     </div>
@@ -74,8 +123,12 @@
       <!-- <br><input type="checkbox" ng-model="newProfileObj.trumpet">Trumpet -->
       <!-- <br><input type="checkbox" ng-model="newProfileObj.trombone">Trombone -->
     </div>
-    <div>Other Interests: <input ng-show="editing" ng-model="newProfileObj.otherInterests"/></div>
-  
+    <div class="field">
+        <label class="label is-small">Other Interests</label>
+        <div class="control">
+          <input class="input is-small" type="text" ng-model="newProfileObj.otherInterests"/>
+        </div>
+      </div>
   </div>
 
 </div>

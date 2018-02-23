@@ -44,10 +44,6 @@ app
     templateUrl: "partials/conversation.html",
     controller: "ConversationCtrl"
   })
-  .when("/searchResults", {
-    templateUrl: "partials/searchResults.html",
-    controller: "SearchCtrl"
-  })
   .when("/searchPage", {
     templateUrl: "partials/searchPage.html",
     controller: "SearchCtrl"
@@ -55,6 +51,10 @@ app
   .when("/homePage", {
     templateUrl: "partials/homePage.html",
     controller: "HomePageCtrl"
+  })
+  .when("/mapPage/:uid", {
+    templateUrl: "partials/mapPage.html",
+    controller: "MapPageCtrl"
   })
   .when("/mapPage", {
     templateUrl: "partials/mapPage.html",

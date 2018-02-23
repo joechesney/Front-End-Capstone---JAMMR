@@ -6,7 +6,9 @@ module.exports = function
 ($scope, AuthFactory, SearchFactory, ProfileFactory, $window, 
   $location, $routeParams, ConversationFactory){
   
-  AuthFactory.getUser()
+  $scope.currentProfileUid = $routeParams.pid;
+
+  AuthFactory.authUser()
   .then(user => {
     $scope.uid = user.uid;
     if($scope.uid === $routeParams.pid){$scope.myProfile = true;}else{$scope.myProfile = false;}
@@ -16,7 +18,7 @@ module.exports = function
     $location.path("/registerLogin");
   });
 
-  // TODO: make check boxes on profile page be CHECKED if they are true already
+
   $scope.getUserProfileDataCTRLR = () =>{
     ProfileFactory.getUserProfileData($routeParams.pid)
     .then((user)=>{
@@ -28,6 +30,7 @@ module.exports = function
         uid : user.uid,
         experience : +user.experience,
         profilePicture: user.profilePicture,
+        hasPracticeSpace: user.hasPracticeSpace,
 
         guitar: user.guitar,
         bass: user.bass,
@@ -77,18 +80,6 @@ module.exports = function
     }
   };
 
-  // TODO: add map to user profile that shows the pin where the user is located.
-  // maybe make this map in a modal that you can swipe to past the picture
-
-  // TODO: some sort of image uploader to save profile images to firebase?
-  // otherwise, images must link from a url
-
-  // TODO: refactor data structure:
-    //remove convoIDs from user objects:
-    //   since the convo objects already have the uid as a property,
-    //   i can just orderBy user1 and then make a separate call to orderBy user2,
-    //   and retrieve the convos that way. This will provide flatter data, and 
-    //   reduce the amount of XHRs (i think).
       
   $scope.makeNewConvo = ()=>{
     let newConvoObj = {

@@ -38,7 +38,7 @@ module.exports = function($q, $http, fbConfig){
 
   // TODO: change the name of this function to 'AuthUser' to be more clear
   // authorization to check if a user is logged in
-  const getUser = () => {
+  const authUser = () => {
     return $q((resolve, reject) => {
       firebase.auth()
       .onAuthStateChanged(user => {
@@ -47,8 +47,7 @@ module.exports = function($q, $http, fbConfig){
     });
   };
 
-  // TODO: change this function name to 'GetUserInfo' to be more clear
-  const getUserName = (uid)=>{
+  const getUserInfo = (uid)=>{
     return $q((resolve, reject) => {
       $http.get(`${fbConfig.databaseURL}/users/${uid}.json`)
         .then(({data}) => resolve(data))
@@ -74,10 +73,10 @@ module.exports = function($q, $http, fbConfig){
   return {
     registerNewUser, 
     loginWithEmailPassword, 
-    getUser, 
+    authUser, 
     logout, 
     postUserProfile, 
-    getUserName,
+    getUserInfo,
     getAllUsers
   };
 };
