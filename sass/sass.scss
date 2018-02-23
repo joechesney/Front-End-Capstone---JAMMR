@@ -135,10 +135,11 @@ a{
 
 // User BLOCKS
 .tinyPic{
-  width: 90%;
+  width: 60%;
   padding-right: .2em;
-  margin: .3em;
+  margin: .5em auto;
   display: block;
+  border-radius: 50%;
 }
 .userBlock{
   display: inline-grid;
@@ -202,4 +203,36 @@ a{
 a .userBlock {
   text-decoration: none;
   color: black !important;
+}
+
+// MESSAGES PAGE
+
+.messageCard{
+  display: grid;
+  grid-template-columns: 22% 78%;
+  // grid-template-rows: 25% 75%;
+}
+.recentMessage{
+  color: gray;
+  grid-column: span 3;
+  grid-column-start: 2;
+}
+.nameRow{
+  grid-column-start: 2;
+  display: grid;
+  grid-template-columns: 55% 35% 10%;
+}
+.name{
+  grid-column: 1;
+}
+.time{
+  grid-column: 2;
+  color: gray;
+}
+.carat{
+  grid-column: 3;
+}
+.messagePic{
+  grid-column-start: 1;
+  grid-row: span 2;
 }

@@ -19,6 +19,10 @@ module.exports = function
         arrayOfConvoIds.forEach(convoId=>{
           MessageFactory.getConvoInfo(convoId)
           .then((convoInfo)=>{
+            console.log('convoInfo',convoInfo );
+            convoInfo.recentMessage = convoInfo.messages[Object.keys(convoInfo.messages)[Object.keys(convoInfo.messages).length-1]];
+            convoInfo.recentMessage.hour = convoInfo.recentMessage.time.slice((convoInfo.recentMessage.time.indexOf(',')+2));
+            console.log('recentMessage',convoInfo.recentMessage);
             let uidArray = [];
             uidArray.push(convoInfo.user1);
             uidArray.push(convoInfo.user2);
