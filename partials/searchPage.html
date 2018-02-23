@@ -1,7 +1,7 @@
 <div id="containerBox">
   <hr>
   <h2 ng-show="!filteredUserArray" class="centered">Search for JAMRs</h2>
-  <h2 ng-show="filteredUserArray" class="centered">JAMR Results</h2>
+  <h2 ng-show="filteredUserArray" class="centered">Search Results</h2>
 
   <div ng-show="!filteredUserArray"  id="filterSelect">
     <div class="field">
@@ -37,7 +37,8 @@
       {{interestSearch}}<br>
       {{experienceSearch}}<br>
       {{ageSearch}}<br><br>
-      <button ng-click="searchForUsers()">Search</button>
+      <a class="button is-info" ng-click="searchForUsers()"><i class="fas fa-search"></i>&nbsp; Search</a>
+
   </div>
   
   <div ng-show="filteredUserArray">
@@ -48,7 +49,7 @@
               <img class="tinyPic" ng-src="{{otherUser.profilePicture}}"/>
             </div>
             <div class="userBlockInfo">
-              <div>Name: {{otherUser.name}}          Age: {{otherUser.age}}</div>
+              <div>Name: {{otherUser.name}}&nbsp;&nbsp; Age: {{otherUser.age}}</div>
               <div>Instruments: 
                   <span ng-show="otherUser.guitar">Guitar </span>
                   <span ng-show="otherUser.bass">Bass </span>
@@ -71,7 +72,7 @@
                   <!-- <span ng-show="otherUser.trumpet">trumpet </span> -->
                   <!-- <span ng-show="otherUser.trombone">trombone </span> -->
                 </div>
-                <div>Experience: {{otherUser.experience}} years</div>
+                <!-- <div>Experience: {{otherUser.experience}} years</div> -->
             </div>
           </div>
         </a>

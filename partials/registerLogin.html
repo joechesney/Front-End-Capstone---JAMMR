@@ -1,9 +1,43 @@
 <div id="containerBox">
   <hr>
-  <input type="email" ng-model="account.email" placeholder="Email Address">
-  <input type="password" ng-model="account.password" placeholder="Password">
-  <br>
-  <button ng-click="registerCTRLR()">register</button>
-  <button ng-click="loginCTRLR()">login</button>
+  <!-- <input type="email" ng-model="account.email" placeholder="Email Address"> -->
+  <!-- <input type="password" ng-model="account.password" placeholder="Password"> -->
+  <div class="profileInfoContainer">
 
+    <div class="field">
+      <p class="control has-icons-left has-icons-right">
+        <input class="input" ng-model="account.email" type="email" placeholder="Email">
+        <span class="icon is-small is-left">
+          <i class="fas fa-envelope"></i>
+        </span>
+        <span class="icon is-small is-right">
+          <i class="fas fa-check"></i>
+        </span>
+      </p>
+    </div>
+    <div class="field">
+      <p class="control has-icons-left">
+        <input class="input" ng-model="account.password" type="password" placeholder="Password">
+        <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
+      </p>
+    </div>
+    <div class="field">
+      <p class="control">
+        <button ng-click="loginCTRLR()" class="button is-success">
+          Login
+        </button>
+      </p>
+    </div>
+    <div class="field">
+      <p class="control">
+        <button ng-click="registerCTRLR()" class="button is-success is-small is-outlined">
+          Register
+        </button>
+      </p>
+    </div>
+
+  </div>
 </div>
+  

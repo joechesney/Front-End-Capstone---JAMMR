@@ -103,7 +103,12 @@
       <br><input type="checkbox" ng-model="newProfileObj.trombone">Trombone
     </div>
 
-    <div>Other Instruments: <input ng-show="editing" ng-model="newProfileObj.otherInstruments"/></div>
+    <div class="field">
+      <label class="label is-small">Other Instruments</label>
+      <div class="control">
+        <input class="input is-small" type="text" ng-model="newProfileObj.otherInstruments"/>
+      </div>
+    </div>
     <div>
       
     </div>
@@ -118,8 +123,12 @@
       <!-- <br><input type="checkbox" ng-model="newProfileObj.trumpet">Trumpet -->
       <!-- <br><input type="checkbox" ng-model="newProfileObj.trombone">Trombone -->
     </div>
-    <div>Other Interests: <input ng-show="editing" ng-model="newProfileObj.otherInterests"/></div>
-  
+    <div class="field">
+        <label class="label is-small">Other Interests</label>
+        <div class="control">
+          <input class="input is-small" type="text" ng-model="newProfileObj.otherInterests"/>
+        </div>
+      </div>
   </div>
 
 </div>

@@ -53,6 +53,8 @@
 
 .profileInfoContainer{
   margin-left:1em;
+  margin-right:1em;
+
 }
 
 // CONVERSATION
@@ -141,6 +143,7 @@ a{
 .userBlock{
   display: inline-grid;
   grid-template-columns: 30% 70%;
+  border-bottom: 1px solid black;
 }
 .userBlockPic{
   grid-column-start: 1;
@@ -195,4 +198,8 @@ a{
 // SEARCH PAGE
 #filterSelect{
   margin: 1em;
+}
+a .userBlock {
+  text-decoration: none;
+  color: black !important;
 }
