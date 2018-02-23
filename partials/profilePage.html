@@ -5,45 +5,48 @@
   
   <div ng-show="!editing" class="profile">
     <span ng-show="newProfileObj.hasPracticeSpace" class="hasPracticeSpace">THIS USER OWNS A PRACTICE SPACE </span>
-    <br>
-    <button ng-show="myProfile" ng-click="editing=true">
-      <i class="fas fa-edit"></i>
-    </button>
-    <button ng-show="!myProfile" ng-click="beginConvo()">
-      <i class="fas fa-envelope"></i> 
-    </button>
-    <a ng-href="#!/mapPage/{{currentProfileUid}}">
-      <i class="fas fa-map-marker-alt"></i>
-    </a> 
-    <br><br>
-    <div>Name: {{newProfileObj.name}}</div>
-    <div>Age: {{newProfileObj.age}}</div>
-    <div>Experience: {{newProfileObj.experience}} years</div>
+    <div class="profileIcons centered">
+      <a class="button is-info" ng-show="myProfile" ng-click="editing=true">
+        <i class="fas fa-edit"></i>&nbsp; Edit Profile
+      </a>
+      <a class="button is-info" ng-show="!myProfile" ng-click="beginConvo()">
+        <i class="fas fa-envelope"></i> &nbsp; Message {{newProfileObj.name}}
+      </a>
+      <a class="button is-info" ng-href="#!/mapPage/{{currentProfileUid}}" >
+        <i class="fas fa-map-marker-alt"></i>&nbsp; Locate {{newProfileObj.name}}
+      </a>
+    </div>
+    <div class="profileInfoContainer">
+      <div>Name: {{newProfileObj.name}}</div>
+      <div>Age: {{newProfileObj.age}}</div>
+      <div>Experience: {{newProfileObj.experience}} years</div>
+  
+      <div>Instruments: 
+        <span ng-show="newProfileObj.guitar">Guitar </span>
+        <span ng-show="newProfileObj.bass">Bass </span>
+        <span ng-show="newProfileObj.drums">Drums </span>
+        <span ng-show="newProfileObj.vocals">Vocals </span>
+        <span ng-show="newProfileObj.keyboard">Keyboard </span>
+        <span ng-show="newProfileObj.violin">Violin </span>
+        <span ng-show="newProfileObj.saxophone">Saxophone </span>
+        <span ng-show="newProfileObj.trumpet">Trumpet </span>
+        <span ng-show="newProfileObj.trombone">Trombone </span>
+      </div>
+      <div>Other Instruments: {{newProfileObj.otherInstruments}}</div>
+      <div>Interests: 
+          <span ng-show="newProfileObj.professionalBand">Band-Professional </span>
+          <span ng-show="newProfileObj.hobbyBand">Band-Hobby </span>
+          <span ng-show="newProfileObj.jam">Jam </span>
+          <span ng-show="newProfileObj.chat">Chat </span>
+          <span ng-show="newProfileObj.learn">Learn </span>
+          <span ng-show="newProfileObj.session">Session </span>
+          <!-- <span ng-show="newProfileObj.saxophone">saxophone </span> -->
+          <!-- <span ng-show="newProfileObj.trumpet">trumpet </span> -->
+          <!-- <span ng-show="newProfileObj.trombone">trombone </span> -->
+      </div>
+      <div>Other Interests: {{newProfileObj.otherInterests}}</div>
 
-    <div>Instruments: 
-      <span ng-show="newProfileObj.guitar">Guitar </span>
-      <span ng-show="newProfileObj.bass">Bass </span>
-      <span ng-show="newProfileObj.drums">Drums </span>
-      <span ng-show="newProfileObj.vocals">Vocals </span>
-      <span ng-show="newProfileObj.keyboard">Keyboard </span>
-      <span ng-show="newProfileObj.violin">Violin </span>
-      <span ng-show="newProfileObj.saxophone">Saxophone </span>
-      <span ng-show="newProfileObj.trumpet">Trumpet </span>
-      <span ng-show="newProfileObj.trombone">Trombone </span>
     </div>
-    <div>Other Instruments: {{newProfileObj.otherInstruments}}</div>
-    <div>Interests: 
-        <span ng-show="newProfileObj.professionalBand">Band-Professional </span>
-        <span ng-show="newProfileObj.hobbyBand">Band-Hobby </span>
-        <span ng-show="newProfileObj.jam">Jam </span>
-        <span ng-show="newProfileObj.chat">Chat </span>
-        <span ng-show="newProfileObj.learn">Learn </span>
-        <span ng-show="newProfileObj.session">Session </span>
-        <!-- <span ng-show="newProfileObj.saxophone">saxophone </span> -->
-        <!-- <span ng-show="newProfileObj.trumpet">trumpet </span> -->
-        <!-- <span ng-show="newProfileObj.trombone">trombone </span> -->
-    </div>
-    <div>Other Interests: {{newProfileObj.otherInterests}}</div>
   </div>
   
   <div ng-show="editing" class="editingProfile">

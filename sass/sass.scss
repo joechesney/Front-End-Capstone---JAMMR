@@ -33,17 +33,28 @@
 // PROFILE PAGE
 #profilePicture{
   width: 100%;
-  height: 55vh;
+  // height: 52vh;
+  height: auto;
 
 }
 #profilePicture img{
   display: block;
   max-width: 90%;
-  margin: 1em auto;
+  margin: .5em auto;
 }
 
 .hasPracticeSpace{
   color: red;
+}
+
+.profileIcons{
+  margin: 0 auto;
+  width: auto;  
+  display: block;
+}
+
+.profileInfoContainer{
+  margin-left:1em;
 }
 
 // CONVERSATION
