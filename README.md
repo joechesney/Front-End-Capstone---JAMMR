@@ -1,11 +1,11 @@
-#To run this Repo:
-1. clone this repo
+# To run this Repo:
+1. clone this repo as a new project
 2. run npm install
-3. run grunt in your terminal from the root of this repo
+3. run grunt in your terminal from the root of this repo, AND run a local server.
 4. open this project in Chrome, and for best visual results, use mobile device perspective mode in Chrome Dev Tools, or resize the Chrome window to a mobile phone-shaped size.
 
 
-How to Use the app:
+# How to Use the app:
 1. create a new account by registering with a email/pw, and you will be taken to the profile editing page to create your new profile.
   - OR - 
   Log in using an account I have made available to testers: email: z@z.com pw: aaaaaa
