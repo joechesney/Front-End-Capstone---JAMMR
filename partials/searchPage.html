@@ -3,25 +3,41 @@
   <h2 ng-show="!filteredUserArray" class="centered">Search for JAMRs</h2>
   <h2 ng-show="filteredUserArray" class="centered">JAMR Results</h2>
 
-  <div ng-show="!filteredUserArray" id="filterSelect">
-    <br>
-    Instruments:
-    <select ng-model="instrumentSearch" ng-options="instrument as instrument for instrument in instruments">
-    </select><br>
-    Interests:
-    <select ng-model="interestSearch" ng-options="interest for interest in interests">
-    </select><br>
-    Years of Experience: <input type="number" ng-model="experienceSearch"/>
-    <br>Age:<input type="number" ng-model="ageSearch"/><br><br>
+  <div ng-show="!filteredUserArray"  id="filterSelect">
+    <div class="field">
+      <label class="label">Instruments</label>
+      <div class="control" >
+        <select class="select" ng-model="instrumentSearch" ng-options="instrument as instrument for instrument in instruments"></select>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Interests</label>
+      <div class="control">
+        <select class="select" ng-model="interestSearch" ng-options="interest for interest in interests">
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Experience</label>
+      <div class="control">
+        <input class="input" type="number" ng-model="experienceSearch" placeholder="Experience"/>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Age</label>
+      <div class="control">
+        <input class="input" type="number" ng-model="ageSearch" placeholder="Age"/>
+      </div>
+    </div>
     <div ng-show="showAlert">
       <span style="color: red;">Please select at least on filter!</span>
     </div><br>
-    Current Filters:<br>
-    {{instrumentSearch}}<br>
-    {{interestSearch}}<br>
-    {{experienceSearch}}<br>
-    {{ageSearch}}<br><br>
-    <button ng-click="searchForUsers()">Search</button>
+      Current Filters:<br>
+      {{instrumentSearch}}<br>
+      {{interestSearch}}<br>
+      {{experienceSearch}}<br>
+      {{ageSearch}}<br><br>
+      <button ng-click="searchForUsers()">Search</button>
   </div>
   
   <div ng-show="filteredUserArray">
