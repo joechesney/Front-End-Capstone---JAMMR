@@ -3,7 +3,7 @@
   <h2 ng-show="!filteredUserArray" class="centered">Search for JAMRs</h2>
   <h2 ng-show="filteredUserArray" class="centered">Search Results</h2>
   <h2 ng-show="filteredUserArray" class="centered">Click on a user to view their profile</h2>
-
+<br>
 
   <div ng-show="!filteredUserArray"  id="filterSelect">
     <div class="field">
@@ -33,13 +33,14 @@
     </div>
     <div ng-show="showAlert">
       <span style="color: red;">Please select at least on filter!</span>
-    </div><br>
-      Current Filters:<br>
-      {{instrumentSearch}}<br>
-      {{interestSearch}}<br>
-      {{experienceSearch}}<br>
-      {{ageSearch}}<br><br>
-      <a class="button is-info" ng-click="searchForUsers()"><i class="fas fa-search"></i>&nbsp; Search</a>
+    </div>
+      <!-- Current Filters:<br>
+      <span ng-show="instrumentSearch">{{instrumentSearch}}<br></span><br>
+      <span ng-show="interestSearch">{{interestSearch}}<br></span>
+      <span ng-show="experienceSearch">{{experienceSearch}}<br></span>
+      <span ng-show="ageSearch">{{ageSearch}}<br></span> -->
+
+      <a class="button is-info centered" ng-click="searchForUsers()"><i class="fas fa-search"></i>&nbsp; Search</a>
 
   </div>
   
