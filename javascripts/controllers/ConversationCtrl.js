@@ -17,7 +17,7 @@ module.exports = function
   
 
   $scope.getConvo = ()=>{
-    ConversationFactory.getAllConvoMessages($routeParams.convoid)
+    ConversationFactory.getConvoObject($routeParams.convoid)
     .then((data)=>{
       if(data === null || data === undefined){
         console.log('no messages between these users');

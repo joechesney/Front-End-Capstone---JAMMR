@@ -12,7 +12,7 @@ module.exports = function($q, $http, fbConfig){
     });
   };
 
-  const checkForConvoBetweenTheseTwoUsers = (convoId)=>{
+  const getConvoObject = (convoId)=>{
     return $q((resolve, reject)=>{
       $http.get(`${fbConfig.databaseURL}/convos/${convoId}.json`)
       .then(({data})=>{        
@@ -53,8 +53,7 @@ module.exports = function($q, $http, fbConfig){
 
   return { 
     getUserConvoIds, 
-    checkForConvoBetweenTheseTwoUsers, 
-    getAllConvoMessages, 
+    getConvoObject, 
     saveNewMessage,
     deleteMessageFromFireBaseForever
   };

@@ -110,10 +110,9 @@ $scope.beginConvo = () =>{
       let convoExists = false;
 
       /* jshint ignore:start */
-      // while (convoExists === false) {
         for(let i = 0; i < arrayOfConvoIds.length; i++){
           let convoId = arrayOfConvoIds[i];
-          ConversationFactory.checkForConvoBetweenTheseTwoUsers(convoId)
+          ConversationFactory.getConvoObject(convoId)
           .then((convoObj)=>{
             convoObj.convoId = convoId;
             if(convoObj.user1 === $routeParams.pid || convoObj.user2 === $routeParams.pid){
@@ -127,7 +126,6 @@ $scope.beginConvo = () =>{
           });
         }
         
-      // }
       /* jshint ignore:end */
     } // end of else
   });
