@@ -21,15 +21,6 @@ module.exports = function($q, $http, fbConfig){
     });
   };
 
-  const getAllConvoMessages = (convoId)=>{
-    return $q((resolve, reject)=>{
-      $http.get(`${fbConfig.databaseURL}/convos/${convoId}.json`)
-      .then(({data})=>{
-        resolve(data);
-      });
-    });
-  };
-
   const saveNewMessage = (newMessage, convoId)=>{
     return $q((resolve, reject)=>{
       $http.post(`${fbConfig.databaseURL}/convos/${convoId}/messages.json`, 
