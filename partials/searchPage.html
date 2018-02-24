@@ -32,16 +32,10 @@
       </div>
     </div>
     <div ng-show="showAlert">
-      <span style="color: red;">Please select at least on filter!</span>
+      <span style="color: red;">Please select at least one filter!</span>
     </div>
-      <!-- Current Filters:<br>
-      <span ng-show="instrumentSearch">{{instrumentSearch}}<br></span><br>
-      <span ng-show="interestSearch">{{interestSearch}}<br></span>
-      <span ng-show="experienceSearch">{{experienceSearch}}<br></span>
-      <span ng-show="ageSearch">{{ageSearch}}<br></span> -->
-
-      <a class="button is-info centered" ng-click="searchForUsers()"><i class="fas fa-search"></i>&nbsp; Search</a>
-
+      <a class="button is-info centered" ng-click="searchForUsers()">
+        <i class="fas fa-search"></i>&nbsp; Search</a>
   </div>
   
   <div ng-show="filteredUserArray">

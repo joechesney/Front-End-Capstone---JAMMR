@@ -54,12 +54,14 @@ module.exports = function
             tempArray.push(user);
           });
         });
-        let tempArray2 = _.uniqBy(tempArray, "uid");
-        let tempArray3 = _.remove(tempArray2, (obj)=>{return obj.uid !== $scope.currentUser.uid;} );
-        $scope.filteredUserArray = tempArray3;
+        if(counter === ($scope.filterArray.length)){$scope.showAlert = true;}
+        else{
+          let tempArray2 = _.uniqBy(tempArray, "uid");
+          let tempArray3 = _.remove(tempArray2, (obj)=>{return obj.uid !== $scope.currentUser.uid;} );
+          $scope.filteredUserArray = tempArray3;
+        }
       });
 
-      // if(counter === ($scope.filterArray.length-1)){$scope.showAlert = true;}
       // TODO: This isnt working after my refactor. Will fix later
     };
     
