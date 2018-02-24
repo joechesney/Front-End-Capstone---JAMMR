@@ -111,13 +111,10 @@ module.exports = function
   };
 
   $scope.deleteMessage = (message)=>{
-    console.log('message',message);
-    console.log('uid',$scope.uid);
     if($scope.uid === message.uid){
-      console.log('delete is true');
       ConversationFactory.deleteMessageFromFireBaseForever(message.msgID, $routeParams.convoid)
       .then((response)=>{
-        console.log('angular should update here'); //  anuglar should update here
+        // the page should update here bc the database has changed
       });
     }
   };
