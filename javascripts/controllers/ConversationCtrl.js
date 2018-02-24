@@ -10,7 +10,7 @@ module.exports = function
   $scope.listenToConvo = (convoId)=>{
     let JAMMRDatabase = firebase.database().ref("convos/"+convoId);
     JAMMRDatabase.on('value', (snapshot) => {
-      console.log('snapshot when convo changes::',snapshot.val());
+      // console.log('snapshot when convo changes::',snapshot.val());
       $scope.getConvo();
     });
   };
