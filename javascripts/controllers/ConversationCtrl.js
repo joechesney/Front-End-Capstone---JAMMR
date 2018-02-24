@@ -10,7 +10,7 @@ module.exports = function
   $scope.listenToConvo = (convoId)=>{
     let JAMMRDatabase = firebase.database().ref("convos/"+convoId);
     JAMMRDatabase.on('value', (snapshot) => {
-      // console.log('snapshot when convo changes::',snapshot.val());
+      console.log('snapshot when convo changes::',snapshot.val());
       $scope.getConvo();
     });
   };
@@ -114,8 +114,10 @@ module.exports = function
     console.log('message',message);
     console.log('uid',$scope.uid);
     if($scope.uid === message.uid){
+      console.log('delete is true');
       ConversationFactory.deleteMessageFromFireBaseForever(message.msgID, $routeParams.convoid)
       .then((response)=>{
+        console.log('angular should update here'); //  anuglar should update here
       });
     }
   };

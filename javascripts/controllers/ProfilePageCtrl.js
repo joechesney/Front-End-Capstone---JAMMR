@@ -112,16 +112,20 @@ $scope.beginConvo = () =>{
       /* jshint ignore:start */
         for(let i = 0; i < arrayOfConvoIds.length; i++){
           let convoId = arrayOfConvoIds[i];
+          console.log('convoId before get',convoId);
           ConversationFactory.getConvoObject(convoId)
           .then((convoObj)=>{
+            console.log('convoObj',convoObj);
             convoObj.convoId = convoId;
-            if(convoObj.user1 === $routeParams.pid || convoObj.user2 === $routeParams.pid){
+            if((convoObj.user1 === $routeParams.pid || convoObj.user2 === $routeParams.pid)&& convoExists === false){
               convoExists = true;
+              console.log('convoExists in 1st if',convoExists);
               i = arrayOfConvoIds.length;
               $location.path(`/conversation/${convoObj.convoId}`);
-            }else if(i === (arrayOfConvoIds.length - 1)){
+            }else if(i === (arrayOfConvoIds.length - 1) && convoExists === false){
               $scope.makeNewConvo(); 
               convoExists = true;
+              console.log('convoExists in 2ND if',convoExists);
             }
           });
         }
