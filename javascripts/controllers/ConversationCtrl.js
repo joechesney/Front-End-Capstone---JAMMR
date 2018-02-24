@@ -17,7 +17,7 @@ module.exports = function
   
 
   $scope.getConvo = ()=>{
-    ConversationFactory.getAllConvoMessages($routeParams.convoid)
+    ConversationFactory.getConvoObject($routeParams.convoid)
     .then((data)=>{
       if(data === null || data === undefined){
         console.log('no messages between these users');
@@ -111,11 +111,10 @@ module.exports = function
   };
 
   $scope.deleteMessage = (message)=>{
-    console.log('message',message);
-    console.log('uid',$scope.uid);
     if($scope.uid === message.uid){
       ConversationFactory.deleteMessageFromFireBaseForever(message.msgID, $routeParams.convoid)
       .then((response)=>{
+        // the page should update here bc the database has changed
       });
     }
   };

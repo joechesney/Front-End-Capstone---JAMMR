@@ -34,15 +34,6 @@ module.exports = function($q, $http, fbConfig, googleMapsConfig){
     });
   };
 
-  const addConvoToUserObjects = (uid, convoId)=>{
-    return $q((resolve, reject)=>{
-      $http.post(`${fbConfig.databaseURL}/users/${uid}/convos.json`, JSON.stringify(convoId))
-      .then(({data})=>{
-        resolve(data);
-      });
-    });
-  };
-
   const getCoordinatesFromZip = (zip)=>{
     return $q((resolve, reject)=>{
       $http.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${zip},US&key=${googleMapsConfig.apiKey}`)
@@ -56,7 +47,6 @@ module.exports = function($q, $http, fbConfig, googleMapsConfig){
   return{ 
     getUserProfileData, 
     saveProfileWithChanges, 
-    addConvoToUserObjects, 
     createNewConvoObject,
     getCoordinatesFromZip
    };

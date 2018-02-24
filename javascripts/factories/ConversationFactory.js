@@ -2,29 +2,11 @@
 
 
 module.exports = function($q, $http, fbConfig){
-    
-  const getUserConvoIds = (uid) =>{
-    return $q((resolve, reject)=>{
-      $http.get(`${fbConfig.databaseURL}/users/${uid}/convos.json`)
-      .then(({data})=>{        
-        resolve(data);
-      });
-    });
-  };
 
-  const checkForConvoBetweenTheseTwoUsers = (convoId)=>{
+  const getConvoObject = (convoId)=>{
     return $q((resolve, reject)=>{
       $http.get(`${fbConfig.databaseURL}/convos/${convoId}.json`)
       .then(({data})=>{        
-        resolve(data);
-      });
-    });
-  };
-
-  const getAllConvoMessages = (convoId)=>{
-    return $q((resolve, reject)=>{
-      $http.get(`${fbConfig.databaseURL}/convos/${convoId}.json`)
-      .then(({data})=>{
         resolve(data);
       });
     });
@@ -52,9 +34,7 @@ module.exports = function($q, $http, fbConfig){
 
 
   return { 
-    getUserConvoIds, 
-    checkForConvoBetweenTheseTwoUsers, 
-    getAllConvoMessages, 
+    getConvoObject, 
     saveNewMessage,
     deleteMessageFromFireBaseForever
   };
