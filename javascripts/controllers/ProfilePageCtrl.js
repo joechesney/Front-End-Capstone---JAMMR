@@ -94,7 +94,7 @@ module.exports = function
 
   $scope.beginConvo = () =>{
 
-    let getConvosPromiseArray = [MessageFactory.getConvosByUser1($scope.currentUserID),MessageFactory.getConvosByUser2($scope.currentUserID)];
+    let getConvosPromiseArray = [MessageFactory.getConvosByUser1($scope.uid),MessageFactory.getConvosByUser2($scope.uid)];
     $q.all(getConvosPromiseArray)
     .then((convosASHELLL)=>{
       console.log('convosASHELL',convosASHELLL);
