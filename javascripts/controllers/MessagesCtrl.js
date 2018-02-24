@@ -4,17 +4,7 @@
 // MESSAGES CTRL
 module.exports = function
 ($scope, $location, AuthFactory, MessageFactory, $routeParams, ConversationFactory, $q){
-
   $scope.tempMessageList = [];
-
-  // 2 factory functions. 1 that gets convos ordered by user1, and
-  // another function that gets convos ordered by user2.
-  // it checks that the uid of the currently logged in user is equal to either user1 or user 2
-  // if it is true, then it adds the convo to an array. combines all the convos whether
-  // the user is user1 or user2
-
-  
-
   // BEGIN KEEP THIS
   AuthFactory.authUser()
   .then(user => {
@@ -27,47 +17,35 @@ module.exports = function
       let convos2 = Object.values(convosASHELLL[1]);
       console.log('them convos1:::',convos1);
       console.log('them convos2:::',convos2);
-      let allConvos = _.concat(convos1, convos2);
-      console.log('allcvonso',allConvos);
-    });
+      let arrayOfAllConvoObjects = _.concat(convos1, convos2);
+      console.log('arrayOfAllConvoObjects',arrayOfAllConvoObjects);
+    
     // END KEEP THIS
-    ConversationFactory.getUserConvoIds($scope.currentUserID)
-    .then((objectOfConvoIds)=>{
-      if(objectOfConvoIds === null || objectOfConvoIds === undefined){
+    
+      if(arrayOfAllConvoObjects.length === 0 || arrayOfAllConvoObjects.length === -1){
         console.log('no convos bro bro');
       }else{
-        let arrayOfConvoIds = Object.values(objectOfConvoIds);
-        arrayOfConvoIds.forEach(convoId=>{
-          MessageFactory.getConvoInfo(convoId)
-          .then((convoInfo)=>{
-            // console.log('convoInfo',convoInfo);
-            if(convoInfo.messages !== undefined){
-              convoInfo.recentMessage = convoInfo.messages[Object.keys(convoInfo.messages)[Object.keys(convoInfo.messages).length-1]];
+        arrayOfAllConvoObjects.forEach(convoObj=>{
+            if(convoObj.messages !== undefined){
+              convoObj.recentMessage = convoObj.messages[Object.keys(convoObj.messages)[Object.keys(convoObj.messages).length-1]];
+              convoObj.recentMessage.hour = convoObj.recentMessage.time.slice((convoObj.recentMessage.time.indexOf(',')+2));
             }
-            convoInfo.recentMessage.hour = convoInfo.recentMessage.time.slice((convoInfo.recentMessage.time.indexOf(',')+2));
             let uidArray = [];
-            // console.log('convoInfoq',convoInfo);
-            uidArray.push(convoInfo.user1);
-            uidArray.push(convoInfo.user2);
+            uidArray.push(convoObj.user1);
+            uidArray.push(convoObj.user2);
             uidArray.forEach(uid=>{
               if(uid !== $scope.currentUserID){
                 AuthFactory.getUserInfo(uid)
                 .then((otherUser)=>{
-                  convoInfo.otherUserName = otherUser.name;
-                  convoInfo.otherUserPic = otherUser.profilePicture;
+                  convoObj.otherUserName = otherUser.name;
+                  convoObj.otherUserPic = otherUser.profilePicture;
                 });
               }
             });
-            $scope.tempMessageList.push(convoInfo);
+            $scope.tempMessageList.push(convoObj);
           });
-        });
-      }
-      $scope.conversationList = $scope.tempMessageList;
-    }).catch(err => {
-      console.log('error',err);
-      $location.path("/registerLogin");
+          $scope.conversationList = $scope.tempMessageList;
+        }
+      });
     });
-  });
-
-
-};
+  };

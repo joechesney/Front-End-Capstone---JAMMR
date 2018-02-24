@@ -65,7 +65,6 @@ module.exports = function
         newProfileObj.longitude = zipLocation.lng;
         ProfileFactory.saveProfileWithChanges(newProfileObj)
           .then(({data})=>{
-            // console.log('data after its sent, back in ctlr',data);
             $scope.editing = false;
             $scope.getUserProfileDataCTRLR(data.uid);
           });
@@ -73,7 +72,6 @@ module.exports = function
     }else{
       ProfileFactory.saveProfileWithChanges(newProfileObj)
       .then(({data})=>{
-        // console.log('data after its sent, back in ctlr',data);
         $scope.editing = false;
         $scope.getUserProfileDataCTRLR(data.uid);
       });
@@ -87,17 +85,11 @@ module.exports = function
       user2: $routeParams.pid
     };
     ProfileFactory.createNewConvoObject(newConvoObj)
-    .then((data1)=>{
-      let brandNewConvoId = data1.name;
-      ProfileFactory.addConvoToUserObjects($scope.uid, brandNewConvoId)
-      .then((data2)=>{
-        ProfileFactory.addConvoToUserObjects($routeParams.pid, brandNewConvoId)
-        .then((data3)=>{
-          $location.path(`/conversation/${data1.name}`);
-        });
-      });
+    .then((newConvo)=>{
+      $location.path(`/conversation/${newConvo.name}`);      
     });
   };
+  
 
 
 $scope.beginConvo = () =>{
