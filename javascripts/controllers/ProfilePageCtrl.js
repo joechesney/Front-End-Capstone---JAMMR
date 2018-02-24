@@ -4,7 +4,7 @@
 // PROFILE PAGE CTRL
 module.exports = function
 ($scope, AuthFactory, SearchFactory, ProfileFactory, $window, 
-  $location, $routeParams, ConversationFactory){
+  $location, $routeParams, ConversationFactory, $q, MessageFactory){
   
   $scope.currentProfileUid = $routeParams.pid;
 
@@ -92,38 +92,40 @@ module.exports = function
   
 
 
-$scope.beginConvo = () =>{
-  ConversationFactory.getUserConvoIds($scope.uid)
-  .then((objectOfConvoIds)=>{
-    if(objectOfConvoIds === null){
-      $scope.makeNewConvo(); 
-    }else{
-      let arrayOfConvoIds = Object.values(objectOfConvoIds);
-      let convoExists = false;
+  $scope.beginConvo = () =>{
 
-      /* jshint ignore:start */
-        for(let i = 0; i < arrayOfConvoIds.length; i++){
-          let convoId = arrayOfConvoIds[i];
-          console.log('convoId before get',convoId);
-          ConversationFactory.getConvoObject(convoId)
-          .then((convoObj)=>{
-            console.log('convoObj',convoObj);
-            convoObj.convoId = convoId;
+    let getConvosPromiseArray = [MessageFactory.getConvosByUser1($scope.currentUserID),MessageFactory.getConvosByUser2($scope.currentUserID)];
+    $q.all(getConvosPromiseArray)
+    .then((convosASHELLL)=>{
+      console.log('convosASHELL',convosASHELLL);
+        let convos1 = Object.values(convosASHELLL[0]);
+        let convos2 = Object.values(convosASHELLL[1]);
+        console.log('them convos1:::',convos1);
+        console.log('them convos2:::',convos2);
+        let arrayOfAllConvoObjects = _.concat(convos1, convos2);
+        console.log('arrayOfAllConvoObjects',arrayOfAllConvoObjects);
+        let convoExists = false;
+        console.log('arrayOfAllConvoObjects.length ',arrayOfAllConvoObjects.length);
+
+        if(arrayOfAllConvoObjects.length === 0 || arrayOfAllConvoObjects.length === -1){
+          $scope.makeNewConvo(); 
+        }else{
+          let convoExists = false;
+          for(let i = 0; i < arrayOfAllConvoObjects.length; i++){
+            let convoObj = arrayOfAllConvoObjects[i];
             if((convoObj.user1 === $routeParams.pid || convoObj.user2 === $routeParams.pid)&& convoExists === false){
               convoExists = true;
               console.log('convoExists in 1st if',convoExists);
-              i = arrayOfConvoIds.length;
               $location.path(`/conversation/${convoObj.convoId}`);
-            }else if(i === (arrayOfConvoIds.length - 1) && convoExists === false){
-              $scope.makeNewConvo(); 
+            }else if( (i === (arrayOfAllConvoObjects.length -1)) && convoExists === false){
+              // $scope.makeNewConvo(); 
               convoExists = true;
               console.log('convoExists in 2ND if',convoExists);
             }
-          });
-        }
-        
-      /* jshint ignore:end */
-    } // end of else
-  });
-};
+          }
+          
+        } // end of else
+    });//end of .then
+  };
+
 };

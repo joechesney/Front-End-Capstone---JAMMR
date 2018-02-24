@@ -2,15 +2,6 @@
 
 
 module.exports = function($q, $http, fbConfig){
-    
-  const getUserConvoIds = (uid) =>{
-    return $q((resolve, reject)=>{
-      $http.get(`${fbConfig.databaseURL}/users/${uid}/convos.json`)
-      .then(({data})=>{        
-        resolve(data);
-      });
-    });
-  };
 
   const getConvoObject = (convoId)=>{
     return $q((resolve, reject)=>{
@@ -43,7 +34,6 @@ module.exports = function($q, $http, fbConfig){
 
 
   return { 
-    getUserConvoIds, 
     getConvoObject, 
     saveNewMessage,
     deleteMessageFromFireBaseForever

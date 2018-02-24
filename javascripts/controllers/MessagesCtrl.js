@@ -12,14 +12,9 @@ module.exports = function
     let getConvosPromiseArray = [MessageFactory.getConvosByUser1($scope.currentUserID),MessageFactory.getConvosByUser2($scope.currentUserID)];
     $q.all(getConvosPromiseArray)
     .then((convosASHELLL)=>{
-      console.log('convosASHELL',convosASHELLL);
       let convos1 = Object.values(convosASHELLL[0]);
       let convos2 = Object.values(convosASHELLL[1]);
-      console.log('them convos1:::',convos1);
-      console.log('them convos2:::',convos2);
-      let arrayOfAllConvoObjects = _.concat(convos1, convos2);
-      console.log('arrayOfAllConvoObjects',arrayOfAllConvoObjects);
-    
+      let arrayOfAllConvoObjects = _.concat(convos1, convos2);    
     // END KEEP THIS
     
       if(arrayOfAllConvoObjects.length === 0 || arrayOfAllConvoObjects.length === -1){
