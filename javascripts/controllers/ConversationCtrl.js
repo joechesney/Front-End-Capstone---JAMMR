@@ -28,8 +28,9 @@ module.exports = function
         nameArray.forEach(uid=>{
         if(uid !== $scope.uid){
           AuthFactory.getUserInfo(uid)
-          .then((name)=>{
-            $scope.otherUserName = name.name;
+          .then((otherUser)=>{
+            $scope.otherUser = otherUser;
+            
           });
         }
         });
