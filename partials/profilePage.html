@@ -1,6 +1,7 @@
 <div id="containerBox">
   <div id="profilePicture">
-    <img src="{{picToDisplay}}" class="profilePicture" alt="images/alternatePic.jpg">
+    <img ng-show="picToDisplay" ng-src="{{picToDisplay}}" class="profilePicture">
+    <!-- <img ng-if="!picToDisplay" ng-show="!picToDisplay" class="profilePicture" ng-src="images/alternatePic.jpg"/> -->
   </div>
   
   <div ng-show="!editing" class="profile">

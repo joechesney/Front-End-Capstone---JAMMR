@@ -6,7 +6,8 @@
       <a ng-href="#!/conversation/{{convo.convoId}}">
         <div class="messageCard">
           <div class="messagePic">
-            <img class="tinyPic" ng-src="{{convo.otherUserPic}}" alt="images/alternatePic.jpg">
+            <img ng-show="convo.otherUserPic" class="tinyPic" ng-src="{{convo.otherUserPic}}" >
+            <img ng-show="!convo.otherUserPic" class="tinyPic" ng-src="../images/alternatePic.jpg" >
           </div>
           <div>
             <div class="nameRow">
