@@ -43,7 +43,9 @@
         <a ng-href="#!/profilePage/{{otherUser.uid}}">
           <div class="messageCard">
             <div class="messagePic">
-              <img class="tinyPic" ng-src="{{otherUser.profilePicture}}"/>
+              <img ng-show="otherUser.profilePicture" class="tinyPic" ng-src="{{otherUser.profilePicture}}"/>
+              <img ng-show="!otherUser.profilePicture" class="tinyPic" ng-src="images/alternatePic.jpg"/>
+
             </div>
             <div>
               <div class="nameRow">
