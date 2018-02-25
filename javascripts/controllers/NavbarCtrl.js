@@ -31,6 +31,8 @@ module.exports = function
     $location.path("/registerLogin");
   });
 
-
+  $scope.goBack = (e)=>{
+    $window.history.back();
+  };
 
 };

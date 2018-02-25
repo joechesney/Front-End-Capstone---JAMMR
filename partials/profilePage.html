@@ -1,6 +1,7 @@
 <div id="containerBox">
   <div id="profilePicture">
-    <img src="{{picToDisplay}}" class="profilePicture">
+    <img ng-show="picToDisplay" ng-src="{{picToDisplay}}" class="profilePicture">
+    <!-- <img ng-if="!picToDisplay" ng-show="!picToDisplay" class="profilePicture" ng-src="images/alternatePic.jpg"/> -->
   </div>
   
   <div ng-show="!editing" class="profile">
@@ -124,11 +125,18 @@
       <!-- <br><input type="checkbox" ng-model="newProfileObj.trombone">Trombone -->
     </div>
     <div class="field">
-        <label class="label is-small">Other Interests</label>
-        <div class="control">
-          <input class="input is-small" type="text" ng-model="newProfileObj.otherInterests"/>
-        </div>
+      <label class="label is-small">Other Interests</label>
+      <div class="control">
+        <input class="input is-small" type="text" ng-model="newProfileObj.otherInterests"/>
       </div>
+    </div>
+    <br>
+    <div class='centered'>
+      <a class="button is-info" ng-click="saveProfile(newProfileObj)">
+        <i class="fas fa-save"></i>&nbsp; Save Profile
+      </a>
+    </div>
+    <br>
   </div>
 
 </div>
