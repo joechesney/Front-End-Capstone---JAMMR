@@ -1,5 +1,7 @@
 
-<div class="mapIntro">Click pins to view other JAMMR's profiles!</div>
+<div ng-show="allPinsMap" class="mapIntro centered">Click pins to view other JAMMR's profiles!</div>
+<div ng-show="!allPinsMap" class="mapIntro centered">Click pin to view this JAMMR's profile!</div>
+
 <ng-map zoom="11" center="[36.1627, -86.7816]" class="mapBox" disable-default-u-i="true">
 
   <marker ng-repeat = "user in userArray track by user.uid" id="{{user.uid}}" position="{{[user.latitude, user.longitude]}}" on-click="showDetails(user)"></marker>

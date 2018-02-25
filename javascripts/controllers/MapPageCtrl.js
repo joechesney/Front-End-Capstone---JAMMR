@@ -16,11 +16,13 @@ module.exports = function
           $scope.userArray.push(user);
         }
       });
+      $scope.allPinsMap = true;
     });
   } else {
     AuthFactory.getUserInfo($routeParams.uid)
     .then((user)=>{
       $scope.userArray.push(user);
+      $scope.allPinsMap = false;
     });
   }
 
