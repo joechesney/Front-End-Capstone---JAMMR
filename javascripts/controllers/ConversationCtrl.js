@@ -20,7 +20,7 @@ module.exports = function
     ConversationFactory.getConvoObject($routeParams.convoid)
     .then((data)=>{
       if(data === null || data === undefined){
-        console.log('no messages between these users');
+        // console.log('no messages between these users');
       }else{
         let nameArray = [];
         nameArray.push(data.user1);
@@ -75,7 +75,7 @@ module.exports = function
         .then((messageData)=>{
           setTimeout(() => {
             document.getElementById("conversationBox").scrollTop = document.getElementById("conversationBox").scrollHeight;
-            console.log('timeoutAF');
+            // console.log('timeoutAF');
           }, 70);
         });
         $scope.newMessage.text = "";

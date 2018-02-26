@@ -31,7 +31,6 @@ module.exports = function
       else{
         switch(index) {
           case 0:
-            console.log('instrument search');
             promiseArray.push(SearchFactory.searchByInstrument($scope.filterArray[index]));
             break;
           case 1:
@@ -44,7 +43,7 @@ module.exports = function
             promiseArray.push(SearchFactory.searchByAge($scope.filterArray[index]));
             break;
           default:
-            console.log('no filters selected!!!');
+            // console.log('no filters selected!!!');
       }
       }});
       $q.all(promiseArray)
