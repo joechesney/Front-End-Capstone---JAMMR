@@ -25,7 +25,7 @@ module.exports = function
     $scope.filterArray = [$scope.instrumentSearch, $scope.interestSearch, 
       $scope.experienceSearch, $scope.ageSearch];
     let promiseArray = [];
-    let tempArray = [];
+    // let tempArray = [];
     let counter = 0;
     $scope.filterArray.forEach((filter, index)=>{if(filter === undefined){counter++;}
       else{
@@ -48,17 +48,42 @@ module.exports = function
       }});
       $q.all(promiseArray)
       .then((data)=>{
-        data.forEach(dataArray=>{
-          dataArray.forEach(user=>{
-            tempArray.push(user);
-          });
-        });
-        if(counter === ($scope.filterArray.length)){$scope.showAlert = true;}
-        else{
-          let tempArray2 = _.uniqBy(tempArray, "uid");
+        let lengthOfDataArray = data.length;
+        console.log('lengthofdataarray',lengthOfDataArray);
+        let arrayOfMugs = [];
+        switch (lengthOfDataArray) {
+          case 0:
+            $scope.showAlert = true;
+            break;
+          case 1:
+            arrayOfMugs = _.intersectionBy(data[0], 'uid');
+            console.log('arrayOfMugs: ',arrayOfMugs);
+            break;
+          case 2:
+            arrayOfMugs = _.intersectionBy(data[0], data[1], "uid");
+            console.log('arrayOfMugs: ',arrayOfMugs);
+            break;
+          case 3:
+            arrayOfMugs = _.intersectionBy(data[0], data[1], data[2], "uid");
+            console.log('arrayOfMugs: ',arrayOfMugs);
+            break;
+          case 4:
+            arrayOfMugs = _.intersectionBy(data[0], data[1], data[2], data[3], "uid");
+            console.log('arrayOfMugs: ',arrayOfMugs);
+            break;
+          default:
+            break;
+        }
+        // data.forEach(dataArray=>{
+        //   dataArray.forEach(user=>{
+        //     tempArray.push(user);
+        //   });
+        // });
+        
+          let tempArray2 = _.uniqBy(arrayOfMugs, "uid");
           let tempArray3 = _.remove(tempArray2, (obj)=>{return obj.uid !== $scope.currentUser.uid;} );
           $scope.filteredUserArray = tempArray3;
-        }
+        
       });
 
       // TODO: This isnt working after my refactor. Will fix later

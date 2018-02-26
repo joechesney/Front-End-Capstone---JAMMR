@@ -1,6 +1,8 @@
 <div id="containerBox">
   <!-- <hr> -->
   <h2 ng-show="!filteredUserArray" class="centered">Search for JAMRs</h2>
+  <!-- <h2 ng-show="!filteredUserArray" class="centered">Select ONE filter</h2> -->
+
   <h2 ng-show="filteredUserArray" class="centered">Search Results</h2>
   <h2 ng-show="filteredUserArray" class="centered">Click on a user to view their profile</h2>
 <br>
@@ -9,24 +11,24 @@
     <div class="field">
       <label class="label">Instruments</label>
       <div class="control" >
-        <select class="select" ng-model="instrumentSearch" ng-options="instrument as instrument for instrument in instruments"></select>
+        <select class="select is-info" ng-model="instrumentSearch" ng-options="instrument as instrument for instrument in instruments"></select>
       </div>
     </div>
     <div class="field">
-      <label class="label">Interests</label>
+      <label class="label">Interests <span style="color:lightslategray;font-weight:100;">(optional)</span></label>
       <div class="control">
-        <select class="select" ng-model="interestSearch" ng-options="interest for interest in interests">
+        <select class="select is-info" ng-model="interestSearch" ng-options="interest for interest in interests">
         </select>
       </div>
     </div>
     <div class="field">
-      <label class="label">Experience</label>
+      <label class="label">Experience <span style="color:lightslategray;font-weight:100;">(optional)</span></label>
       <div class="control">
         <input class="input" type="number" ng-model="experienceSearch" placeholder="Experience"/>
       </div>
     </div>
     <div class="field">
-      <label class="label">Age</label>
+      <label class="label">Age <span style="color:lightslategray;font-weight:100;">(optional)</span></label>
       <div class="control">
         <input class="input" type="number" ng-model="ageSearch" placeholder="Age"/>
       </div>
