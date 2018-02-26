@@ -8,7 +8,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joechesney/Front-End-Capstone---JAMMR.git"
+    "url": "git@github.com:joechesney/Front-End-Capstone---JAMMR.git"
+    
   },
   "keywords": [],
   "author": "",
