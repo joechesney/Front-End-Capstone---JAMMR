@@ -59,7 +59,6 @@ module.exports = function
     if(newProfileObj.zipCode){
       ProfileFactory.getCoordinatesFromZip(newProfileObj.zipCode)
       .then((zipData)=>{
-        console.log('data from converting zip mug:: ',zipData.results[0].geometry);
         let zipLocation = zipData.results[0].geometry.location;
         newProfileObj.latitude = zipLocation.lat;
         newProfileObj.longitude = zipLocation.lng;

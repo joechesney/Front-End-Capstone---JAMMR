@@ -18,7 +18,7 @@ module.exports = function
     // END KEEP THIS
     
       if(arrayOfAllConvoObjects.length === 0 || arrayOfAllConvoObjects.length === -1){
-        console.log('no convos bro bro');
+        // console.log('no convos bro bro');
       }else{
         arrayOfAllConvoObjects.forEach(convoObj=>{
             if(convoObj.messages !== undefined){

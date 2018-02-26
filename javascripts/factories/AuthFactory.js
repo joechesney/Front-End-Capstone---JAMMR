@@ -9,7 +9,6 @@ module.exports = function($q, $http, fbConfig){
       firebase.auth()
       .createUserWithEmailAndPassword(account.email,account.password)
       .then((data)=>{
-        console.log('succesfsul register in facotry',data);
         resolve(data);
       }).catch((error)=>reject(error));
     });
@@ -21,7 +20,6 @@ module.exports = function($q, $http, fbConfig){
       firebase.auth()
       .signInWithEmailAndPassword(account.email, account.password)
       .then((data)=>{
-        console.log('successful login in facotry',data);
         resolve(data);
       }).catch((error)=>reject(error));
     });

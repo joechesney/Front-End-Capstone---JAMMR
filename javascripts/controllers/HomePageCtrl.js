@@ -21,7 +21,7 @@ module.exports = function
   $scope.logout = () =>{
     AuthFactory.logout()
     .then((data) => {
-      console.log('successful logout', data);
+      // console.log('successful logout', data);
       $window.location.href = "#!/registerLogin";
     });
   };
