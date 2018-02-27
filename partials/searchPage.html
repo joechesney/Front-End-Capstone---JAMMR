@@ -3,9 +3,8 @@
   <h2 ng-show="!filteredUserArray" class="centered">Search for JAMRs</h2>
   <!-- <h2 ng-show="!filteredUserArray" class="centered">Select ONE filter</h2> -->
 
-  <h2 ng-show="filteredUserArray" class="centered">Search Results</h2>
-  <h2 ng-show="filteredUserArray" class="centered">Click on a user to view their profile</h2>
-<br>
+  <!-- <h2 ng-show="filteredUserArray" class="centered">Search Results</h2> -->
+
 
   <div ng-show="!filteredUserArray"  id="filterSelect">
     <div class="field">
@@ -22,7 +21,14 @@
       </div>
     </div>
     <div class="field">
-      <label class="label">Experience <span style="color:lightslategray;font-weight:100;">(optional)</span></label>
+      <label class="label">Genres <span style="color:lightslategray;font-weight:100;">(optional)</span></label>
+      <div class="control">
+        <select class="select is-info" ng-model="genreSearch" ng-options="genre for genre in genres">
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Years of Experience <span style="color:lightslategray;font-weight:100;">(optional)</span></label>
       <div class="control">
         <input class="input" type="number" ng-model="experienceSearch" placeholder="Experience"/>
       </div>
@@ -41,6 +47,19 @@
   </div>
   
   <div ng-show="filteredUserArray">
+    <div class="filtersBox centered">
+      <div>Filters Selected:</div>
+      <b>
+        <span ng-show="instrumentSearch">{{instrumentSearch}}&nbsp;</span>
+        <span ng-show="interestSearch">{{interestSearch}}&nbsp;</span>
+        <span ng-show="genreSearch">{{genreSearch}}&nbsp;</span><br>
+        <span ng-show="experienceSearch">{{experienceSearch}} years experience&nbsp;</span><br>
+        <span ng-show="ageSearch">{{ageSearch}} years old&nbsp;</span>
+      </b>
+    </div>
+    
+    <!-- <br> -->
+    <!-- <h2 ng-show="filteredUserArray" class="centered">Click on a user to view their profile</h2> -->
       <div ng-repeat="otherUser in filteredUserArray">
         <a ng-href="#!/profilePage/{{otherUser.uid}}">
           <div class="messageCard">
@@ -77,6 +96,19 @@
                   <!-- <span ng-show="otherUser.saxophone">saxophone </span> -->
                   <!-- <span ng-show="otherUser.trumpet">trumpet </span> -->
                   <!-- <span ng-show="otherUser.trombone">trombone </span> -->
+                </div>
+                <div>Genres: 
+                  <span ng-show="otherUser.pop">Pop </span>
+                  <span ng-show="otherUser.rock">Rock </span>
+                  <span ng-show="otherUser.rnb">RnB </span>
+                  <span ng-show="otherUser.funk">Funk </span>
+                  <span ng-show="otherUser.metal">Metal </span>
+                  <span ng-show="otherUser.punk">Punk </span>
+                  <span ng-show="otherUser.folk">Folk </span>
+                  <span ng-show="otherUser.indie">Indie </span>
+                  <span ng-show="otherUser.rap">Rap </span>
+                  <span ng-show="otherUser.electronic">Electronic </span>
+
                 </div>
               </div>
               

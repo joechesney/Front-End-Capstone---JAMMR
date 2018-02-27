@@ -23,6 +23,16 @@ module.exports = function($q, $http, fbConfig){
     });
   };
 
+  const searchByGenre = (genre) =>{
+    return $q((resolve, reject)=>{
+      $http.get(`${fbConfig.databaseURL}/users.json?orderBy="${genre}"&equalTo=true`)
+      .then(({data})=>{
+        data = Object.values(data);
+        resolve(data);
+      });
+    });
+  };
+
   const searchByAge = (age) =>{
     let ageHigh = age + 3;
     let ageLow = age - 3;
@@ -47,6 +57,12 @@ module.exports = function($q, $http, fbConfig){
     });
   };  
   
-  return { searchByInstrument, searchByInterest, searchByAge, searchByExperience };
+  return { 
+    searchByInstrument, 
+    searchByInterest, 
+    searchByAge, 
+    searchByExperience,
+    searchByGenre
+   };
 };
 
