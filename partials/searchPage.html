@@ -49,12 +49,13 @@
   <div ng-show="filteredUserArray">
     <div class="filtersBox centered">
       <div>Filters Selected:</div>
-      <span ng-show="instrumentSearch">{{instrumentSearch}}&nbsp;</span>
-      <span ng-show="interestSearch">{{interestSearch}}&nbsp;</span>
-      <span ng-show="experienceSearch">{{experienceSearch}}&nbsp;</span>
-      <span ng-show="ageSearch">{{ageSearch}}&nbsp;</span>
-      <span ng-show="genreSearch">{{genreSearch}}&nbsp;</span>
-
+      <b>
+        <span ng-show="instrumentSearch">{{instrumentSearch}}&nbsp;</span>
+        <span ng-show="interestSearch">{{interestSearch}}&nbsp;</span>
+        <span ng-show="genreSearch">{{genreSearch}}&nbsp;</span><br>
+        <span ng-show="experienceSearch">{{experienceSearch}} years experience&nbsp;</span><br>
+        <span ng-show="ageSearch">{{ageSearch}} years old&nbsp;</span>
+      </b>
     </div>
     
     <!-- <br> -->
