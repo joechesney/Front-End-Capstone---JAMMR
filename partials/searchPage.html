@@ -3,9 +3,8 @@
   <h2 ng-show="!filteredUserArray" class="centered">Search for JAMRs</h2>
   <!-- <h2 ng-show="!filteredUserArray" class="centered">Select ONE filter</h2> -->
 
-  <h2 ng-show="filteredUserArray" class="centered">Search Results</h2>
-  <h2 ng-show="filteredUserArray" class="centered">Click on a user to view their profile</h2>
-<br>
+  <!-- <h2 ng-show="filteredUserArray" class="centered">Search Results</h2> -->
+
 
   <div ng-show="!filteredUserArray"  id="filterSelect">
     <div class="field">
@@ -48,6 +47,18 @@
   </div>
   
   <div ng-show="filteredUserArray">
+    <div class="filtersBox centered">
+      <div>Filters Selected:</div>
+      <span ng-show="instrumentSearch">{{instrumentSearch}}&nbsp;</span>
+      <span ng-show="interestSearch">{{interestSearch}}&nbsp;</span>
+      <span ng-show="experienceSearch">{{experienceSearch}}&nbsp;</span>
+      <span ng-show="ageSearch">{{ageSearch}}&nbsp;</span>
+      <span ng-show="genreSearch">{{genreSearch}}&nbsp;</span>
+
+    </div>
+    
+    <!-- <br> -->
+    <!-- <h2 ng-show="filteredUserArray" class="centered">Click on a user to view their profile</h2> -->
       <div ng-repeat="otherUser in filteredUserArray">
         <a ng-href="#!/profilePage/{{otherUser.uid}}">
           <div class="messageCard">
