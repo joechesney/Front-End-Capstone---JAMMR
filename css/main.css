@@ -1,0 +1,204 @@
+#navbar button,
+#navbar a h1 {
+  display: inline !important;
+  width: 28%; }
+
+#navbar {
+  display: grid;
+  margin: 0 auto;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: white;
+  height: 3.5em;
+  grid-template-columns: 25% 50% 25%;
+  z-index: 500 !important; }
+
+#backButton {
+  padding-top: .3em;
+  margin-left: .3em; }
+
+#logoImg {
+  padding-top: 1.1em;
+  width: 45vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+#profilePicture {
+  width: 100%;
+  height: auto; }
+
+#profilePicture img {
+  display: block;
+  max-width: 90%;
+  margin: .5em auto; }
+
+.hasPracticeSpace {
+  color: red; }
+
+.profileIcons {
+  margin: 0 auto;
+  width: auto;
+  display: block; }
+
+.profileInfoContainer {
+  margin-left: 1em;
+  margin-right: 1em; }
+
+.msg {
+  border-radius: 10px;
+  margin: .2em auto;
+  width: 51%;
+  grid-template-columns: 92% 8%;
+  grid-template-rows: auto auto;
+  display: inline-grid; }
+
+.currentUserMsg {
+  background-color: lightskyblue;
+  float: right; }
+
+.otherUserMsg {
+  background-color: lightgrey;
+  float: left; }
+
+#messageInput {
+  position: fixed;
+  bottom: 0;
+  height: 2em;
+  display: block;
+  margin: .2em auto; }
+
+#conversationBox {
+  margin-top: 4.1em;
+  margin-bottom: 3em;
+  padding-left: 1em;
+  padding-right: 1em;
+  height: calc(100vh - 6em);
+  overflow: auto; }
+
+.msgtext {
+  padding: .3em;
+  font-size: 1em;
+  grid-row-start: 1;
+  margin: .3em; }
+
+#containerBox {
+  margin-top: 5.1em; }
+
+.msgName {
+  font-size: .6em;
+  margin: .3em;
+  padding: .3em;
+  grid-row-start: 2;
+  grid-column-start: span 2; }
+
+.deleteButton {
+  grid-row-start: 1;
+  grid-column-start: 2; }
+
+.timestamp {
+  grid-row-start: 2; }
+
+.centered {
+  text-align: center;
+  margin: 0 auto; }
+
+a {
+  text-decoration: none;
+  color: black; }
+
+.tinyPic {
+  width: 70%;
+  height: 70%;
+  padding-right: .2em;
+  margin: .5em auto;
+  display: block;
+  border-radius: 50%;
+  object-fit: cover;
+  min-height: 52.2px;
+  max-height: 52.2px; }
+
+.userBlock {
+  display: inline-grid;
+  grid-template-columns: 30% 70%;
+  border-bottom: 1px solid black; }
+
+.userBlockPic {
+  grid-column-start: 1; }
+
+.userBlockInfo {
+  font-size: .7em; }
+
+.nameRow .nameBig {
+  color: black; }
+
+.mapBox {
+  height: 87vh;
+  width: 100vw; }
+
+.infoWindowPic {
+  width: 35vw; }
+
+.infoWindowAnchor {
+  color: red; }
+
+.infoWindowInstruments {
+  font-size: .7em; }
+
+.mapIntro {
+  margin-top: 5.1em; }
+
+#homePage {
+  margin-top: 5.1em;
+  padding-top: 3em;
+  height: 87vh; }
+
+.logoutButton {
+  position: absolute;
+  bottom: 3em;
+  display: block;
+  margin: 0 auto; }
+
+#filterSelect {
+  margin: 1em; }
+
+a .userBlock {
+  text-decoration: none;
+  color: black !important; }
+
+.lilProfIconFix {
+  margin-top: .3em; }
+
+.messageCard {
+  display: grid;
+  grid-template-columns: 18% 82%;
+  min-height: 74.4px;
+  border-bottom: 1px solid black; }
+
+.recentMessage {
+  color: gray;
+  grid-column: span 3;
+  grid-column-start: 2; }
+
+.nameRow {
+  grid-column-start: 2;
+  display: grid;
+  grid-template-columns: 55% 35% 10%; }
+
+.name {
+  grid-column: 1; }
+
+.time {
+  grid-column: 2;
+  color: gray; }
+
+.carat {
+  grid-column: 3; }
+
+.messagePic {
+  grid-column-start: 1;
+  grid-row: span 2;
+  min-height: 74.4px; }
+
+/*# sourceMappingURL=main.css.map */

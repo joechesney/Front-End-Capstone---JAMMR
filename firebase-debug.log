@@ -1,0 +1,42 @@
+[debug] [2018-03-04T18:31:50.091Z] ----------------------------------------------------------------------
+[debug] [2018-03-04T18:31:50.093Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Joe\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase init
+[debug] [2018-03-04T18:31:50.094Z] CLI Version:   3.17.4
+[debug] [2018-03-04T18:31:50.094Z] Platform:      win32
+[debug] [2018-03-04T18:31:50.094Z] Node Version:  v8.9.1
+[debug] [2018-03-04T18:31:50.094Z] Time:          Sun Mar 04 2018 12:31:50 GMT-0600 (Central Standard Time)
+[debug] [2018-03-04T18:31:50.094Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-03-04T18:31:50.105Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] [2018-03-04T18:31:50.106Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Joe\workspace\Front-End-Capstone---JAMMR
+
+[warn] !  You have not selected any features. Continuing will simply associate this folder with a Firebase project. Press Ctrl + C if you want to start over.
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2018-03-04T18:32:48.719Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-03-04T18:32:48.719Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/xnYVZkN-B_z24eqyIqnWuto69iR8neL2_BLwjFBnhy8mK74apoTc1h15wX-kk0_w',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sun Mar 04 2018 12:32:48 GMT-0600 (Central Standard Time)
+[debug] [2018-03-04T18:32:49.035Z] <<< HTTP RESPONSE 200
+[debug] [2018-03-04T18:32:49.050Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects  
+  
+ Sun Mar 04 2018 12:32:49 GMT-0600 (Central Standard Time)
+[debug] [2018-03-04T18:32:49.687Z] <<< HTTP RESPONSE 200

@@ -1,6 +1,3 @@
-node_modules
-css/
-dist/
 .sass-cache
 javascripts/secrets/
 
