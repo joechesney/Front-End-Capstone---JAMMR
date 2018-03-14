@@ -1,6 +1,8 @@
 "use strict";
 // it knows where it is, from node modules
-const angular = require('angular'); 
+// const angular = require('../node_modules/angular'); 
+// const ngRoute = require('../node_modules/angular-route');
+const angular = require('angular');
 const ngRoute = require('angular-route');
 const firebase = require('firebase');
 const ngMap = require('ngmap');
