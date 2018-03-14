@@ -42,6 +42,17 @@ module.exports = function
         trumpet: user.trumpet,
         trombone: user.trombone,
 
+        pop: user.pop,
+        rock: user.rock,
+        rnb: user.rnb,
+        funk: user.funk,
+        metal : user.metal,
+        punk: user.punk,
+        folk: user.folk,
+        indie: user.indie,
+        rap: user.rap,
+        electronic: user.electronic,
+
         professionalBand: user.professionalBand,
         hobbyBand: user.hobbyBand,
         jam: user.jam,
@@ -50,7 +61,8 @@ module.exports = function
         session: user.session,
 
         otherInstruments : user.otherInstruments,
-        otherInterests : user.otherInterests
+        otherInterests : user.otherInterests,
+        otherGenres: user.otherGenres
       };
     });
   };

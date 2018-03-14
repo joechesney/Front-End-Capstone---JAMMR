@@ -18,7 +18,7 @@
     </div>
     <br>
     <div class="profileInfoContainer">
-      <span ng-show="newProfileObj.hasPracticeSpace" class="hasPracticeSpace centered">THIS USER OWNS A PRACTICE SPACE </span>
+      <div ng-show="newProfileObj.hasPracticeSpace" class="hasPracticeSpace centered">THIS USER OWNS A PRACTICE SPACE </div>
       <div>Name: {{newProfileObj.name}}</div>
       <div>Age: {{newProfileObj.age}}</div>
       <div>Experience: {{newProfileObj.experience}} years</div>
@@ -47,7 +47,20 @@
           <!-- <span ng-show="newProfileObj.trombone">trombone </span> -->
       </div>
       <div ng-show="newProfileObj.otherInterests">Other Interests: {{newProfileObj.otherInterests}}</div>
+      <div>Genres: 
+        <span ng-show="newProfileObj.pop">Pop </span>
+        <span ng-show="newProfileObj.rock">Rock </span>
+        <span ng-show="newProfileObj.rnb">RnB </span>
+        <span ng-show="newProfileObj.funk">Funk </span>
+        <span ng-show="newProfileObj.metal">Metal </span>
+        <span ng-show="newProfileObj.punk">Punk </span>
+        <span ng-show="newProfileObj.folk">Folk </span>
+        <span ng-show="newProfileObj.indie">Indie </span>
+        <span ng-show="newProfileObj.rap">Rap </span>
+        <span ng-show="newProfileObj.electronic">Electronic </span>
 
+      </div>
+      <div ng-show="newProfileObj.otherGenres">Other Genres: {{newProfileObj.otherGenres}}</div>
     </div>
   </div>
   
@@ -77,7 +90,7 @@
       </div>
     </div>  
     <div class="field">
-      <label class="label is-small">Experience</label>
+      <label class="label is-small">Years of Experience</label>
       <div class="control">
         <input class="input is-small" type="number" ng-model="newProfileObj.experience" placeholder="Experience"/>
       </div>
@@ -92,7 +105,7 @@
     <div>I can provide a practice space: <input type="checkbox" ng-model="newProfileObj.hasPracticeSpace">
     </div>
 
-    <div>
+    <div><b>Instruments:</b>
       <br><input type="checkbox" ng-model="newProfileObj.guitar">Guitar
       <br><input type="checkbox" ng-model="newProfileObj.bass">Bass
       <br><input type="checkbox" ng-model="newProfileObj.drums">Drums
@@ -107,13 +120,13 @@
     <div class="field">
       <label class="label is-small">Other Instruments</label>
       <div class="control">
-        <input class="input is-small" type="text" ng-model="newProfileObj.otherInstruments"/>
+        <input placeholder="other instruments" class="input is-small" type="text" ng-model="newProfileObj.otherInstruments"/>
       </div>
     </div>
     <div>
       
     </div>
-    <div>
+    <div><b>Interests</b>
       <br><input type="checkbox" ng-model="newProfileObj.professionalBand">Band - Professional
       <br><input type="checkbox" ng-model="newProfileObj.hobbyBand">Band - Hobby
       <br><input type="checkbox" ng-model="newProfileObj.jam">Jam
@@ -127,7 +140,26 @@
     <div class="field">
       <label class="label is-small">Other Interests</label>
       <div class="control">
-        <input class="input is-small" type="text" ng-model="newProfileObj.otherInterests"/>
+        <input placeholder="other interests" class="input is-small" type="text" ng-model="newProfileObj.otherInterests"/>
+      </div>
+    </div>
+    <div><b>Genres:</b> 
+      <br><input type="checkbox" ng-model="newProfileObj.pop">Pop 
+      <br><input type="checkbox" ng-model="newProfileObj.rock">Rock 
+      <br><input type="checkbox" ng-model="newProfileObj.rnb">RnB 
+      <br><input type="checkbox" ng-model="newProfileObj.funk">Funk 
+      <br><input type="checkbox" ng-model="newProfileObj.metal">Metal 
+      <br><input type="checkbox" ng-model="newProfileObj.punk">Punk 
+      <br><input type="checkbox" ng-model="newProfileObj.folk">Folk 
+      <br><input type="checkbox" ng-model="newProfileObj.indie">Indie 
+      <br><input type="checkbox" ng-model="newProfileObj.rap">Rap 
+      <br><input type="checkbox" ng-model="newProfileObj.electronic">Electronic 
+
+    </div>
+    <div class="field">
+      <label class="label is-small">Other Genres</label>
+      <div class="control">
+        <input placeholder="other genres" class="input is-small" type="text" ng-model="newProfileObj.otherGenres"/>
       </div>
     </div>
     <br>
