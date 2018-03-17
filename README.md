@@ -1,5 +1,5 @@
 # This project is available at the following link:
-PLEASE OPEN ON MOBILE \n
+PLEASE OPEN ON MOBILE!
 AS OF 3/15/18 THE SITE IS NOT STYLED FOR WEB
 [https://fec-jammr.firebaseapp.com/](https://fec-jammr.firebaseapp.com/)
 
