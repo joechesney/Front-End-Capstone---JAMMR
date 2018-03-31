@@ -1,6 +1,6 @@
 # This project is available at the following link:
 PLEASE OPEN ON MOBILE!
-AS OF 3/15/18 THE SITE IS NOT STYLED FOR WEB
+As of 3/31/18, this site is styled for web use and mobile use, however I am encountering a bug where (in web view) the text input on the conversation page is refusing to stay inside of the body tag. 
 [https://fec-jammr.firebaseapp.com/](https://fec-jammr.firebaseapp.com/)
 
 # To run this Repo:
