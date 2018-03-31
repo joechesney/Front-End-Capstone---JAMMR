@@ -1,3 +1,8 @@
+# This project is available at the following link:
+PLEASE OPEN ON MOBILE!
+AS OF 3/15/18 THE SITE IS NOT STYLED FOR WEB
+[https://fec-jammr.firebaseapp.com/](https://fec-jammr.firebaseapp.com/)
+
 # To run this Repo:
 1. clone this repo as a new project
 2. run npm install
