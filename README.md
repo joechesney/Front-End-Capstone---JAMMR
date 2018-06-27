@@ -12,6 +12,9 @@ As of 3/31/18, this site is styled for web use and mobile use, however I am enco
 2. Click the 'JAMMR' logo at the top to go back to the Home Page at any time
 3. Click the Back arrow in the top left corner to go back from any page (does not work on Search Results page. Once the results page has been left, those results are gone, and you must re-search to see those results again). The back button is literally calling the browsers 'back' method to go backwards 1 page in your browser history. 
 4. The home page has three links: 
+
+<img src="images/screenshots/jammr_home.PNG" width="100">
+
   i. `Search` (which brings you to a search form to search for other users) 
     <img src="images/screenshots/jammr_search.png">
   ii. `Messages` (which opens up your list of message conversations similar to your text messages app on iPhone/Android) 
