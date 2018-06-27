@@ -17,25 +17,25 @@ As of 3/31/18, this site is styled for web use and mobile use, however I am enco
 
   i. `Search` (which brings you to a search form to search for other users)
   
-  <img src="images/screenshots/jammr_search.png" width="180">
+  <img src="images/screenshots/jammr_search.png" width="180" style="border:2px solid black">
     
   ii. `Messages` (which opens up your list of message conversations similar to your text messages app on iPhone/Android) 
   
-  <img src="images/screenshots/jammr_messages.PNG" width="180">
+  <img src="images/screenshots/jammr_messages.PNG" width="180" style="border:2px solid black">
   
   iii. `Map` (which will show you a map of nearby users using Google Maps API).
   
-  <img src="images/screenshots/jammr_map.PNG" width="180" >
+  <img src="images/screenshots/jammr_map.PNG" width="180" style="border:2px solid black">
   
 5. All current users in JAMMR are fictional accounts. Almost all users are also located in Nashville, TN. There are currently only ~25 users in the database, so the more filters you select on the `Search` page, the less users will be returned in search results. In order to see more users, select fewer filters. Try searching for just `drums` using the dropdown menu to see many results. 
 
-    <img src="images/screenshots/jammr_search_results.PNG" width="180">
+    <img src="images/screenshots/jammr_search_results.PNG" width="180" style="border:2px solid black">
 
 6. To view the map of other JAMMRs in Nashville, click the Map button on the Home Page. 
 7. On the Map Page, click on a pin to see who that user is, a bit about them, and then click 'View Profile' at the bottom of the info window to go directly to that users profile in JAMMR. 
 8. View any open conversations with other users by clicking the Messages button on the Home Page. Here you can see any messages you have available from other users, as well as if there are any new messages available! 
 
-    <img src="images/screenshots/jammr_conversation.PNG" width="180">
+    <img src="images/screenshots/jammr_conversation.PNG" width="180" style="border:2px solid black">
 
 9. Click on a conversation in the Messages List to open that conversation and view all of its messages.  
 10. Have fun! and Thanks for checking out my app!
