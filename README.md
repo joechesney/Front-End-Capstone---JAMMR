@@ -13,7 +13,7 @@ As of 3/31/18, this site is styled for web use and mobile use, however I am enco
 3. Click the Back arrow in the top left corner to go back from any page (does not work on Search Results page. Once the results page has been left, those results are gone, and you must re-search to see those results again). The back button is literally calling the browsers 'back' method to go backwards 1 page in your browser history. 
 4. The home page has three links: 
 
-<img src="images/screenshots/jammr_home.PNG" width="180">
+<img src="images/screenshots/jammr_home.PNG" width="180" style="border:2px solid black>
 
   i. `Search` (which brings you to a search form to search for other users)
   
@@ -25,7 +25,7 @@ As of 3/31/18, this site is styled for web use and mobile use, however I am enco
   
   iii. `Map` (which will show you a map of nearby users using Google Maps API).
   
-  <img src="images/screenshots/jammr_smap.PNG" width="180">
+  <img src="images/screenshots/jammr_map.PNG" width="180" >
   
 5. All current users in JAMMR are fictional accounts. Almost all users are also located in Nashville, TN. There are currently only ~25 users in the database, so the more filters you select on the `Search` page, the less users will be returned in search results. In order to see more users, select fewer filters. Try searching for just `drums` using the dropdown menu to see many results. 
 
