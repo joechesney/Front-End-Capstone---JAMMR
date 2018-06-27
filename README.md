@@ -13,16 +13,30 @@ As of 3/31/18, this site is styled for web use and mobile use, however I am enco
 3. Click the Back arrow in the top left corner to go back from any page (does not work on Search Results page. Once the results page has been left, those results are gone, and you must re-search to see those results again). The back button is literally calling the browsers 'back' method to go backwards 1 page in your browser history. 
 4. The home page has three links: 
 
-<img src="images/screenshots/jammr_home.PNG" width="100">
+<img src="images/screenshots/jammr_home.PNG" width="180">
 
-  i. `Search` (which brings you to a search form to search for other users) 
-    <img src="images/screenshots/jammr_search.png">
+  i. `Search` (which brings you to a search form to search for other users)
+  
+    <img src="images/screenshots/jammr_search.png" width="180">
+    
   ii. `Messages` (which opens up your list of message conversations similar to your text messages app on iPhone/Android) 
+  
+    <img src="images/screenshots/jammr_messages.png" width="180">
+  
   iii. `Map` (which will show you a map of nearby users using Google Maps API).
-5. All current users in JAMMR are fictional accounts. Almost all users are also located in Nashville, TN. There are currently only ~25 users in the database, so the more filters you select on the `Search` page, the less users will be returned in search results. In order to see more users, select fewer filters. Try searching for just `guitar` players to see many results. 
+  
+    <img src="images/screenshots/jammr_smap.png" width="180">
+  
+5. All current users in JAMMR are fictional accounts. Almost all users are also located in Nashville, TN. There are currently only ~25 users in the database, so the more filters you select on the `Search` page, the less users will be returned in search results. In order to see more users, select fewer filters. Try searching for just `drums` using the dropdown menu to see many results. 
+
+    <img src="images/screenshots/jammr_search_results.png" width="180">
+
 6. To view the map of other JAMMRs in Nashville, click the Map button on the Home Page. 
 7. On the Map Page, click on a pin to see who that user is, a bit about them, and then click 'View Profile' at the bottom of the info window to go directly to that users profile in JAMMR. 
 8. View any open conversations with other users by clicking the Messages button on the Home Page. Here you can see any messages you have available from other users, as well as if there are any new messages available! 
+
+    <img src="images/screenshots/jammr_conversation.png" width="180">
+
 9. Click on a conversation in the Messages List to open that conversation and view all of its messages.  
 10. Have fun! and Thanks for checking out my app!
  
