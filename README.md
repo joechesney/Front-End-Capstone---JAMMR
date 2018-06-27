@@ -17,15 +17,15 @@ As of 3/31/18, this site is styled for web use and mobile use, however I am enco
 
   i. `Search` (which brings you to a search form to search for other users)
   
-    <img src="images/screenshots/jammr_search.png" width="180">
+  <img src="images/screenshots/jammr_search.png" width="180">
     
   ii. `Messages` (which opens up your list of message conversations similar to your text messages app on iPhone/Android) 
   
-    <img src="images/screenshots/jammr_messages.png" width="180">
+  <img src="images/screenshots/jammr_messages.png" width="180">
   
   iii. `Map` (which will show you a map of nearby users using Google Maps API).
   
-    <img src="images/screenshots/jammr_smap.png" width="180">
+  <img src="images/screenshots/jammr_smap.png" width="180">
   
 5. All current users in JAMMR are fictional accounts. Almost all users are also located in Nashville, TN. There are currently only ~25 users in the database, so the more filters you select on the `Search` page, the less users will be returned in search results. In order to see more users, select fewer filters. Try searching for just `drums` using the dropdown menu to see many results. 
 
