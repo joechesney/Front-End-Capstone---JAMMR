@@ -4,10 +4,20 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-uglify-es');
+
 
   grunt.initConfig({
     browserify: {
-      'dist/app.js': ['javascripts/app.js']
+      dist: {
+        files:{
+          'dist/mapBundle.js': ['./main.js'],
+          'dist/aboutBundle.js': ['./about.js']
+        },
+        options: {
+          transform: [["babelify", { "presets": ["es2015"] }]],
+        }
+      }
     },
     jshint: {
       files: ['javascripts/**/*.js'],
@@ -54,17 +64,24 @@ module.exports = function (grunt) {
             "partials/**/*.html",
             "node_modules/**/*",
             "javascripts/**/*.js",
-            "dist/app.js"
+            "dist/app.min.js"
           ],
           dest: "./public/"
         }]
+      }
+    },
+    uglify: {
+      my_target: {
+        files: {
+          'ugly/app.min.js': ['./dist/app.js'],
+        }
       }
     }
   });
 
   require("matchdep").filter("grunt-*").forEach(grunt.loadNpmTasks);
 
-  grunt.registerTask("default", ['jshint', 'sass', 'browserify', 'watch']);//Will do by default when you excecute grunt.
-  grunt.registerTask('deploy', ['sass', 'copy']);
+  grunt.registerTask("default", ['jshint', 'sass', 'browserify', 'uglify', 'watch']);//Will do by default when you excecute grunt.
+  grunt.registerTask('deploy', ['sass', 'browserify', 'uglify', 'copy']);
   grunt.registerTask('cleanit', ['clean']);
 }
