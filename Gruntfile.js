@@ -41,7 +41,7 @@ module.exports = function (grunt) {
       },
       javascripts: {
         files: ['javascripts/**/*.js'],
-        tasks: ['jshint', 'browserify']
+        tasks: ['jshint', 'browserify', 'uglify']
       },
       sass: {
         files: ['sass/**/*.scss'],
@@ -62,8 +62,7 @@ module.exports = function (grunt) {
             "css/**/*.css",
             "partials/**/*.html",
             "node_modules/**/*",
-            "javascripts/**/*.js",
-            "dist/app.min.js"
+            "ugly/app.min.js"
           ],
           dest: "./public/"
         }]
