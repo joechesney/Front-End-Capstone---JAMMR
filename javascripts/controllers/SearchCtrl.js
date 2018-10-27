@@ -3,7 +3,7 @@
 
 // SEARCH PAGE CTRL
 module.exports = function
-($scope, $location, AuthFactory, SearchFactory, $window, $q){
+($scope, $location, AuthFactory, SearchFactory, $q){
   // ALL DATA:
   $scope.instruments = ["guitar", "bass", "drums", "vocals", "keyboard", "violin", "saxophone", "trumpet", "trombone"];
   $scope.interests = ["professionalBand", "hobbyBand", "jam", "chat", "learn", "session"];
@@ -21,10 +21,10 @@ module.exports = function
     console.log('error',err);
     $location.path("/registerLogin");
   });
-  
-  
+
+
   $scope.searchForUsers = () =>{
-    $scope.filterArray = [$scope.instrumentSearch, $scope.interestSearch, 
+    $scope.filterArray = [$scope.instrumentSearch, $scope.interestSearch,
       $scope.experienceSearch, $scope.ageSearch, $scope.genreSearch];
     let promiseArray = [];
     let counter = 0;
@@ -81,14 +81,14 @@ module.exports = function
           default:
             break;
         }
-        
-        
+
+
           let tempArray2 = _.uniqBy(arrayOfMugs, "uid");
           let tempArray3 = _.remove(tempArray2, (obj)=>{return obj.uid !== $scope.currentUser.uid;} );
           $scope.filteredUserArray = tempArray3;
-        
+
       });
 
     };
-    
+
 };

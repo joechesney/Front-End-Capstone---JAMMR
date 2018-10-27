@@ -4,7 +4,7 @@ const firebase = require('firebase');
 
 // CONVERSATION CTRL
 module.exports = function
-($scope, AuthFactory, $location, MessageFactory, 
+($scope, AuthFactory, $location,
   ConversationFactory, $routeParams, ProfileFactory){
 
   $scope.listenToConvo = (convoId)=>{
@@ -14,7 +14,7 @@ module.exports = function
       $scope.getConvo();
     });
   };
-  
+
 
   $scope.getConvo = ()=>{
     ConversationFactory.getConvoObject($routeParams.convoid)
@@ -30,7 +30,7 @@ module.exports = function
           AuthFactory.getUserInfo(uid)
           .then((otherUser)=>{
             $scope.otherUser = otherUser;
-            
+
           });
         }
         });
@@ -47,7 +47,7 @@ module.exports = function
     });
   };
 
-  
+
   AuthFactory.authUser()
   .then(user => {
     $scope.uid = user.uid;
@@ -63,14 +63,14 @@ module.exports = function
 
   $scope.getConvo();
 
-  
+
   $scope.sendNewMessage = (event)=>{
     if(event.keyCode === 13 && $scope.newMessage !== undefined){
       ProfileFactory.getUserProfileData($scope.uid)
       .then((theUser)=>{
         $scope.newMessage.uid = $scope.uid;
         $scope.newMessage.time = new Date().toLocaleString();
-        
+
         ConversationFactory.saveNewMessage($scope.newMessage, $routeParams.convoid)
         .then((messageData)=>{
           setTimeout(() => {

@@ -3,7 +3,7 @@
 
 // NAVBAR CTRL
 module.exports = function
-($scope, $window, $location, AuthFactory, $routeParams){
+($scope, $window, $location, AuthFactory){
 
   $scope.title = "JAMMR";
   if($window.location.href === "#!/registerLogin" ||
@@ -12,7 +12,7 @@ module.exports = function
   }else{
     $scope.isHomeorLoginPage = true;
   } // TODO: this isnt working lol
-  
+
   $scope.isActive = function (path) {
     let currentPath = $location.path().split('/')[1];
     if (currentPath.indexOf('?') !== -1)
@@ -24,7 +24,7 @@ module.exports = function
   .then(user => {
     AuthFactory.getUserInfo(user.uid)
     .then((data)=>{
-      
+
     });
   }).catch(err => {
     console.log('error',err);

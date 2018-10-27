@@ -11,8 +11,7 @@ module.exports = function (grunt) {
     browserify: {
       dist: {
         files:{
-          'dist/mapBundle.js': ['./main.js'],
-          'dist/aboutBundle.js': ['./about.js']
+          'dist/app.js': ['./javascripts/app.js'],
         },
         options: {
           transform: [["babelify", { "presets": ["es2015"] }]],
