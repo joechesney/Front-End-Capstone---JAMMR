@@ -3,9 +3,9 @@
 
 // PROFILE PAGE CTRL
 module.exports = function
-($scope, AuthFactory, SearchFactory, ProfileFactory, $window, 
-  $location, $routeParams, ConversationFactory, $q, MessageFactory){
-  
+($scope, AuthFactory, ProfileFactory,
+  $location, $routeParams, $q, MessageFactory){
+
   $scope.currentProfileUid = $routeParams.pid;
 
   AuthFactory.authUser()
@@ -89,7 +89,7 @@ module.exports = function
     }
   };
 
-      
+
   $scope.makeNewConvo = ()=>{
     let newConvoObj = {
       user1: $scope.uid,
@@ -97,10 +97,10 @@ module.exports = function
     };
     ProfileFactory.createNewConvoObject(newConvoObj)
     .then((newConvo)=>{
-      $location.path(`/conversation/${newConvo.name}`);      
+      $location.path(`/conversation/${newConvo.name}`);
     });
   };
-  
+
 
 
   $scope.beginConvo = () =>{
@@ -114,7 +114,7 @@ module.exports = function
         let convoExists = false;
 
         if(arrayOfAllConvoObjects.length === 0 || arrayOfAllConvoObjects.length === -1){
-          $scope.makeNewConvo(); 
+          $scope.makeNewConvo();
         }else{
           let convoExists = false;
           for(let i = 0; i < arrayOfAllConvoObjects.length; i++){
@@ -123,7 +123,7 @@ module.exports = function
               convoExists = true;
               $location.path(`/conversation/${convoObj.convoId}`);
             }else if( (i === (arrayOfAllConvoObjects.length -1)) && convoExists === false){
-              $scope.makeNewConvo(); 
+              $scope.makeNewConvo();
               convoExists = true;
             }
           }

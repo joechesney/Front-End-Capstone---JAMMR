@@ -4,4 +4,7 @@ dist/
 .sass-cache
 javascripts/secrets/
 public
-
+ugly/
+firebase.json
+.firebaserc
+.firebase/

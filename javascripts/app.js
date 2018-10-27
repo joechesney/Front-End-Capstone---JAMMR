@@ -1,6 +1,6 @@
 "use strict";
 // it knows where it is, from node modules
-// const angular = require('../node_modules/angular'); 
+// const angular = require('../node_modules/angular');
 // const ngRoute = require('../node_modules/angular-route');
 const angular = require('angular');
 const ngRoute = require('angular-route');
@@ -26,7 +26,7 @@ app
       // console.log('snapshot',snapshot.val());
   });
 })
-.config($routeProvider => {
+.config(['$routeProvider', $routeProvider => {
   $routeProvider
 
   // routes and configs go here, chained onto the module definition
@@ -63,11 +63,11 @@ app
     controller: "MapPageCtrl"
   })
   .otherwise("/registerLogin");
-})
-.run((fbConfig, listenToDatabase) => {
+}])
+.run(['fbConfig', 'listenToDatabase', (fbConfig, listenToDatabase) => {
   firebase.initializeApp(fbConfig);
   listenToDatabase();
-});
+}]);
 
 
 

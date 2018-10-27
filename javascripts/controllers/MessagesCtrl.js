@@ -3,7 +3,7 @@
 
 // MESSAGES CTRL
 module.exports = function
-($scope, $location, AuthFactory, MessageFactory, $routeParams, ConversationFactory, $q){
+($scope, AuthFactory, MessageFactory, $q){
   $scope.tempMessageList = [];
   // BEGIN KEEP THIS
   AuthFactory.authUser()
@@ -14,9 +14,9 @@ module.exports = function
     .then((convosASHELLL)=>{
       let convos1 = Object.values(convosASHELLL[0]);
       let convos2 = Object.values(convosASHELLL[1]);
-      let arrayOfAllConvoObjects = _.concat(convos1, convos2);    
+      let arrayOfAllConvoObjects = _.concat(convos1, convos2);
     // END KEEP THIS
-    
+
       if(arrayOfAllConvoObjects.length === 0 || arrayOfAllConvoObjects.length === -1){
         // console.log('no convos bro bro');
       }else{
