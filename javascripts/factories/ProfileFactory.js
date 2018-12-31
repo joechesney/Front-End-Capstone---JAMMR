@@ -2,7 +2,7 @@
 
 const firebase = require('firebase');
 
-module.exports = function($q, $http, fbConfig, googleMapsConfig){
+module.exports = function($q, $http, fbConfig){
 
   const getUserProfileData = uid =>{
     return $q ((resolve, reject)=>{
@@ -36,7 +36,7 @@ module.exports = function($q, $http, fbConfig, googleMapsConfig){
 
   const getCoordinatesFromZip = (zip)=>{
     return $q((resolve, reject)=>{
-      $http.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${zip},US&key=${googleMapsConfig.apiKey}`)
+      $http.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${zip},US&key=${"AIzaSyClcMQtg88d5HIqzCjOEYuCr9rrcXv3kls"}`)
       .then(({data})=>{
         resolve(data);
       });

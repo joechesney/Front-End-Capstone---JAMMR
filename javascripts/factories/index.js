@@ -6,5 +6,5 @@ const app = require('angular').module("JAMMRApp");
 app.factory('AuthFactory', ['$q', '$http', 'fbConfig', require('./AuthFactory')]);
 app.factory('SearchFactory', ['$q', '$http', 'fbConfig', require('./SearchFactory')]);
 app.factory('MessageFactory', ['$q', '$http', 'fbConfig', require('./MessageFactory')]);
-app.factory('ProfileFactory', ['$q', '$http', 'fbConfig', 'googleMapsConfig', require('./ProfileFactory')]);
+app.factory('ProfileFactory', ['$q', '$http', 'fbConfig', require('./ProfileFactory')]);
 app.factory('ConversationFactory', ['$q', '$http', 'fbConfig', require('./ConversationFactory')]);

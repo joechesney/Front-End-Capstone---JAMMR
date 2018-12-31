@@ -16,6 +16,7 @@ require('./factories');
 require('./controllers');
 require('./directives');
 require('./secrets');
+// require('./googleMapsConfig');
 
 // Put routes here
 
